@@ -197,14 +197,17 @@ figure { margin: 0; }
 .main-nav a:not(.btn):hover { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
 .nav-call { display: none; }
 
+/* Hamburger drawn as an SVG, not stacked spans: iOS Safari is unreliable with flex layout inside <button> */
 .menu-toggle {
-  display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
-  width: 48px; height: 48px; padding: 12px; background: transparent; border: 1px solid var(--line); border-radius: 10px; cursor: pointer;
+  display: inline-grid; place-items: center; width: 48px; height: 48px; padding: 0; margin-right: -8px;
+  background: transparent; border: 0; border-radius: 6px; color: var(--text); cursor: pointer;
+  -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent;
 }
-.menu-toggle span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: transform .2s, opacity .2s; }
-.menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.menu-toggle:hover { background: rgb(var(--text-rgb) / .08); }
+.menu-icon { display: block; }
+.menu-close { display: none; }
+.menu-toggle[aria-expanded="true"] .menu-bars { display: none; }
+.menu-toggle[aria-expanded="true"] .menu-close { display: inline; }
 .header-call { display: none; }
 
 @media (max-width: 1023px) {

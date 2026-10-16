@@ -427,9 +427,33 @@ figure { margin: 0; }
 .featured-quote figcaption, .quote-list figcaption {
   font-variant: small-caps; letter-spacing: .06em; font-weight: 600; color: var(--accent); font-size: 15px;
 }
-.quote-list { columns: 1; column-gap: 56px; }
-@media (min-width: 768px) { .quote-list { columns: 2; } }
-.quote-list figure { break-inside: avoid; padding: 22px 0; border-top: 1px solid rgb(var(--text-rgb) / .12); position: relative; }
+.review-rail-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.review-rail-title { margin: 0; font-family: var(--serif); font-weight: 700; font-size: 1.15rem; color: var(--text); }
+.rail-controls { display: flex; gap: 8px; }
+.rail-btn {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0;
+  background: transparent; color: var(--text); border: 1px solid rgb(var(--text-rgb) / .35); border-radius: 6px; cursor: pointer;
+}
+.rail-btn:hover { border-color: var(--accent); color: var(--accent); }
+.rail-btn:disabled { opacity: .35; cursor: default; border-color: rgb(var(--text-rgb) / .35); color: var(--text); }
+.rail-btn[data-rail-prev] .i { transform: scaleX(-1); }
+/* Swipeable review row: native scroll + snap, so touch, trackpad and keyboard all work */
+.quote-list {
+  display: flex; gap: 16px; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+  padding: 2px 2px 14px; margin: 0 -2px;
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+}
+.quote-list::-webkit-scrollbar { height: 6px; }
+.quote-list::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+.quote-list figure {
+  flex: 0 0 86%; scroll-snap-align: start; margin: 0;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
+  background: var(--panel); border: 1px solid var(--line); border-top: 2px solid var(--accent); border-radius: var(--radius);
+  padding: 22px 22px 18px;
+}
+@media (min-width: 640px) { .quote-list figure { flex-basis: calc((100% - 16px) / 2.15); } }
+@media (min-width: 1024px) { .quote-list figure { flex-basis: calc((100% - 32px) / 3.15); } }
 .quote-list blockquote p { color: var(--text); margin-bottom: 10px; }
 .quote-list blockquote p::before { content: "\201C"; color: var(--accent); font-family: var(--serif); font-weight: 800; font-size: 1.6em; line-height: 0; vertical-align: -.35em; margin-right: 4px; }
 .short-sweet { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgb(var(--text-rgb) / .12); font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--text); }
@@ -714,6 +738,6 @@ figure { margin: 0; }
   .js .reveal.is-in { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html, .quote-list { scroll-behavior: auto; }
   * { animation: none !important; transition: none !important; }
 }

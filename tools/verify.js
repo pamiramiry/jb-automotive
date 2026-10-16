@@ -295,6 +295,22 @@ function walk(dir) {
   await page.evaluate(() => document.querySelector(".menu-toggle").click());
   const menu = await page.evaluate(() => ({ open: document.getElementById("main-nav").classList.contains("is-open"), exp: document.querySelector(".menu-toggle").getAttribute("aria-expanded") }));
   check(menu.open && menu.exp === "true", "hamburger opens the menu and sets aria-expanded");
+  for (const w of [390, 1440]) {
+    await page.setViewport({ width: w, height: 800 });
+    await page.evaluate(() => { document.getElementById("main-nav").classList.remove("is-open"); document.getElementById("review-rail").scrollIntoView({ behavior: "instant", block: "center" }); });
+    await new Promise((r) => setTimeout(r, 300));
+    await page.evaluate(() => document.getElementById("review-rail").scrollTo({ left: 0, behavior: "instant" }));
+    await new Promise((r) => setTimeout(r, 250));
+    const r0 = await page.evaluate(() => { const r = document.getElementById("review-rail"); return { scrollable: r.scrollWidth > r.clientWidth + 10, cards: r.querySelectorAll("figure").length, prevOff: document.querySelector("[data-rail-prev]").disabled }; });
+    await page.evaluate(() => document.querySelector("[data-rail-next]").click());
+    let left = 0;
+    for (let i = 0; i < 20 && left === 0; i++) { await new Promise((r) => setTimeout(r, 100)); left = await page.evaluate(() => document.getElementById("review-rail").scrollLeft); }
+    check(r0.scrollable && r0.cards === 7, `reviews are a sideways-scrolling row of 7 at ${w}px`);
+    check(r0.prevOff && left > 0, `review arrows step through the row at ${w}px`, `scrollLeft=${Math.round(left)}`);
+    // let the row's smooth scroll finish so it can't cancel the page scroll tested next
+    let last = -1;
+    for (let i = 0; i < 30 && left !== last; i++) { last = left; await new Promise((r) => setTimeout(r, 150)); left = await page.evaluate(() => document.getElementById("review-rail").scrollLeft); }
+  }
   for (const w of [1440, 390]) {
     await page.setViewport({ width: w, height: 800 });
     await page.evaluate(() => { document.getElementById("main-nav").classList.remove("is-open"); window.scrollTo({ top: document.documentElement.scrollHeight / 2, behavior: "instant" }); });

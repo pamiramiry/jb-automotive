@@ -101,6 +101,26 @@
     }
   }
 
+  /* Review row: arrow buttons step one card at a time and disable at the ends */
+  var rail = document.getElementById("review-rail");
+  if (rail) {
+    var prev = document.querySelector("[data-rail-prev]");
+    var next = document.querySelector("[data-rail-next]");
+    var step = function () {
+      var card = rail.querySelector("figure");
+      return card ? card.getBoundingClientRect().width + 16 : rail.clientWidth;
+    };
+    var updateRail = function () {
+      prev.disabled = rail.scrollLeft <= 2;
+      next.disabled = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2;
+    };
+    prev.addEventListener("click", function () { rail.scrollBy({ left: -step(), behavior: reduceMotion ? "auto" : "smooth" }); });
+    next.addEventListener("click", function () { rail.scrollBy({ left: step(), behavior: reduceMotion ? "auto" : "smooth" }); });
+    rail.addEventListener("scroll", updateRail, { passive: true });
+    window.addEventListener("resize", updateRail);
+    updateRail();
+  }
+
   /* Today's hours, using shop time (Mississauga) */
   var day;
   try {

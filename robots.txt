@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# CONFIRM: replace CONFIRM-domain with the real domain before launch
+Sitemap: https://CONFIRM-domain/sitemap.xml

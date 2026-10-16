@@ -135,10 +135,12 @@ function walk(dir) {
   check(!/negative|one star|1-star|bad review/i.test(allText), "no reference to negative reviews");
 
   const offerSections = await page.evaluate(() => {
-    const has = (sel) => { const n = document.querySelector(sel); return !!n && /signature offer/.test(n.textContent); };
+    const has = (sel) => { const n = document.querySelector(sel); return !!n && /Bring your dealer quote/.test(n.textContent); };
     return { hero: has(".hero .offer"), ribbon: has(".ribbon"), compare: has("#compare .cmp-jb"), faq1: has(".faq details:first-child"), banner: has(".offer-banner") };
   });
   check(Object.values(offerSections).every(Boolean), "signature offer in hero, ribbon, comparison, FAQ #1, banner", JSON.stringify(offerSections));
+  check(!/CONFIRM/.test(allText), "no [CONFIRM] placeholders visible on the page");
+  check(!/CONFIRM/.test(meta.ld.join(" ").replace(/CONFIRM-domain/g, "")), "no placeholder text in the structured data (the domain token aside)");
   const brandLine = "We tell you what's really wrong. Then we fix it so it stays fixed.";
   const bl = await page.evaluate((t) => [".hero", "#why-us .letter", ".site-footer"].map((s) => [...document.querySelectorAll(s + " .brand-line")].some((n) => n.textContent.trim() === t)), brandLine);
   check(bl.every(Boolean), "brand line under hero CTAs, end of letter, footer", JSON.stringify(bl));

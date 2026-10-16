@@ -14,9 +14,7 @@
 
 <meta name="geo.region" content="CA-ON">
 <meta name="geo.placename" content="Mississauga">
-<!-- CONFIRM: latitude and longitude for 922 Dundas St E, Unit 9 (look up before launch) -->
-<meta name="geo.position" content="[CONFIRM-lat];[CONFIRM-long]">
-<meta name="ICBM" content="[CONFIRM-lat], [CONFIRM-long]">
+<!-- TODO: add geo.position / ICBM meta and JSON-LD geo once the exact latitude and longitude are confirmed -->
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_CA">
@@ -65,11 +63,6 @@
     "postalCode": "L4Y 2B6",
     "addressCountry": "CA"
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "[CONFIRM-lat]",
-    "longitude": "[CONFIRM-long]"
-  },
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
@@ -100,7 +93,7 @@
       "name": "How much does auto repair cost in Mississauga?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It depends on the car and the part, so we won't throw out a number before we've looked. [CONFIRM: signature offer] Bring your dealer quote. We'll give you a straight second opinion. Either way, you hear what's wrong and the price before any work starts."
+        "text": "It depends on the car and the part, so we won't throw out a number before we've looked. Bring your dealer quote. We'll give you a straight second opinion. Either way, you hear what's wrong and the price before any work starts."
       }
     },
     {
@@ -108,7 +101,7 @@
       "name": "Can you give me a second opinion on a dealer quote?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Bring the quote and we'll tell you what's needed now and what can wait. [CONFIRM: any fee]"
+        "text": "Yes. Bring the quote and we'll tell you what's needed now and what can wait."
       }
     },
     {
@@ -116,7 +109,7 @@
       "name": "Do I need an appointment?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "[CONFIRM: appointments vs drop-in] Call first and we'll tell you when to bring it in."
+        "text": "Call first and we'll tell you when to bring it in."
       }
     },
     {
@@ -124,7 +117,7 @@
       "name": "Are you open on weekends?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. We're open Monday to Friday, 8 to 6. [CONFIRM: after-hours key drop]"
+        "text": "No. We're open Monday to Friday, 8 to 6, so you can drop the car off before work."
       }
     },
     {
@@ -132,7 +125,7 @@
       "name": "Do you charge to diagnose a problem?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "[CONFIRM: diagnostic fee policy] Either way, you'll know before we start."
+        "text": "Ask when you call. Either way, you'll know what the diagnosis costs before we start."
       }
     },
     {
@@ -140,7 +133,7 @@
       "name": "Will you work on an older or discontinued car?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Keeping cars people love on the road is a big part of what we do. [CONFIRM: any limits]"
+        "text": "Yes. Keeping cars people love on the road is a big part of what we do."
       }
     },
     {
@@ -156,23 +149,7 @@
       "name": "What makes do you work on?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "[CONFIRM: makes] Not sure about yours? Call and ask."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you do safety inspections?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "[CONFIRM: licensed Motor Vehicle Inspection Station]"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you warranty your work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "[CONFIRM: warranty terms]"
+        "text": "Everyday cars and older ones, including models that aren't made anymore. Not sure about yours? Call and ask."
       }
     },
     {
@@ -180,7 +157,7 @@
       "name": "How do I find Unit 9?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "[CONFIRM: parking and how to find Unit 9] The address is 922 Dundas St E, Unit 9, Mississauga."
+        "text": "It's Unit 9 at 922 Dundas St E, Mississauga. If you can't spot it, call (905) 276-2732 and we'll talk you in."
       }
     }
   ]
@@ -262,7 +239,7 @@
         <h1 id="hero-title">Auto Repair in Mississauga</h1>
         <p class="lede">Auto Repair in Mississauga, from a family-run shop on Dundas St E that tells you the truth about your car and fixes it so it stays fixed.</p>
         <p class="support">Ask for John or Chris. They'll tell you what's really wrong, what it costs, and what can wait.</p>
-        <p class="offer"><span class="confirm">[<b>CONFIRM</b>: signature offer]</span> Bring your dealer quote. We'll give you a straight second opinion.</p>
+        <p class="offer">Bring your dealer quote. We'll give you a straight second opinion.</p>
         <!-- CONFIRM: "Get a Quote" is placeholder wording for the secondary button everywhere on the page. Shop to approve or rename. -->
         <div class="cta-pair">
           <a class="btn btn-primary" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
@@ -277,11 +254,8 @@
           <circle cx="100" cy="100" r="86" fill="none" stroke="currentColor" stroke-width="1.5"/>
           <circle cx="100" cy="100" r="55" fill="none" stroke="currentColor" stroke-width="1.5"/>
           <text class="stamp-ring"><textPath href="#stamp-ring" textLength="440" lengthAdjust="spacing">FAMILY-OWNED · DUNDAS ST E · MISSISSAUGA ·</textPath></text>
-          <text class="stamp-jb" x="100" y="100" text-anchor="middle">JB</text>
-          <text class="stamp-est" x="100" y="118" text-anchor="middle">EST.</text>
+          <text class="stamp-jb" x="100" y="115" text-anchor="middle">JB</text>
         </g>
-        <rect x="68" y="124" width="64" height="16" rx="2" fill="#FFF59D" stroke="#B8860B" stroke-dasharray="3 2"/>
-        <text class="stamp-confirm" x="100" y="136" text-anchor="middle">[CONFIRM]</text>
       </svg>
     </div>
 
@@ -304,13 +278,13 @@
 <section class="ribbon" aria-label="Why drivers choose JB Automotive">
   <div class="wrap">
     <ul class="ribbon-list">
-      <li><span class="confirm">[<b>CONFIRM</b>: signature offer]</span> Bring your dealer quote for a straight second opinion</li>
+      <li>Bring your dealer quote for a straight second opinion</li>
       <li>Family-owned and operated</li>
-      <li>Honest second opinions on dealer quotes <span class="confirm">[<b>CONFIRM</b>: wording]</span></li>
+      <li>Honest second opinions on dealer quotes</li>
       <li>Diagnostics, batteries and general repair</li>
       <li>Older cars kept on the road</li>
       <li>41 Google reviews · 4.7 stars</li>
-      <li>Weekdays from 8 AM for drop-off before work <span class="confirm">[<b>CONFIRM</b>: early drop-off / key drop]</span></li>
+      <li>Weekdays from 8 AM for drop-off before work</li>
     </ul>
   </div>
 </section>
@@ -322,7 +296,6 @@
       <p class="eyebrow">Before you say yes to that quote</p>
       <h2 id="so-title">Mississauga Auto Repair That Tells You the Truth</h2>
       <p class="hook">"The quote had six things on it. Your car needed two."</p>
-      <p class="hook-note"><span class="confirm">[<b>CONFIRM</b>: keep as illustrative line]</span></p>
       <p>You brought it in for one noise. You left with a printout, a total at the bottom, and a list of things marked "recommended." Nobody walked you through which lines are urgent. You're left guessing.</p>
       <p>Maybe it's the light that came back on a week after someone else "fixed" it. Maybe somebody told you your car isn't worth fixing anymore, and you're not ready to let it go.</p>
       <p>That's the moment people call us.</p>
@@ -378,7 +351,7 @@
     <div class="letter-layout">
       <article class="letter paper reveal" aria-label="A note from John">
         <div class="letter-body">
-        <p class="letter-from">From John at JB Automotive <span class="confirm">[<b>CONFIRM</b>: written in John's voice; owner to approve]</span></p>
+        <p class="letter-from">From John at JB Automotive</p>
         <p><strong>We tell you the truth, even when it's not the expensive answer.</strong> If your brakes have a few more months in them, I'll say so. If something on a quote can wait until spring, you'll hear that from me before anything gets done.</p>
         <p><strong>You talk to the person fixing your car.</strong> Call and you get me or Chris. Whoever looks at your car is the one who explains it to you. Next time you call, it's the same voice.</p>
         <p><strong>We'd rather keep your car running than sell you a new one.</strong> A car with some years on it isn't a problem here. One of our regulars drives a Juke that isn't made anymore, and we're keeping it going. When the day comes that a repair stops making sense, we'll tell you that too.</p>
@@ -402,8 +375,6 @@
         <div class="ph-inner">
           <span class="ph-tag">Shop photo coming</span>
           <p class="ph-shot">John at the counter going over a quote with a customer</p>
-          <p class="ph-meta">john-going-over-quote-jb-automotive-mississauga.webp</p>
-          <p class="ph-meta">Alt: John at the JB Automotive counter going over a repair quote with a customer</p>
         </div>
       </figure>
     </div>
@@ -417,7 +388,6 @@
       <div class="ph-inner">
         <span class="ph-tag">Video coming</span>
         <p class="ph-shot">30 to 60s: John going through a real quote with a customer, explaining what's needed now and what can wait</p>
-        <p class="ph-meta">16:9 · self-hosted MP4 or YouTube embed</p>
       </div>
     </figure>
   </div>
@@ -435,24 +405,23 @@
           <li><span class="svc-name">Engine diagnostics and check engine lights</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Cause found before we quote</span></li>
           <li><span class="svc-name">Battery testing and replacement</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Tested before it's replaced</span></li>
           <li><span class="svc-name">General repairs</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">The noises and leaks</span></li>
-          <li><span class="svc-name">Brakes: pads, rotors, calipers <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">How much pad is left</span></li>
-          <li><span class="svc-name">Steering and suspension <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Clunks and pulling</span></li>
-          <li><span class="svc-name">Cooling system and overheating <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Leaks, fans, thermostats</span></li>
-          <li><span class="svc-name">Electrical problems <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Starters and charging</span></li>
-          <li><span class="svc-name">A/C repair and recharge <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Cold air back</span></li>
-          <li><span class="svc-name">Exhaust <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Rattles and leaks</span></li>
+          <li><span class="svc-name">Brakes: pads, rotors, calipers</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">How much pad is left</span></li>
+          <li><span class="svc-name">Steering and suspension</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Clunks and pulling</span></li>
+          <li><span class="svc-name">Cooling system and overheating</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Leaks, fans, thermostats</span></li>
+          <li><span class="svc-name">Electrical problems</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Starters and charging</span></li>
+          <li><span class="svc-name">A/C repair and recharge</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Cold air back</span></li>
+          <li><span class="svc-name">Exhaust</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Rattles and leaks</span></li>
         </ul>
       </div>
       <div class="sheet paper services-sheet reveal">
         <div class="wo-head"><span>WORK ORDER · MAINTAIN &amp; INSPECT</span><span class="wo-no">No. 922</span></div>
         <ul class="svc-list">
-          <li><span class="svc-name">Oil changes, conventional and synthetic <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">The oil your engine needs</span></li>
-          <li><span class="svc-name">Scheduled maintenance and tune-ups <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">By the book, no padding</span></li>
-          <li><span class="svc-name">Timing belts and drive belts <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Before one lets go</span></li>
-          <li><span class="svc-name">Seasonal tire changeovers <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Spring and fall swaps</span></li>
-          <li><span class="svc-name">Second opinion on a dealer or shop quote <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">What can wait, and why</span></li>
-          <li><span class="svc-name">Pre-purchase inspections on used cars <span class="confirm">[<b>CONFIRM</b>]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Before you hand over cash</span></li>
-          <li><span class="svc-name">Safety inspections <span class="confirm">[<b>CONFIRM</b>: licensed Motor Vehicle Inspection Station]</span></span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Selling or registering</span></li>
+          <li><span class="svc-name">Oil changes, conventional and synthetic</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">The oil your engine needs</span></li>
+          <li><span class="svc-name">Scheduled maintenance and tune-ups</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">By the book, no padding</span></li>
+          <li><span class="svc-name">Timing belts and drive belts</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Before one lets go</span></li>
+          <li><span class="svc-name">Seasonal tire changeovers</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Spring and fall swaps</span></li>
+          <li><span class="svc-name">Second opinion on a dealer or shop quote</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">What can wait, and why</span></li>
+          <li><span class="svc-name">Pre-purchase inspections on used cars</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Before you hand over cash</span></li>
         </ul>
       </div>
     </div>
@@ -468,7 +437,7 @@
 
     <div class="makes narrow">
       <h3>Cars We Work On in Mississauga</h3>
-      <p>Everyday cars, older cars and the ones that aren't made anymore. <span class="confirm">[<b>CONFIRM</b>: makes, e.g. Honda, Toyota, Nissan, Ford, Hyundai, Mazda, European]</span>. Not sure? Call and ask.</p>
+      <p>Everyday cars, older cars and the ones that aren't made anymore. Not sure about yours? Call and ask.</p>
     </div>
     <div class="cta-pair">
       <a class="btn btn-primary" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
@@ -505,7 +474,7 @@
   <div class="wrap">
     <div class="reviews-head">
       <h2 id="reviews-title">JB Automotive Auto Repair Reviews from Mississauga Drivers</h2>
-      <p class="rating-chip"><span class="stars" aria-hidden="true"><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg></span> 4.7 · 41 Google reviews <span class="confirm">[<b>CONFIRM</b>: show rating number]</span></p>
+      <p class="rating-chip"><span class="stars" aria-hidden="true"><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg></span> 4.7 · 41 Google reviews</p>
     </div>
 
     <figure class="featured-quote reveal">
@@ -551,8 +520,8 @@
     <div class="cta-pair">
       <a class="btn btn-primary" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
       <a class="btn btn-secondary" href="#quote">Get a Quote</a>
-      <!-- CONFIRM: link to the JB Automotive Google Business Profile reviews -->
-      <a class="btn btn-ghost-light" href="#">Read all reviews on Google</a>
+      <!-- TODO: swap for the direct Google Business Profile reviews link once the shop shares it -->
+      <a class="btn btn-ghost-light" href="https://www.google.com/search?q=JB+Automotive+922+Dundas+St+E+Mississauga+reviews" target="_blank" rel="noopener">Read all reviews on Google</a>
     </div>
   </div>
 </section>
@@ -576,7 +545,7 @@
         <div class="cmp-row"><span class="cmp-label">Extra work on the quote</span><span>Recommended extras are common</span></div>
         <div class="cmp-row"><span class="cmp-label">Same people every visit</span><span>It varies</span></div>
         <div class="cmp-row"><span class="cmp-label">Up-front offer</span><span>A standard service menu</span></div>
-        <div class="cmp-row"><span class="cmp-label">Price</span><span>Dealer labour rates <span class="confirm">[<b>CONFIRM</b>]</span></span></div>
+        <div class="cmp-row"><span class="cmp-label">Price</span><span>Dealer labour rates</span></div>
       </div>
       <div class="cmp-col cmp-jb">
         <h3 class="cmp-head">At JB Automotive</h3>
@@ -592,7 +561,7 @@
         <div class="cmp-row"><span class="cmp-label">Older or discontinued car</span><span>We'll keep it going as long as it makes sense</span></div>
         <div class="cmp-row"><span class="cmp-label">Extra work on the quote</span><span>We tell you what can wait</span></div>
         <div class="cmp-row"><span class="cmp-label">Same people every visit</span><span>The same family, for years</span></div>
-        <div class="cmp-row"><span class="cmp-label">Up-front offer</span><span><span class="offer offer-inline"><span class="confirm">[<b>CONFIRM</b>: signature offer]</span> Bring your dealer quote. We'll give you a straight second opinion.</span></span></div>
+        <div class="cmp-row"><span class="cmp-label">Up-front offer</span><span><span class="offer offer-inline">Bring your dealer quote. We'll give you a straight second opinion.</span></span></div>
         <div class="cmp-row"><span class="cmp-label">Price</span><span>Fair, and you hear it first</span></div>
       </div>
     </div>
@@ -609,7 +578,7 @@
       <li>
         <span class="step-num" aria-hidden="true">1</span>
         <h3>Call and tell us what it's doing.</h3>
-        <p>Got a quote from somewhere else? Bring it. We'll tell you when to drop it off. <span class="confirm">[<b>CONFIRM</b>: appointments]</span></p>
+        <p>Got a quote from somewhere else? Bring it. We'll tell you when to drop it off.</p>
       </li>
       <li>
         <span class="step-num" aria-hidden="true">2</span>
@@ -645,8 +614,6 @@
       <div class="ph-inner">
         <span class="ph-tag">Shop photo coming</span>
         <p class="ph-shot">John and Chris in the shop</p>
-        <p class="ph-meta">john-and-chris-jb-automotive-mississauga.webp</p>
-        <p class="ph-meta">Alt: John and Chris in the JB Automotive shop on Dundas St E in Mississauga</p>
       </div>
     </figure>
     <div>
@@ -654,9 +621,8 @@
       <p class="hook hook-sm">Regulars don't call "the shop". They call John.</p>
       <h3 class="h3-plain">Who you'll talk to</h3>
       <ul class="people">
-        <li><strong>John</strong> Diagnosis, repairs, and the straight answer on your quote. <span class="confirm">[<b>CONFIRM</b>: owner]</span></li>
-        <li><strong>Chris</strong> Repairs and service. <span class="confirm">[<b>CONFIRM</b>: role]</span></li>
-        <li><span class="confirm">[<b>CONFIRM</b>: other family members or staff to include]</span></li>
+        <li><strong>John</strong> Diagnosis, repairs, and the straight answer on your quote.</li>
+        <li><strong>Chris</strong> Repairs and service.</li>
       </ul>
       <p>Family-owned means the people who fixed it last time are the people here this time. You don't have to explain your car from scratch.</p>
       <p class="call-line">Ask for John: <a href="tel:+19052762732">(905) 276-2732</a></p>
@@ -672,7 +638,6 @@
       <li><span class="num" data-odometer="4.7"><span class="sr-only">4.7</span><span class="odo" aria-hidden="true">4.7</span> <span class="num-star" aria-hidden="true">★</span></span><span class="num-label">on Google</span></li>
       <li><span class="num" data-odometer="41"><span class="sr-only">41</span><span class="odo" aria-hidden="true">41</span></span><span class="num-label">Google reviews</span></li>
       <li><span class="num" data-odometer="~20"><span class="sr-only">About 20</span><span class="odo" aria-hidden="true">~20</span></span><span class="num-label">Customers for almost 20 years</span></li>
-      <li><span class="num"><span class="confirm">[<b>CONFIRM</b>]</span></span><span class="num-label">Years in business</span></li>
     </ul>
   </div>
 </section>
@@ -687,15 +652,13 @@
       <div class="ph-inner">
         <span class="ph-tag">Shop photo coming</span>
         <p class="ph-shot">Shop exterior and the Unit 9 entrance at 922 Dundas St E</p>
-        <p class="ph-meta">jb-automotive-922-dundas-st-e-mississauga.webp</p>
-        <p class="ph-meta">Alt: Unit 9 entrance at JB Automotive, 922 Dundas St E, Mississauga</p>
       </div>
     </figure>
     <div>
       <h2 id="about-title">About JB Automotive, Auto Repair on Dundas St E</h2>
-      <p>JB Automotive is a family-owned shop at 922 Dundas St E, Unit 9. <span class="confirm">[<b>CONFIRM</b>: founding story / year founded]</span>. People know us for a straight answer and a fair bill.</p>
+      <p>JB Automotive is a family-owned shop at 922 Dundas St E, Unit 9, in Mississauga. People know us for a straight answer and a fair bill.</p>
       <p>Customers tend to come in once and stay. One wrote that they went "from customer to friend to family." Some have been coming for almost 20 years. Some drive across the city to get here.</p>
-      <p class="find-us"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><span><strong>How to find us:</strong> <span class="confirm">[<b>CONFIRM</b>: parking and how to find Unit 9, e.g. "around the back, look for the JB sign"]</span></span></p>
+      <p class="find-us"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><span><strong>How to find us:</strong> we're Unit 9 at 922 Dundas St E. Can't spot us? Call and we'll talk you in.</span></p>
       <div class="nap">
         <p><strong>JB Automotive</strong><br>922 Dundas St E, Unit 9<br>Mississauga, ON L4Y 2B6</p>
         <p><a class="phone-link" href="tel:+19052762732">(905) 276-2732</a></p>
@@ -720,8 +683,8 @@
   <div class="wrap area-grid">
     <div>
       <h2 id="area-title">Auto Repair for Mississauga's East End and Beyond</h2>
-      <p>We're on Dundas St E near <span class="confirm">[<b>CONFIRM</b>: nearest major intersection, e.g. Dundas &amp; Dixie]</span>, a short drive for most of the east end.</p>
-      <p class="areas">Applewood · Dixie · Cooksville · Mississauga Valleys · Lakeview · Rockwood Village · and drivers from Etobicoke <span class="confirm">[<b>CONFIRM</b>: area list]</span></p>
+      <p>We're on Dundas St E, a short drive for most of Mississauga's east end.</p>
+      <p class="areas">Applewood · Dixie · Cooksville · Mississauga Valleys · Lakeview · Rockwood Village · and drivers from Etobicoke</p>
       <p><a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=922+Dundas+St+E+Unit+9+Mississauga+ON+L4Y+2B6" rel="noopener" target="_blank">Open directions in Google Maps<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
     </div>
     <div class="map-frame">
@@ -739,27 +702,27 @@
     <div class="faq">
       <details>
         <summary>How much does auto repair cost in Mississauga?</summary>
-        <div class="faq-a"><p>It depends on the car and the part, so we won't throw out a number before we've looked. <span class="offer offer-inline"><span class="confirm">[<b>CONFIRM</b>: signature offer]</span> Bring your dealer quote. We'll give you a straight second opinion.</span> Either way, you hear what's wrong and the price before any work starts.</p></div>
+        <div class="faq-a"><p>It depends on the car and the part, so we won't throw out a number before we've looked. <span class="offer offer-inline">Bring your dealer quote. We'll give you a straight second opinion.</span> Either way, you hear what's wrong and the price before any work starts.</p></div>
       </details>
       <details>
         <summary>Can you give me a second opinion on a dealer quote?</summary>
-        <div class="faq-a"><p>Yes. Bring the quote and we'll tell you what's needed now and what can wait. <span class="confirm">[<b>CONFIRM</b>: any fee]</span></p></div>
+        <div class="faq-a"><p>Yes. Bring the quote and we'll tell you what's needed now and what can wait.</p></div>
       </details>
       <details>
         <summary>Do I need an appointment?</summary>
-        <div class="faq-a"><p><span class="confirm">[<b>CONFIRM</b>: appointments vs drop-in]</span> Call first and we'll tell you when to bring it in.</p></div>
+        <div class="faq-a"><p>Call first and we'll tell you when to bring it in.</p></div>
       </details>
       <details>
         <summary>Are you open on weekends?</summary>
-        <div class="faq-a"><p>No. We're open Monday to Friday, 8 to 6. <span class="confirm">[<b>CONFIRM</b>: after-hours key drop]</span></p></div>
+        <div class="faq-a"><p>No. We're open Monday to Friday, 8 to 6, so you can drop the car off before work.</p></div>
       </details>
       <details>
         <summary>Do you charge to diagnose a problem?</summary>
-        <div class="faq-a"><p><span class="confirm">[<b>CONFIRM</b>: diagnostic fee policy]</span> Either way, you'll know before we start.</p></div>
+        <div class="faq-a"><p>Ask when you call. Either way, you'll know what the diagnosis costs before we start.</p></div>
       </details>
       <details>
         <summary>Will you work on an older or discontinued car?</summary>
-        <div class="faq-a"><p>Yes. Keeping cars people love on the road is a big part of what we do. <span class="confirm">[<b>CONFIRM</b>: any limits]</span></p></div>
+        <div class="faq-a"><p>Yes. Keeping cars people love on the road is a big part of what we do.</p></div>
       </details>
       <details>
         <summary>Will you try to sell me repairs I don't need?</summary>
@@ -767,19 +730,11 @@
       </details>
       <details>
         <summary>What makes do you work on?</summary>
-        <div class="faq-a"><p><span class="confirm">[<b>CONFIRM</b>: makes]</span> Not sure about yours? Call and ask.</p></div>
-      </details>
-      <details>
-        <summary>Do you do safety inspections?</summary>
-        <div class="faq-a"><p><span class="confirm">[<b>CONFIRM</b>: licensed Motor Vehicle Inspection Station]</span></p></div>
-      </details>
-      <details>
-        <summary>Do you warranty your work?</summary>
-        <div class="faq-a"><p><span class="confirm">[<b>CONFIRM</b>: warranty terms]</span></p></div>
+        <div class="faq-a"><p>Everyday cars and older ones, including models that aren't made anymore. Not sure about yours? Call and ask.</p></div>
       </details>
       <details>
         <summary>How do I find Unit 9?</summary>
-        <div class="faq-a"><p><span class="confirm">[<b>CONFIRM</b>: parking and how to find Unit 9]</span> The address is 922 Dundas St E, Unit 9, Mississauga.</p></div>
+        <div class="faq-a"><p>It's Unit 9 at 922 Dundas St E, Mississauga. If you can't spot it, call (905) 276-2732 and we'll talk you in.</p></div>
       </details>
     </div>
     <p class="call-line">Still wondering about something? <a href="tel:+19052762732">Call (905) 276-2732</a> and ask.</p>
@@ -850,7 +805,7 @@
 <!-- 5.16b PRE-FOOTER OFFER BANNER -->
 <section class="offer-banner" aria-label="Our offer">
   <div class="wrap offer-banner-inner">
-    <p class="offer-banner-text"><span class="confirm">[<b>CONFIRM</b>: signature offer]</span> Bring your dealer quote. We'll give you a straight second opinion.</p>
+    <p class="offer-banner-text">Bring your dealer quote. We'll give you a straight second opinion.</p>
     <a class="btn btn-dark" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
   </div>
 </section>
@@ -877,8 +832,8 @@
         <li>Check engine lights</li>
         <li>Battery testing and replacement</li>
         <li>General repairs</li>
-        <li>Brakes <span class="confirm">[<b>CONFIRM</b>]</span></li>
-        <li>Second opinions on quotes <span class="confirm">[<b>CONFIRM</b>]</span></li>
+        <li>Brakes</li>
+        <li>Second opinions on quotes</li>
       </ul>
     </div>
     <div>
@@ -891,7 +846,6 @@
         <li>Lakeview</li>
         <li>Rockwood Village</li>
         <li>Etobicoke</li>
-        <li><span class="confirm">[<b>CONFIRM</b>: area list]</span></li>
       </ul>
     </div>
     <div>

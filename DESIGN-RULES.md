@@ -20,7 +20,7 @@
 - Headings are left-aligned. Body copy uses --body (brighter than --muted); --muted is for secondary text only.
 - Sticky mobile bottom bar (Call / Quote) always present.
 - Name in copy: "JB Automotive". Legal name "JB Automotive Ltd" only in the footer © and JSON-LD legalName.
-- Never invent facts. Unknowns use a highlighted [CONFIRM] placeholder. Second-opinion savings and long-time loyalty are customer experiences, never promises. Don't promise walk-ins; closed weekends.
+- Never invent facts. The preview ships with NO visible [CONFIRM] placeholders (user request 2026-10-16): unconfirmed details are either written as safe, general defaults or left out, and every one is tracked in OPEN-QUESTIONS.md (internal, not served). Never state a founding year, licence, certification, warranty or price until the shop confirms it. Second-opinion savings and long-time loyalty are customer experiences, never promises. Don't promise walk-ins; closed weekends.
 - Never quote or reference negative reviews. No absolute claims ("every customer", "they all come back").
 - No "AI-sounding" copy (see banned phrase list in the build prompt). No em dashes or en dashes anywhere: not in copy, comments or docs. Write ranges as "Mon-Fri 8-6" or "8 to 6".
 - Brand line "We tell you what's really wrong. Then we fix it so it stays fixed." appears under the hero CTAs, at the end of the Note from the shop, and in the footer.

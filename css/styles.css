@@ -233,6 +233,9 @@ figure { margin: 0; }
   padding: 40px 0 var(--sec-pad);
   background: var(--bg);
 }
+/* The stamp rolls in from 120px to the right; clip it so it never causes sideways scroll on tablets */
+.hero { overflow: hidden; }
+@supports (overflow: clip) { .hero { overflow: clip; } }
 .hero-top { display: grid; gap: 24px; align-items: start; }
 .hero-copy { max-width: 700px; }
 .hero h1 { margin-bottom: 16px; }

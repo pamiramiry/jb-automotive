@@ -32,6 +32,9 @@
 - Do not mention languages spoken or anyone's heritage.
 - Do not reference or copy any other project or previous site.
 
+- Motion (Emil Kowalski principles, 2026-10-20): use the --ease-out curve and --dur-press / --dur-ui tokens; UI transitions stay under 300ms; animate only transform and opacity (never height, width or font-size); buttons press to scale(.97); every :hover lives inside `@media (hover: hover) and (pointer: fine)`; no bounce or elastic easing; prefers-reduced-motion turns everything off. One-off entrances (stamp roll, odometer) may run longer.
+- Polish (impeccable / taste principles): headings use text-wrap: balance and slight negative tracking; paragraphs text-wrap: pretty with a 68ch max width; no coloured stripe borders on boxes or callouts; no faux small caps; tabular figures for hours and phone numbers; one primary action per group, so secondary links are text links, not a third button. The signature offer is set as accent serif text, not a box.
+
 ## Working notes
 
 - Section backgrounds, top to bottom: hero dark, ribbon panel, second opinion LIGHT, letter section panel (cream letter), services dark (cream sheets), symptoms LIGHT, reviews dark, comparison panel, how it works LIGHT, family panel, numbers dark, about LIGHT, area dark, FAQ panel, quote ticket LIGHT, offer banner fill, footer deep. Classes: .bg-dark / .bg-panel, .tone-light, .paper.

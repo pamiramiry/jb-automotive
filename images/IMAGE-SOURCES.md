@@ -8,6 +8,8 @@ Each photo was downloaded at full size, cropped to its slot, resized, converted 
 |---|---|---|---|---|---|
 | auto-repair-mississauga-jb-automotive.webp | https://www.pexels.com/photo/an-auto-mechanic-checking-the-engine-of-a-car-4315570/ | Anna Shvets | Pexels License | 2026-10-15 | Cropped 21:9, 1800x771 |
 | auto-repair-mississauga-jb-automotive-900.webp | Same as above (4315570) | Anna Shvets | Pexels License | 2026-10-15 | 900px copy of the hero for small screens |
+| auto-repair-mississauga-jb-automotive-portrait.webp | Same as above (4315570) | Anna Shvets | Pexels License | 2026-10-20 | Portrait 4:5 crop for the desktop hero, 1000x1250 |
+| auto-repair-mississauga-jb-automotive-portrait-640.webp | Same as above (4315570) | Anna Shvets | Pexels License | 2026-10-20 | 640px copy of the portrait crop |
 | auto-repair-mississauga-jb-automotive-og.webp | Same as above (4315570) | Anna Shvets | Pexels License | 2026-10-15 | Cropped 1200x630 for Open Graph |
 | older-car-repair-mississauga.webp | https://www.pexels.com/photo/car-with-open-hood-8985969/ | Artem Podrez | Pexels License | 2026-10-15 | Cropped 4:3 from the right. Stamped vehicle number on the firewall blurred. Background figure is out of focus and unidentifiable. 1200x900 |
 | car-diagnostics-mississauga.webp | https://www.pexels.com/photo/close-up-of-mechanic-with-tablet-4116198/ | Jose Ricardo Barraza Morachis | Pexels License | 2026-10-15 | Cropped 4:3. Scan tool product name blurred. 1200x900 |

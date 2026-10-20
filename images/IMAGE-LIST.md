@@ -7,6 +7,7 @@ Stock photos fill the slots that don't show the shop or its people. Shop and peo
 | Filename | Size | Section | Shot | Alt text |
 |---|---|---|---|---|
 | auto-repair-mississauga-jb-automotive.webp (+ -900 copy) | 1800x771 (21:9) | Hero | Mechanic's hands working in an engine bay | Auto Repair in Mississauga at JB Automotive |
+| auto-repair-mississauga-jb-automotive-portrait.webp (+ -640 copy) | 1000x1250 (4:5) | Hero on desktop (via <picture>) | Same engine-bay shot, tall crop | Uses the hero img alt |
 | older-car-repair-mississauga.webp | 1200x900 (4:3) | Second opinion, work order story | Older car with the hood up in a repair bay | Older car with the hood propped open in a repair bay at a Mississauga garage |
 | car-diagnostics-mississauga.webp | 1200x900 (4:3) | Services | Diagnostic tablet plugged into the OBD port | Mechanic reading engine codes on a diagnostic tablet plugged into a car's OBD port |
 | car-battery-testing-mississauga.webp | 1200x900 (4:3) | Services | Charger clamps on a car battery | Charger clamps connected to a car battery under the hood for testing |

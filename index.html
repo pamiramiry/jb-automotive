@@ -39,7 +39,8 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,600;0,700;0,800;1,500&amp;family=Work+Sans:wght@400;500;600&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,600;0,700;0,800;1,500&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,600;0,700;0,800;1,500&amp;family=Work+Sans:wght@400;500;600&amp;display=swap"></noscript>
-<link rel="preload" as="image" href="images/auto-repair-mississauga-jb-automotive.webp" imagesrcset="images/auto-repair-mississauga-jb-automotive-900.webp 900w, images/auto-repair-mississauga-jb-automotive.webp 1800w" imagesizes="(min-width: 1224px) 1160px, calc(100vw - 32px)" fetchpriority="high">
+<link rel="preload" as="image" media="(max-width: 1023px)" href="images/auto-repair-mississauga-jb-automotive.webp" imagesrcset="images/auto-repair-mississauga-jb-automotive-900.webp 900w, images/auto-repair-mississauga-jb-automotive.webp 1800w" imagesizes="calc(100vw - 32px)" fetchpriority="high">
+<link rel="preload" as="image" media="(min-width: 1024px)" href="images/auto-repair-mississauga-jb-automotive-portrait.webp" imagesrcset="images/auto-repair-mississauga-jb-automotive-portrait-640.webp 640w, images/auto-repair-mississauga-jb-automotive-portrait.webp 1000w" imagesizes="(min-width: 1224px) 540px, 45vw" fetchpriority="high">
 <link rel="stylesheet" href="css/styles.css">
 <script src="js/main.js" defer></script>
 
@@ -232,8 +233,7 @@
 
 <!-- 5.2 HERO -->
 <section class="hero" aria-labelledby="hero-title">
-  <div class="wrap">
-    <div class="hero-top">
+  <div class="wrap hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">Family-owned on Dundas St E</p>
         <h1 id="hero-title">Auto Repair in Mississauga</h1>
@@ -248,29 +248,31 @@
         <p class="brand-line">We tell you what's really wrong. Then we fix it so it stays fixed.</p>
         <p class="micro">Mon-Fri 8-6 · 922 Dundas St E, Unit 9 · Ask for John.</p>
       </div>
-      <svg class="stamp stamp-hero" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-        <g filter="url(#stamp-rough)">
-          <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="4"/>
-          <circle cx="100" cy="100" r="86" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="100" cy="100" r="55" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text class="stamp-ring"><textPath href="#stamp-ring" textLength="440" lengthAdjust="spacing">FAMILY-OWNED · DUNDAS ST E · MISSISSAUGA ·</textPath></text>
-          <text class="stamp-jb" x="100" y="115" text-anchor="middle">JB</text>
-        </g>
-      </svg>
-    </div>
 
-    <div class="hero-media">
-      <img src="images/auto-repair-mississauga-jb-automotive.webp"
-           srcset="images/auto-repair-mississauga-jb-automotive-900.webp 900w, images/auto-repair-mississauga-jb-automotive.webp 1800w"
-           sizes="(min-width: 1224px) 1160px, calc(100vw - 32px)"
-           width="1800" height="771" fetchpriority="high" decoding="async"
-           alt="Auto Repair in Mississauga at JB Automotive">
-      <ul class="signboard" aria-label="At a glance">
-        <li><span class="stars" aria-hidden="true"><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg></span><span><strong>4.7</strong> · 41 Google reviews</span></li>
-        <li>Customers for almost 20 years</li>
-        <li>Mon-Fri 8-6</li>
-      </ul>
-    </div>
+      <div class="hero-media">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="images/auto-repair-mississauga-jb-automotive-portrait-640.webp 640w, images/auto-repair-mississauga-jb-automotive-portrait.webp 1000w" sizes="(min-width: 1224px) 540px, 45vw" width="1000" height="1250">
+          <img src="images/auto-repair-mississauga-jb-automotive.webp"
+               srcset="images/auto-repair-mississauga-jb-automotive-900.webp 900w, images/auto-repair-mississauga-jb-automotive.webp 1800w"
+               sizes="calc(100vw - 32px)"
+               width="1800" height="771" fetchpriority="high" decoding="async"
+               alt="Auto Repair in Mississauga at JB Automotive">
+        </picture>
+        <svg class="stamp stamp-hero" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+          <g filter="url(#stamp-rough)">
+            <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="4"/>
+            <circle cx="100" cy="100" r="86" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="100" cy="100" r="55" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <text class="stamp-ring"><textPath href="#stamp-ring" textLength="440" lengthAdjust="spacing">FAMILY-OWNED · DUNDAS ST E · MISSISSAUGA ·</textPath></text>
+            <text class="stamp-jb" x="100" y="115" text-anchor="middle">JB</text>
+          </g>
+        </svg>
+        <ul class="signboard" aria-label="At a glance">
+          <li><span class="stars" aria-hidden="true"><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg></span><span><strong>4.7</strong> · 41 Google reviews</span></li>
+          <li>Customers for almost 20 years</li>
+          <li>Mon-Fri 8-6</li>
+        </ul>
+      </div>
   </div>
 </section>
 

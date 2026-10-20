@@ -217,32 +217,62 @@ figure { margin: 0; }
   .header-call { display: inline-flex; }
 }
 
-/* ---------- Hero ---------- */
-.hero {
-  padding: 40px 0 var(--sec-pad);
-  background: var(--bg);
-}
+/* ---------- Hero ----------
+   Mobile and tablet: copy, then the wide photo with the stamp on its corner and the sign below.
+   Desktop: big headline on the left, tall portrait photo on the right; the stamp overlaps the
+   photo's top corner and the sign hangs off its bottom corner. Text never sits on the photo. */
+.hero { padding: 32px 0 var(--sec-pad); background: var(--bg); }
 /* The stamp rolls in from 120px to the right; clip it so it never causes sideways scroll on tablets */
 .hero { overflow: hidden; }
 @supports (overflow: clip) { .hero { overflow: clip; } }
-.hero-top { display: grid; gap: 24px; align-items: start; }
-.hero-copy { max-width: 700px; }
-.hero h1 { margin-bottom: 16px; }
+.hero-grid { display: grid; gap: 40px; align-items: center; }
+.hero-copy { max-width: 640px; }
+.hero h1 { font-size: clamp(2.75rem, 1.1rem + 5.4vw, 5.5rem); line-height: 1.02; letter-spacing: -.025em; margin-bottom: 20px; }
 .lede { font-size: clamp(1.1rem, 1rem + .4vw, 1.3rem); color: var(--text); line-height: 1.5; }
 .support { font-size: 1.05rem; }
 
 .stamp { display: block; color: var(--accent); }
 .stamp-ring { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: 2px; fill: currentColor; }
 .stamp-jb { font-family: var(--serif); font-weight: 800; font-size: 44px; fill: currentColor; }
-.stamp-hero { width: 150px; height: 150px; transform: rotate(-8deg); justify-self: start; order: -1; }
+.hero-media { position: relative; }
+.hero-media picture, .hero-media img { display: block; width: 100%; }
+.hero-media img { aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
+.stamp-hero { position: absolute; z-index: 2; top: -34px; right: 10px; width: 112px; height: 112px; transform: rotate(-8deg); }
+.stamp-hero circle:first-child { fill: var(--bg); }
+.signboard {
+  position: relative; z-index: 1; display: grid; gap: 4px;
+  background: var(--panel-2); color: var(--text); border-radius: var(--radius);
+  border: 1px solid var(--line);
+  padding: 14px 18px; margin-top: 12px; font-weight: 500;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .35);
+}
+.signboard li { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 6px 0; }
+.signboard li + li { border-top: 1px solid var(--line); }
+.stars { display: inline-flex; gap: 2px; color: var(--accent); }
 @media (min-width: 768px) {
-  .hero { padding-top: 56px; }
-  .hero-top { grid-template-columns: minmax(0, 1fr) auto; gap: 40px; }
-  .stamp-hero { width: 210px; height: 210px; order: 0; justify-self: end; margin-top: 8px; }
+  .hero { padding-top: 48px; }
+  .hero-media img { aspect-ratio: 21 / 9; }
+  .stamp-hero { width: 150px; height: 150px; top: -56px; right: 24px; }
+  .signboard {
+    grid-template-columns: repeat(3, auto); justify-content: space-between; align-items: center;
+    width: calc(100% - 64px); margin: -36px auto 0; padding: 16px 28px; font-size: 17px;
+  }
+  .signboard li + li { border-top: 0; padding-left: 28px; position: relative; }
+  .signboard li + li::before { content: ""; position: absolute; left: 0; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--accent); }
 }
 @media (min-width: 1024px) {
-  .hero-top { grid-template-columns: 62% 1fr; }
-  .stamp-hero { width: 230px; height: 230px; justify-self: center; }
+  .hero { padding: 48px 0 var(--sec-pad); }
+  .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: 64px; }
+  .hero-media { margin: 0 0 0 auto; width: 100%; max-width: 540px; }
+  .hero-media img { aspect-ratio: 4 / 5; max-height: calc(100vh - 150px); min-height: 520px; }
+  .stamp-hero { width: 168px; height: 168px; top: -40px; right: -20px; }
+  /* the sign hangs off the photo's bottom-left corner as a small stacked board */
+  .signboard {
+    position: absolute; left: -56px; bottom: 40px; width: auto; margin: 0;
+    grid-template-columns: 1fr; justify-content: start; padding: 14px 22px; font-size: 16px;
+  }
+  .signboard li + li { padding-left: 0; border-top: 1px solid var(--line); }
+  .signboard li + li::before { display: none; }
 }
 @media (prefers-reduced-motion: no-preference) {
   /* Rolls in from the right like a wheel, overshoots a touch, then presses down like a rubber stamp */
@@ -255,27 +285,6 @@ figure { margin: 0; }
     92% { transform: translateX(0) rotate(-9deg) scale(.98); }
     100% { transform: translateX(0) rotate(-8deg) scale(1); opacity: 1; }
   }
-}
-
-.hero-media { margin-top: 40px; }
-.hero-media img { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
-.signboard {
-  position: relative; z-index: 1; display: grid; gap: 4px;
-  background: var(--panel-2); color: var(--text); border-radius: var(--radius);
-  border: 1px solid var(--line);
-  padding: 16px 20px; margin-top: 12px; font-weight: 500;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, .35);
-}
-.signboard li { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 6px 0; }
-.signboard li + li { border-top: 1px solid var(--line); }
-.stars { display: inline-flex; gap: 2px; color: var(--accent); }
-@media (min-width: 768px) {
-  .signboard {
-    grid-template-columns: repeat(3, auto); justify-content: space-between; align-items: center;
-    width: calc(100% - 64px); margin: -40px auto 0; padding: 18px 32px; font-size: 17px;
-  }
-  .signboard li + li { border-top: 0; padding-left: 28px; position: relative; }
-  .signboard li + li::before { content: ""; position: absolute; left: 0; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--accent); }
 }
 
 /* ---------- Trust ribbon ---------- */

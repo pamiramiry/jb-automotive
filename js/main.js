@@ -151,7 +151,9 @@
   themeButtons.forEach(function (b) {
     b.addEventListener("click", function () {
       var name = b.getAttribute("data-theme-choice");
-      applyTheme(name);
+      // Cross-fade the colour change where the browser supports view transitions
+      if (document.startViewTransition && !reduceMotion) document.startViewTransition(function () { applyTheme(name); });
+      else applyTheme(name);
       try { localStorage.setItem("jb-theme", name); } catch (err) { /* private mode: choice lasts this visit only */ }
     });
   });

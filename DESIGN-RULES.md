@@ -16,7 +16,11 @@
 - Every H2 contains "Auto Repair", "Mechanic" or "Car Repair", and most also contain "Mississauga". Never rewrite H2s to drop the keyword.
 - The signature offer appears in the hero, trust ribbon, dealer comparison, FAQ #1 and pre-footer banner.
 - The CTA pair (Call + Get a Quote) appears only at key moments: hero, second opinion, services, reviews, how it works, plus the big call button on the quote ticket. Other sections end with a plain text call line or nothing (loosened 2026-10-16 so the page reads hand-built, not templated).
-- Eyebrow labels on at most 3 or 4 sections (now: hero, second opinion, symptoms), set as an italic Bitter line, never the uppercase-with-bar template label. Keep uppercase letter-spaced text to the work-order headers only.
+- No eyebrow labels above headings anywhere (removed 2026-10-20 in the impeccable pass: its craft floor bans them outright). Headings carry their own weight. Keep uppercase letter-spaced text to the work-order headers and the wordmark only.
+- No scroll-triggered fade-in on sections. The page has two authored motion moments only: the hero stamp roll and the odometer numbers. Motion otherwise answers a visitor action (press, menu, FAQ, form errors, colourway switch).
+- Icons are SVG from the sprite, never Unicode glyphs (no ★ or → characters standing in for icons). Text links carry no appended arrow.
+- No middle-dot meta strings except the brief's micro-line ("Mon-Fri 8-6 · 922 Dundas St E, Unit 9 · Ask for John."). Write "4.7 from 41 Google reviews", and put a review's name and context on separate lines.
+- Forms: every field has its own error message under it, linked with aria-describedby, checked on blur and on submit; the submit message says how many fields need fixing and focus moves to the first one.
 - Headings are left-aligned. Body copy uses --body (brighter than --muted); --muted is for secondary text only.
 - Sticky mobile bottom bar (Call / Quote) always present.
 - Name in copy: "JB Automotive". Legal name "JB Automotive Ltd" only in the footer © and JSON-LD legalName.

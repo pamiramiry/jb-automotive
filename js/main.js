@@ -33,19 +33,6 @@
     if (e.key === "Escape" && nav.classList.contains("is-open")) { setMenu(false); toggle.focus(); }
   });
 
-  /* Fade-up on scroll */
-  var reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add("is-in"); io.unobserve(entry.target); }
-      });
-    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
-    reveals.forEach(function (el) { io.observe(el); });
-  } else {
-    reveals.forEach(function (el) { el.classList.add("is-in"); });
-  }
-
   /* Odometer numbers: each digit rolls up like a car odometer when the stats scroll into view.
      The plain value stays in .sr-only for screen readers; without JS the static number shows. */
   var odos = [];
@@ -162,27 +149,44 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* Quote form: no endpoint yet, so validate and confirm inline */
+  /* Quote form: no endpoint yet. Each field shows its own error under it (checked on blur,
+     then live once touched); submit focuses the first problem and confirms inline on success. */
   var form = document.getElementById("quote-form");
   var msg = document.getElementById("form-msg");
+  function controlsOf(field) { return field.querySelectorAll("input, textarea, select"); }
+  function fieldValid(field) {
+    var controls = controlsOf(field);
+    for (var i = 0; i < controls.length; i++) { if (!controls[i].checkValidity()) return false; }
+    return true;
+  }
+  function showField(field) {
+    var ok = fieldValid(field);
+    var err = field.querySelector(".field-error");
+    field.classList.toggle("has-error", !ok);
+    if (err) err.hidden = ok;
+    controlsOf(field).forEach(function (c) { if (ok) c.removeAttribute("aria-invalid"); else c.setAttribute("aria-invalid", "true"); });
+    return ok;
+  }
+  var fields = form.querySelectorAll(".field");
+  fields.forEach(function (field) {
+    var touched = false;
+    controlsOf(field).forEach(function (c) {
+      c.addEventListener("blur", function () {
+        // only judge a field once the visitor has typed or chosen something, or tried to submit
+        if (c.value || c.type === "radio") { touched = true; showField(field); }
+      });
+      c.addEventListener("input", function () { if (touched || field.classList.contains("has-error")) showField(field); });
+      c.addEventListener("change", function () { if (touched || field.classList.contains("has-error")) showField(field); });
+    });
+  });
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var firstBad = null;
-    form.querySelectorAll(".field").forEach(function (f) { f.classList.remove("has-error"); });
-    form.querySelectorAll("[required]").forEach(function (input) {
-      if (!input.checkValidity()) {
-        var field = input.closest(".field");
-        if (field) field.classList.add("has-error");
-        input.setAttribute("aria-invalid", "true");
-        if (!firstBad) firstBad = input;
-      } else {
-        input.removeAttribute("aria-invalid");
-      }
-    });
-    if (firstBad) {
+    var bad = [];
+    fields.forEach(function (field) { if (!showField(field)) bad.push(field); });
+    if (bad.length) {
       msg.classList.add("is-error");
-      msg.textContent = "Please fill in the highlighted fields so we can call you back.";
-      firstBad.focus();
+      msg.textContent = bad.length === 1 ? "One field needs fixing before we can call you back." : bad.length + " fields need fixing before we can call you back.";
+      controlsOf(bad[0])[0].focus();
       return;
     }
     msg.classList.remove("is-error");

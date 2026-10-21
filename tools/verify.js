@@ -279,7 +279,8 @@ function walk(dir) {
   console.log("\n# Interaction");
   await page.evaluate(() => document.querySelector("#quote-form button[type=submit]").click());
   const errMsg = await page.$eval("#form-msg", (n) => n.textContent);
-  check(/highlighted/.test(errMsg), "empty form submit shows inline error");
+  const inlineErrs = await page.evaluate(() => [...document.querySelectorAll(".field-error")].filter((e) => !e.hidden).length);
+  check(/need(s)? fixing/.test(errMsg) && inlineErrs >= 5, "empty submit shows an error under each missing field", `${inlineErrs} inline errors`);
   await page.type("#f-name", "Test Driver");
   await page.type("#f-phone", "4165550100");
   await page.type("#f-car", "2014 Nissan Juke");

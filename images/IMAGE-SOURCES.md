@@ -16,6 +16,12 @@ Every photo gets the same muted colour grade (sharp: modulate saturation 0.6, a 
 | mechanic-hands-jb-automotive.webp | https://www.pexels.com/photo/a-person-with-greasy-hands-7568433/ | cottonbro studio | Pexels License | 2026-10-27 | Beside John's letter. 5:4, 1200x960. Clothing patch blurred |
 | brake-repair-mississauga-jb-automotive.webp | https://www.pexels.com/photo/automotive-brake-maintenance-in-workshop-30470930/ | Agustin Olmedo | Pexels License | 2026-10-15 | Services. 4:5 re-cut from the original, 960x1200. Glove print blurred |
 
+## Video
+
+| File | Source page | Videographer | Licence | Downloaded | Edits |
+|---|---|---|---|---|---|
+| video/mechanic-at-work-jb-automotive.mp4 | https://www.pexels.com/video/person-using-socket-wrench-to-loosen-bolts-7565183/ | cottonbro studio | Pexels License | 2026-10-27 | Hero loop, desktop only. 12s cut (1s to 13s of the 1366x720 file), cropped to 2.39:1 (1366x572), audio removed, graded with ffmpeg to match the photos (eq saturation 0.6, contrast 1.05, brightness -0.015; colorchannelmixer rr 1.04, bb 0.93), H.264 CRF 27, 748KB. Hands only, no face, no brands |
+
 Retired (files deleted, no longer on the site): the black and white set from the 2026-10-27 redesign (Pexels 39823759, 16077292, 10414793), 8985969 (older car: it is also used on Freshway Auto, so it was dropped), 4116198, 6473244, 7854100 and 7651555.
 
 Considered and rejected for brand marks or faces: 22799423 (Mercedes-Benz wrench, tool brands), 34337558 (Ford, Motorcraft, Istobal signage), 4116207 (VW badge), and several shots with faces that could read as John or Chris.

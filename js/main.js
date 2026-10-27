@@ -108,6 +108,38 @@
     updateRail();
   }
 
+  /* Hero video: desktop only, after the opening has played. Never loads on phones, with reduced
+     motion, or when the visitor has asked to save data. Pauses off screen; a visible button pauses it. */
+  var heroPhoto = document.querySelector(".hero-photo");
+  var heroVideo = heroPhoto && heroPhoto.querySelector(".hero-video");
+  var toggleBtn = heroPhoto && heroPhoto.querySelector(".video-toggle");
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (heroVideo && !reduceMotion && !saveData && window.matchMedia("(min-width: 1024px)").matches) {
+    var userPaused = false;
+    var setPaused = function (paused) {
+      toggleBtn.setAttribute("aria-pressed", String(paused));
+      toggleBtn.querySelector("span").textContent = paused ? "Play video" : "Pause video";
+    };
+    heroVideo.addEventListener("playing", function () { heroPhoto.classList.add("is-playing"); toggleBtn.hidden = false; }, { once: true });
+    toggleBtn.addEventListener("click", function () {
+      userPaused = !heroVideo.paused;
+      if (userPaused) heroVideo.pause(); else heroVideo.play();
+      setPaused(userPaused);
+    });
+    setTimeout(function () {
+      heroVideo.src = heroVideo.getAttribute("data-src");
+      var p = heroVideo.play();
+      if (p && p.catch) p.catch(function () { /* autoplay refused: the still photo stays */ });
+    }, 2400);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        if (!heroVideo.src) return;
+        if (entries[0].isIntersecting) { if (!userPaused) heroVideo.play().catch(function () {}); }
+        else heroVideo.pause();
+      }, { threshold: 0.1 }).observe(heroPhoto);
+    }
+  }
+
   /* Today's hours, using shop time (Mississauga) */
   var day;
   try {

@@ -14,6 +14,14 @@ Every photo uses the same muted colour grade (see IMAGE-SOURCES.md for how). Sto
 | mechanic-hands-jb-automotive.webp | 1200x960 | Beside John's letter | Oil-stained hands over a workbench | A mechanic's oil-stained hands over a workbench |
 | auto-repair-mississauga-jb-automotive-og.webp | 1200x630 | Social share (og:image) | Crop of the hero | Mechanic's hands working in a car's engine bay at JB Automotive in Mississauga |
 
+## Video
+
+| File | Size | Where | Shot |
+|---|---|---|---|
+| video/mechanic-at-work-jb-automotive.mp4 | 1366x572, 12s loop, 748KB | Hero, desktop only: fades in over the photo after the opening; pauses off screen; visible pause button | Hands turning a T-wrench in warm side light |
+
+A real clip of John at work can replace it: same 2.39:1 crop, muted, about 10 to 15 seconds, graded like the photos.
+
 ## Ready for real shop photos (swap tags waiting in HTML comments)
 
 | Filename | Size | Where | Shot | Alt text |

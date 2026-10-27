@@ -91,12 +91,13 @@ A family repair shop presented the way a high-end service house presents itself:
 
 The page alternates full black and full white bands. Each band holds one idea, set wide, with a lot of empty space around it. Photography is the only texture and the only warmth: every photo carries the same muted colour grade (about 60% saturation, a slightly warm cast, a touch of shadow depth), and each screen gets at most one decisive frame, either full width or cropped beside text. The interface itself has no accent colour; emphasis comes from size, the serif, and white on black.
 
-Motion is reserved for one authored moment, the odometer digits rolling into place, plus responses to a visitor's own actions (a button press, the menu, an FAQ answer, a form error).
+Motion has two authored moments: the hero opening (the letterbox opens from the centre, the photo settles from a slow push-in, the headline words rise in turn), and the odometer digits rolling into place. On desktop a muted, graded video loop then fades in behind the hero, with a visible pause button. Everything else answers a visitor's own action (a button press, the menu, an FAQ answer, a form error).
 
 **Key Characteristics:**
 - True black and white bands, two greys, no accent colour.
 - Marcellus for every heading and every customer quote; Hanken Grotesk for reading and controls.
 - Muted colour photography (about 60% saturation, slightly warm), square-edged, never under text.
+- A cinematic 2.39:1 hero with static film grain and a soft vignette.
 - Hairline rules (1px) are the only structure: no cards, no boxes, no shadows on content.
 - Buttons are near-square solid blocks (2px corners).
 
@@ -182,6 +183,9 @@ Square-edged photographs with no rounding. Buttons, fields and the odometer cell
 ### Odometer (signature)
 Stats roll into place like a car odometer when the band scrolls into view: one 1.15em cell per digit on a quiet surface with an inner fade, digits in Hanken tabular figures, the rightmost wheel first. Reduced motion shows the final values.
 
+### Cinematic hero (signature)
+A letterboxed 2.39:1 photo on desktop (4:3 on phones), capped by the screen height so the headline and Call button stay in the first screen. Static film grain at 14% (overlay) and a soft radial vignette sit over the photo, never over text. The opening plays once on load (about 2 seconds, then holds still). On desktop only, a 12-second muted video loop fades in over the photo after the opening, pauses when scrolled away, and has a visible Pause/Play button. Phones, reduced motion and data-saver visitors keep the still photo.
+
 ### Review row
 The featured review is a full-width Marcellus quote. The rest sit in a swipeable row: each review is an open column under a 1px rule in the band's text colour, with arrow buttons that step one review at a time. No autoplay.
 
@@ -200,4 +204,5 @@ The featured review is a full-width Marcellus quote. The rest sit in a swipeable
 - **Don't** box content into cards or add drop shadows; use hairline rules.
 - **Don't** add eyebrow labels above headings or uppercase tracked labels.
 - **Don't** use Marcellus for numbers in stats or phone numbers.
-- **Don't** add scroll-triggered fade-ins to sections; the odometer is the one authored moment.
+- **Don't** add scroll-triggered fade-ins to sections; the hero opening and the odometer are the only authored moments.
+- **Don't** autoplay any other media, and never ship the hero video without its pause button.

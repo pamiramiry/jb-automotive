@@ -16,7 +16,7 @@ const check = (ok, label, detail = "") => {
   console.log(`${ok ? "PASS" : "FAIL"}  ${label}${detail ? "  " + detail : ""}`);
 };
 
-const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".webp": "image/webp", ".svg": "image/svg+xml", ".xml": "application/xml", ".txt": "text/plain" };
+const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".webp": "image/webp", ".svg": "image/svg+xml", ".xml": "application/xml", ".txt": "text/plain", ".mp4": "video/mp4" };
 const server = http.createServer((req, res) => {
   const url = decodeURIComponent(req.url.split("?")[0]);
   const file = path.join(ROOT, url === "/" ? "index.html" : url);
@@ -286,6 +286,48 @@ function walk(dir) {
   await page.evaluate(() => document.querySelector(".menu-toggle").click());
   const menu = await page.evaluate(() => ({ open: document.getElementById("main-nav").classList.contains("is-open"), exp: document.querySelector(".menu-toggle").getAttribute("aria-expanded") }));
   check(menu.open && menu.exp === "true", "hamburger opens the menu and sets aria-expanded");
+  for (const [w, h] of [[1440, 900], [1280, 800], [1280, 720]]) {
+    const fv = await browser.newPage();
+    await fv.setRequestInterception(true);
+    fv.on("request", (r) => (r.url().startsWith(base) || r.url().startsWith("data:") ? r.continue() : r.abort()));
+    await fv.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+    await fv.setViewport({ width: w, height: h });
+    await fv.goto(base, { waitUntil: "load" });
+    const bottom = await fv.evaluate(() => document.querySelector(".hero .btn-solid").getBoundingClientRect().bottom);
+    check(bottom <= h, `hero Call button is in the first screen at ${w}x${h}`, `bottom=${Math.round(bottom)}`);
+    await fv.close();
+  }
+  // hero video: desktop plays it after the opening; the button pauses it; phones and reduced motion never load it
+  {
+    const dv = await browser.newPage();
+    await dv.setRequestInterception(true);
+    dv.on("request", (r) => (r.url().startsWith(base) || r.url().startsWith("data:") ? r.continue() : r.abort()));
+    await dv.setViewport({ width: 1440, height: 900 });
+    await dv.goto(base, { waitUntil: "load" });
+    let st = {};
+    for (let i = 0; i < 40; i++) {
+      await new Promise((r) => setTimeout(r, 250));
+      st = await dv.evaluate(() => { const v = document.querySelector(".hero-video"); return { src: !!v.getAttribute("src"), playing: !v.paused && v.readyState > 2, shown: document.querySelector(".hero-photo").classList.contains("is-playing"), btn: !document.querySelector(".video-toggle").hidden }; });
+      if (st.playing && st.shown) break;
+    }
+    check(st.src && st.playing && st.shown && st.btn, "desktop hero video loads, plays and shows a pause button", JSON.stringify(st));
+    await dv.evaluate(() => document.querySelector(".video-toggle").click());
+    const paused = await dv.evaluate(() => ({ p: document.querySelector(".hero-video").paused, label: document.querySelector(".video-toggle").textContent.trim(), pressed: document.querySelector(".video-toggle").getAttribute("aria-pressed") }));
+    check(paused.p && paused.label === "Play video" && paused.pressed === "true", "pause button stops the hero video", JSON.stringify(paused));
+    await dv.close();
+    for (const [w, motion, label] of [[390, "no-preference", "phones"], [1440, "reduce", "reduced motion"]]) {
+      const pv = await browser.newPage();
+      await pv.setRequestInterception(true);
+      pv.on("request", (r) => (r.url().startsWith(base) || r.url().startsWith("data:") ? r.continue() : r.abort()));
+      await pv.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: motion }]);
+      await pv.setViewport({ width: w, height: 800 });
+      await pv.goto(base, { waitUntil: "load" });
+      await new Promise((r) => setTimeout(r, 3000));
+      const src = await pv.evaluate(() => document.querySelector(".hero-video").getAttribute("src"));
+      check(!src, `hero video never loads for ${label}`);
+      await pv.close();
+    }
+  }
   for (const w of [390, 1440]) {
     await page.setViewport({ width: w, height: 800 });
     await page.evaluate(() => { document.getElementById("main-nav").classList.remove("is-open"); document.getElementById("review-rail").scrollIntoView({ behavior: "instant", block: "center" }); });

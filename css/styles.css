@@ -22,6 +22,7 @@
   --mobile-bar-h: 60px;
   --radius: 2px;
   --ease-out: cubic-bezier(.23, 1, .32, 1);
+  --ease-in-out: cubic-bezier(.77, 0, .175, 1);
   --dur-press: 140ms;
   --dur-ui: 200ms;
 }
@@ -138,14 +139,51 @@ input, textarea, select { caret-color: currentColor; }
   .header-call { padding: 0 2px 0 16px; border-left: 1px solid var(--line); }
 }
 
-/* ---------- Hero ---------- */
-.hero-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 30% 50%; background: var(--char); }
-@media (min-width: 768px) { .hero-photo img { aspect-ratio: auto; height: clamp(300px, 50vh, 600px); object-position: 40% 55%; } }
-.hero-body { padding-top: clamp(32px, 4.5vw, 64px); padding-bottom: var(--sec); }
-.hero h1 { font-size: clamp(2.6rem, 1.2rem + 5.6vw, 6rem); line-height: 1.02; letter-spacing: -.015em; margin-bottom: clamp(28px, 3vw, 44px); max-width: none; }
+/* ---------- Hero ----------
+   Desktop: a 2.39:1 letterboxed photo with light grain and a soft vignette. On load the letterbox
+   opens from the centre, the photo settles from a slow push-in, then the headline words rise in turn.
+   A muted video loop fades in over the photo on desktop once the opening has finished (main.js). */
+.hero-photo { position: relative; overflow: hidden; background: var(--char); }
+.hero-photo picture { display: block; }
+.hero-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 30% 50%; }
+/* widescreen, but capped by the screen height so the headline and the Call button stay in the first screen */
+@media (min-width: 768px) { .hero-photo img { aspect-ratio: 2.39 / 1; max-height: clamp(200px, calc(100vh - 510px), 64vh); max-height: clamp(200px, calc(100svh - 510px), 64vh); object-position: 40% 45%; } }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s var(--ease-out); }
+.hero-photo.is-playing .hero-video { opacity: 1; }
+/* static film grain and a soft vignette: texture only, never under text */
+.grain { position: absolute; inset: 0; pointer-events: none; opacity: .14; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.grain::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 85% 75% at 50% 50%, transparent 55%, rgba(0, 0, 0, .45)); mix-blend-mode: normal; }
+.video-toggle {
+  position: absolute; right: var(--gutter); bottom: 16px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px;
+  background: rgba(0, 0, 0, .6); color: var(--white); border: 1px solid rgba(255, 255, 255, .35); border-radius: var(--radius);
+  font: 600 13px/1 var(--text); letter-spacing: .02em; cursor: pointer;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  transition: background-color var(--dur-ui) var(--ease-out), transform var(--dur-press) var(--ease-out);
+}
+.video-toggle[hidden] { display: none; }
+.video-toggle .ic-play { display: none; }
+.video-toggle[aria-pressed="true"] .ic-play { display: inline; }
+.video-toggle[aria-pressed="true"] .ic-pause { display: none; }
+.video-toggle:active { transform: scale(.97); }
+.hero h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; }
+.hero h1 .w > span { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-photo { animation: letterbox-open 1.3s var(--ease-in-out) both; }
+  .hero-photo img { animation: push-settle 2.8s var(--ease-out) both; }
+  .hero h1 .w > span { animation: word-rise .95s var(--ease-out) both; animation-delay: calc(.75s + var(--i) * .09s); }
+  .hero-grid { animation: copy-in .8s var(--ease-out) 1.25s both; }
+}
+@keyframes letterbox-open { from { clip-path: inset(50% 0 50% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes push-settle { from { transform: scale(1.12); } to { transform: none; } }
+@keyframes word-rise { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes copy-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.hero-body { padding-top: clamp(28px, 3.2vw, 48px); padding-bottom: var(--sec); }
+.hero h1 { font-size: clamp(2.6rem, 1.2rem + 5.6vw, 6rem); line-height: 1.02; letter-spacing: -.015em; margin-bottom: clamp(20px, 2.2vw, 32px); max-width: none; }
 .hero-grid { display: grid; gap: 48px; }
 .hero-copy > p:not(.lede):not(.brand-line):not(.micro) { color: var(--body); }
-.lede { font-size: clamp(1.15rem, 1.05rem + .4vw, 1.35rem); line-height: 1.5; color: var(--fg); max-width: 40ch; }
+.lede { font-size: clamp(1.15rem, 1.05rem + .4vw, 1.35rem); line-height: 1.5; color: var(--fg); max-width: 50ch; }
 .hero-proof { border-top: 1px solid var(--line); padding-top: 28px; }
 .hero-proof blockquote p { font-family: var(--display); font-size: clamp(1.4rem, 1.2rem + .8vw, 1.9rem); line-height: 1.3; color: var(--fg); margin-bottom: 16px; }
 .hero-proof figcaption { font-size: 14px; color: var(--fg2); }
@@ -383,6 +421,7 @@ input, textarea, select { caret-color: currentColor; }
   .main-nav a:not(.btn):hover { color: var(--fg); }
   .header-call:hover span, .phone-link:hover, .footer-phone:hover { text-decoration: underline; }
   .rail-btn:hover:not(:disabled) { background: var(--fg); color: var(--bg); }
+  .video-toggle:hover { background: rgba(0, 0, 0, .8); }
 }
 
 /* ---------- Motion ---------- */

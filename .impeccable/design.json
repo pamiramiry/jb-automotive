@@ -30,7 +30,9 @@
       { "name": "ease-out", "value": "cubic-bezier(.23, 1, .32, 1)", "purpose": "Every transition and entrance." },
       { "name": "dur-press", "value": "140ms", "purpose": "Button press scale to 0.97." },
       { "name": "dur-ui", "value": "200ms", "purpose": "Menu panel, menu icon cross-fade, FAQ answer, form messages, hover fills." },
-      { "name": "odometer", "value": "1.4s ease-out, 120ms stagger right to left", "purpose": "The one authored moment: stats roll into place on scroll-in." }
+      { "name": "odometer", "value": "1.4s ease-out, 120ms stagger right to left", "purpose": "Authored moment: stats roll into place on scroll-in." },
+      { "name": "hero-opening", "value": "letterbox 1.3s ease-in-out; push 2.8s ease-out; words .95s ease-out from .75s, 90ms apart; copy .8s from 1.25s", "purpose": "Authored moment: the hero opens like a film, once, on load." },
+      { "name": "hero-video", "value": "fade in 1.4s ease-out at 2.4s, desktop only", "purpose": "Muted graded loop behind the hero; pauses off screen; visible pause button." }
     ],
     "breakpoints": [
       { "name": "sm", "value": "480px" },
@@ -88,7 +90,7 @@
   ],
   "narrative": {
     "northStar": "The Quiet Workshop",
-    "overview": "A family repair shop presented the way a high-end service house presents itself: silence, black and white, and nothing on the page that is not doing a job. Trust comes from restraint. The shop does not shout about honesty; the page is calm enough that customers' own words, set large in a flared serif, carry the argument. The page alternates full black and full white bands. Each band holds one idea, set wide, with a lot of empty space around it. Photography is the only texture and the only warmth: every photo carries the same muted colour grade (about 60% saturation, a slightly warm cast, a touch of shadow depth), and each screen gets at most one decisive frame, either full width or cropped beside text. The interface itself has no accent colour; emphasis comes from size, the serif, and white on black. Motion is reserved for one authored moment, the odometer digits rolling into place, plus responses to a visitor's own actions (a button press, the menu, an FAQ answer, a form error).",
+    "overview": "A family repair shop presented the way a high-end service house presents itself: silence, black and white, and nothing on the page that is not doing a job. Trust comes from restraint. The shop does not shout about honesty; the page is calm enough that customers' own words, set large in a flared serif, carry the argument. The page alternates full black and full white bands. Each band holds one idea, set wide, with a lot of empty space around it. Photography is the only texture and the only warmth: every photo carries the same muted colour grade (about 60% saturation, a slightly warm cast, a touch of shadow depth), and each screen gets at most one decisive frame, either full width or cropped beside text. The interface itself has no accent colour; emphasis comes from size, the serif, and white on black. Motion has two authored moments: the hero opening (the letterbox opens from the centre, the photo settles from a slow push-in, the headline words rise in turn), and the odometer digits rolling into place. On desktop a muted, graded video loop then fades in behind the hero, with a visible pause button. Everything else answers a visitor's own action (a button press, the menu, an FAQ answer, a form error).",
     "keyCharacteristics": [
       "True black and white bands, two greys, no accent colour.",
       "Marcellus for every heading and every customer quote; Hanken Grotesk for reading and controls.",
@@ -116,7 +118,7 @@
       "Don't box content into cards or add drop shadows; use hairline rules.",
       "Don't add eyebrow labels above headings or uppercase tracked labels.",
       "Don't use Marcellus for numbers in stats or phone numbers.",
-      "Don't add scroll-triggered fade-ins to sections; the odometer is the one authored moment."
+      "Don't add scroll-triggered fade-ins to sections; the hero opening and the odometer are the only authored moments.", "Don't autoplay any other media, and never ship the hero video without its pause button."
     ]
   }
 }

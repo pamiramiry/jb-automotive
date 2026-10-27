@@ -18,7 +18,7 @@ Every photo uses the same muted colour grade (see IMAGE-SOURCES.md for how). Sto
 
 | File | Size | Where | Shot |
 |---|---|---|---|
-| video/mechanic-at-work-jb-automotive.mp4 | 1366x572, 12s loop, 748KB | Hero, desktop only: fades in over the photo after the opening; pauses off screen; visible pause button | Hands turning a T-wrench in warm side light |
+| video/mechanic-at-work-jb-automotive.mp4 | 1920x804, 12s loop, 1.1MB | Hero, desktop only: fades in over the photo after the opening; pauses off screen; small round pause button | A mechanic working a T-wrench into an engine, hoses and wheel well in frame |
 
 A real clip of John at work can replace it: same 2.39:1 crop, muted, about 10 to 15 seconds, graded like the photos.
 

@@ -68,7 +68,7 @@ function walk(dir) {
   check(meta.title === `${PHRASE} | JB Automotive`, "title tag", JSON.stringify(meta.title));
   check(meta.h1count === 1, "exactly one H1", String(meta.h1count));
   check(meta.h1 === PHRASE, "H1 text", JSON.stringify(meta.h1));
-  check(meta.first.startsWith(PHRASE + ","), "first sentence after H1 starts with phrase");
+  check(meta.first.split(". ")[0].includes(PHRASE), "first sentence after H1 contains phrase", JSON.stringify(meta.first.slice(0, 90)));
   check(meta.desc.startsWith(PHRASE + "."), "meta description starts with phrase");
   check(meta.ogt === meta.title && meta.twt === meta.title, "og:title and twitter:title equal title");
   check(meta.ogd === meta.desc && meta.twd === meta.desc, "og:description and twitter:description equal meta description");

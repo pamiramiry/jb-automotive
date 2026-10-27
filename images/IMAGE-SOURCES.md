@@ -20,7 +20,7 @@ Every photo gets the same muted colour grade (sharp: modulate saturation 0.6, a 
 
 | File | Source page | Videographer | Licence | Downloaded | Edits |
 |---|---|---|---|---|---|
-| video/mechanic-at-work-jb-automotive.mp4 | https://www.pexels.com/video/person-using-socket-wrench-to-loosen-bolts-7565183/ | cottonbro studio | Pexels License | 2026-10-27 | Hero loop, desktop only. 12s cut (1s to 13s of the 1366x720 file), cropped to 2.39:1 (1366x572), audio removed, graded with ffmpeg to match the photos (eq saturation 0.6, contrast 1.05, brightness -0.015; colorchannelmixer rr 1.04, bb 0.93), H.264 CRF 27, 748KB. Hands only, no face, no brands |
+| video/mechanic-at-work-jb-automotive.mp4 | https://www.pexels.com/video/7565185/ (replaced 7565183 on 2026-10-27: the close-up read as an abstract hand in the thin strip) | cottonbro studio | Pexels License | 2026-10-27 | Hero loop, desktop only. 12s cut (4s to 16s of the 2048x1080 file), cropped to 2.39:1 (2048x857, y 134), scaled to 1920x804, audio removed, graded with ffmpeg to match the photos (eq saturation 0.6, contrast 1.05, brightness -0.015; colorchannelmixer rr 1.04, bb 0.93), H.264 CRF 28, 1.1MB. Arms and hands only, no face, no brands |
 
 Retired (files deleted, no longer on the site): the black and white set from the 2026-10-27 redesign (Pexels 39823759, 16077292, 10414793), 8985969 (older car: it is also used on Freshway Auto, so it was dropped), 4116198, 6473244, 7854100 and 7651555.
 

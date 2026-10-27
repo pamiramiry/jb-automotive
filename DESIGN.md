@@ -189,7 +189,7 @@ Square-edged photographs. Buttons, fields and odometer cells have a 1px corner: 
 - **Phone:** wordmark, phone icon and a two-line menu icon that cross-fades to an X; the menu opens as a graphite panel with condensed links. A fixed bottom bar carries Call Now (green) and Get a Quote.
 
 ### Cinematic hero (signature)
-A letterboxed 2.39:1 photo on desktop (4:3 on phones), capped by the screen height. Static film grain at 14% (overlay) and a soft radial vignette sit over the photo, never over text. The opening plays once on load (about 2 seconds, then holds still). On desktop only, a 12-second muted video loop fades in over the photo after the opening, pauses when scrolled away, and has a visible Pause/Play button. Phones, reduced motion and data-saver visitors keep the still photo.
+A letterboxed 2.39:1 photo on desktop (4:3 on phones), capped by the screen height. Static film grain at 14% (overlay) and a soft radial vignette sit over the photo, never over text. The opening plays once on load (about 2 seconds, then holds still). On desktop only, a 12-second muted video loop fades in over the photo after the opening, pauses when scrolled away, and has a small round Pause/Play button (44px, label kept for screen readers). Phones, reduced motion and data-saver visitors keep the still photo.
 
 ### Odometer (signature)
 Stats roll into place like a dashboard counter when the band scrolls into view: one 1.15em cell per digit on a quiet surface with an inner fade, digits in Mona Sans 700 at 75% width with tabular figures, the rightmost wheel first. Reduced motion shows the final values.

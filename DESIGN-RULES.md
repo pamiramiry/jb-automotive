@@ -7,7 +7,7 @@ Redesigned 2026-10-27 as "The Quiet Workshop" (the user's pick: Quiet Luxury Wor
 - One-page site. Vanilla HTML/CSS/JS. No frameworks.
 - Black and white bands, two greys, no accent colour. The only hue is the form error red (#FF9F8E). No colourway switcher.
 - Marcellus for headings and customer quotes; Hanken Grotesk for reading, controls and every number (Marcellus's old-style figures clip in the odometer and look odd in phone numbers).
-- Every photo is black and white (grayscale, then sharp linear 1.08 / -8), one decisive frame per screen, square edges, never under text.
+- Every photo gets the same muted colour grade (sharp: modulate saturation 0.6, a slight warm recomb (red x1.04, blue x0.93), then linear 1.05 / -6; changed from black and white at the user's request 2026-10-27), one decisive frame per screen, square edges, never under text.
 - Structure is 1px hairline rules: no cards, no boxes, no shadows on content. Buttons are near-square (2px).
 - One solid button in the first viewport (Call); Get a Quote is a text link there.
 - Motion: the odometer is the one authored moment. Everything else answers a visitor action (press scale .97, menu, FAQ, form errors). --ease-out and --dur tokens only; animate transform and opacity only; hovers only inside `@media (hover: hover) and (pointer: fine)`; prefers-reduced-motion turns it all off.

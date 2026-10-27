@@ -1,6 +1,6 @@
 ---
 name: JB Automotive
-description: Quiet luxury workshop. Black and white, one decisive photograph per screen, customers' words set large.
+description: Quiet luxury workshop. Black and white bands, muted colour photographs, customers' words set large.
 colors:
   carbon-black: "#000000"
   gallery-white: "#FFFFFF"
@@ -89,14 +89,14 @@ components:
 
 A family repair shop presented the way a high-end service house presents itself: silence, black and white, and nothing on the page that is not doing a job. Trust comes from restraint. The shop does not shout about honesty; the page is calm enough that customers' own words, set large in a flared serif, carry the argument.
 
-The page alternates full black and full white bands. Each band holds one idea, set wide, with a lot of empty space around it. Photography is the only texture: every photo is converted to black and white with a little contrast, and each screen gets at most one decisive frame, either full width or cropped tall beside text. There is no accent colour anywhere; emphasis comes from size, the serif, and white on black.
+The page alternates full black and full white bands. Each band holds one idea, set wide, with a lot of empty space around it. Photography is the only texture and the only warmth: every photo carries the same muted colour grade (about 60% saturation, a slightly warm cast, a touch of shadow depth), and each screen gets at most one decisive frame, either full width or cropped beside text. The interface itself has no accent colour; emphasis comes from size, the serif, and white on black.
 
 Motion is reserved for one authored moment, the odometer digits rolling into place, plus responses to a visitor's own actions (a button press, the menu, an FAQ answer, a form error).
 
 **Key Characteristics:**
 - True black and white bands, two greys, no accent colour.
 - Marcellus for every heading and every customer quote; Hanken Grotesk for reading and controls.
-- Black and white photography, square-edged, never under text.
+- Muted colour photography (about 60% saturation, slightly warm), square-edged, never under text.
 - Hairline rules (1px) are the only structure: no cards, no boxes, no shadows on content.
 - Buttons are near-square solid blocks (2px corners).
 
@@ -119,7 +119,7 @@ A monochrome palette: two grounds, two greys per ground for hierarchy, and one f
 - **Error Coral** (#FF9F8E): form error messages and the invalid field's border only, on black. It is the one hue on the site and only appears when something needs fixing.
 
 ### Named Rules
-**The No Accent Rule.** Nothing on the page is coloured except form errors. Emphasis is size, the serif, or white on black.
+**The No Accent Rule.** Nothing in the interface is coloured except form errors; the photographs carry the only warmth. Emphasis is size, the serif, or white on black.
 
 **The Two Grounds Rule.** Bands alternate full black and full white, never two of the same tone side by side, except the quote band and the footer, which a hairline separates. Every component reads its colours from the band it sits in.
 
@@ -159,7 +159,7 @@ Flat. Depth comes from the black and white bands and from photography, never fro
 
 ## Shapes
 
-Square photographs with no rounding. Buttons, fields and the odometer cells have a 2px corner, just enough to stop them looking sharp. Lists, tables and steps are open: rules between rows, no containers.
+Square-edged photographs with no rounding. Buttons, fields and the odometer cells have a 2px corner, just enough to stop them looking sharp. Lists, tables and steps are open: rules between rows, no containers.
 
 ## Components
 
@@ -188,14 +188,14 @@ The featured review is a full-width Marcellus quote. The rest sit in a swipeable
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep every photograph black and white (grayscale, then a slight contrast lift) and give each screen one decisive frame.
+- **Do** give every photograph the same muted colour grade (saturation 0.6, a slight warm cast, linear 1.05 / -6) and each screen one decisive frame.
 - **Do** alternate black and white bands, and let components read their colours from the band.
 - **Do** set customer quotes large in Marcellus; they are the page's evidence.
 - **Do** use Hanken tabular lining figures for every number that has to read cleanly.
 - **Do** keep one solid button in the first viewport (Call), with Get a Quote as a text link.
 
 ### Don't:
-- **Don't** add an accent colour, a gradient or a tint; the only hue is the form error.
+- **Don't** add an accent colour, a gradient or a tint to the interface; colour lives in the photographs and the form error only.
 - **Don't** put text over a photograph.
 - **Don't** box content into cards or add drop shadows; use hairline rules.
 - **Don't** add eyebrow labels above headings or uppercase tracked labels.

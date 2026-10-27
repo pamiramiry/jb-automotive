@@ -1,5 +1,5 @@
 /* JB Automotive: quiet luxury workshop.
-   Black and white, two greys, no accent colour. Black and white photography, never under text.
+   Black and white, two greys, no accent colour. Muted colour photography (about 60% saturation, slightly warm), never under text.
    Marcellus for display, Hanken Grotesk for text. Read DESIGN-RULES.md before changing anything. */
 
 :root {
@@ -279,7 +279,7 @@ input, textarea, select { caret-color: currentColor; }
 
 /* ---------- Letter from John ---------- */
 .letter-grid { display: grid; gap: 48px; }
-.letter-photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.letter-photo { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; }
 @media (min-width: 1024px) {
   .letter-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 88px; align-items: start; }
   .letter-photo { position: sticky; top: calc(var(--header-h) + 32px); }

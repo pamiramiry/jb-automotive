@@ -1,26 +1,31 @@
-/* JB Automotive: quiet luxury workshop.
-   Black and white, two greys, no accent colour. Muted colour photography (about 60% saturation, slightly warm), never under text.
-   Marcellus for display, Hanken Grotesk for text. Read DESIGN-RULES.md before changing anything. */
+/* JB Automotive: the quiet workshop, shop-floor edition.
+   Graphite and concrete grounds, steel greys, one machine-green accent used only on Call buttons.
+   Mona Sans throughout: condensed and heavy for headings, normal width for reading.
+   Muted colour photography, never under text. Read DESIGN-RULES.md and DESIGN.md before changing anything. */
 
 :root {
-  --black: #000000;
-  --white: #FFFFFF;
-  --grey-dark: #A3A39E;   /* secondary text on black, 8.0:1 */
-  --grey-light: #5C5C57;  /* secondary text on white, 6.7:1 */
-  --body-dark: #D4D4CF;   /* body text on black */
-  --body-light: #2B2B28;  /* body text on white */
-  --fog: #F3F3F0;         /* quiet surface on white */
-  --char: #141414;        /* quiet surface on black */
+  --black: #1B1C1E;      /* graphite: dark grounds, header, footer */
+  --white: #F4F3F0;      /* text on graphite */
+  --concrete: #ECEAE6;   /* light grounds */
+  --ink: #141517;        /* headings on concrete, text on the accent */
+  --grey-dark: #A7A5A0;  /* secondary text on graphite */
+  --grey-light: #5B5A56; /* secondary text on concrete */
+  --body-dark: #D6D4CF;  /* body text on graphite */
+  --body-light: #2D2E30; /* body text on concrete */
+  --fog: #E2DFD9;        /* quiet surface on concrete */
+  --char: #26272A;       /* quiet surface on graphite */
+  --accent: #6FA383;     /* machine green: Call buttons only, with ink text */
+  --accent-hover: #5E9273;
 
-  --display: "Marcellus", "Times New Roman", serif;
-  --text: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --display: "Mona Sans", "Arial Narrow", system-ui, sans-serif;
+  --text: "Mona Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
   --max: 1240px;
   --gutter: 20px;
   --sec: clamp(72px, 9vw, 136px);
   --header-h: 64px;
   --mobile-bar-h: 60px;
-  --radius: 2px;
+  --radius: 1px;
   --ease-out: cubic-bezier(.23, 1, .32, 1);
   --ease-in-out: cubic-bezier(.77, 0, .175, 1);
   --dur-press: 140ms;
@@ -31,20 +36,20 @@
 /* Section tones. Every component reads these, so a block works on either ground. */
 .dark, .site-header, .site-footer {
   --bg: var(--black); --fg: var(--white); --fg2: var(--grey-dark); --body: var(--body-dark);
-  --line: rgba(255, 255, 255, .16); --surface: var(--char);
-  --btn-bg: var(--white); --btn-fg: var(--black);
+  --line: rgba(255, 255, 255, .14); --surface: var(--char);
+  --btn-bg: var(--accent); --btn-fg: var(--ink);
   background: var(--bg); color: var(--body); color-scheme: dark;
 }
 .light {
-  --bg: var(--white); --fg: var(--black); --fg2: var(--grey-light); --body: var(--body-light);
-  --line: #E2E1DC; --surface: var(--fog);
-  --btn-bg: var(--black); --btn-fg: var(--white);
+  --bg: var(--concrete); --fg: var(--ink); --fg2: var(--grey-light); --body: var(--body-light);
+  --line: #D1CDC6; --surface: var(--fog);
+  --btn-bg: var(--accent); --btn-fg: var(--ink);
   background: var(--bg); color: var(--body); color-scheme: light;
 }
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); -webkit-text-size-adjust: 100%; background: var(--black); scrollbar-color: #3A3A38 var(--black); }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); -webkit-text-size-adjust: 100%; background: var(--black); scrollbar-color: #45474B var(--black); }
 body {
   margin: 0; background: var(--black); color: var(--body-dark);
   font-family: var(--text); font-size: 17px; line-height: 1.65; font-weight: 400;
@@ -68,7 +73,7 @@ input, textarea, select { caret-color: currentColor; }
 .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 .i { width: 1em; height: 1em; flex: none; fill: currentColor; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-.skip-link { position: absolute; left: 16px; top: -100px; z-index: 100; background: var(--white); color: var(--black); padding: 12px 18px; font-weight: 600; }
+.skip-link { position: absolute; left: 16px; top: -100px; z-index: 100; background: var(--accent); color: var(--ink); padding: 12px 18px; font-weight: 600; }
 .skip-link:focus { top: 12px; }
 
 .wrap { width: 100%; max-width: calc(var(--max) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
@@ -92,7 +97,7 @@ input, textarea, select { caret-color: currentColor; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   min-height: 52px; padding: 14px 26px; border-radius: var(--radius);
-  font-family: var(--text); font-size: 15px; font-weight: 600; letter-spacing: .02em; line-height: 1.2; text-decoration: none;
+  font-family: var(--text); font-size: 15px; font-weight: 700; font-stretch: 92%; letter-spacing: .01em; line-height: 1.2; text-decoration: none;
   border: 1px solid transparent; cursor: pointer; white-space: nowrap; -webkit-tap-highlight-color: transparent;
   transition: background-color var(--dur-ui) var(--ease-out), color var(--dur-ui) var(--ease-out), border-color var(--dur-ui) var(--ease-out), transform var(--dur-press) var(--ease-out);
 }
@@ -188,7 +193,6 @@ input, textarea, select { caret-color: currentColor; }
 .hero-proof blockquote p { font-family: var(--display); font-size: clamp(1.4rem, 1.2rem + .8vw, 1.9rem); line-height: 1.3; color: var(--fg); margin-bottom: 16px; }
 .hero-proof figcaption { font-size: 14px; color: var(--fg2); }
 @media (min-width: 1024px) {
-  .hero h1 { white-space: nowrap; }
   .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 96px; align-items: start; }
   .hero-proof { border-top: 0; border-left: 1px solid var(--line); padding: 4px 0 0 48px; }
 }
@@ -202,7 +206,6 @@ input, textarea, select { caret-color: currentColor; }
   .numbers li { border-bottom: 0; padding: 40px 32px 40px 0; }
   .numbers li + li { padding-left: 32px; border-left: 1px solid var(--line); }
 }
-/* Marcellus has old-style figures (the 7 and 9 drop below the line), so figures that must read cleanly use the lining text face */
 .num { display: inline-flex; font-family: var(--text); font-weight: 400; letter-spacing: -.04em; color: var(--fg); font-size: clamp(3.5rem, 2rem + 6vw, 6.5rem); line-height: 1; font-variant-numeric: tabular-nums lining-nums; }
 .num-label { font-size: 15px; color: var(--fg2); max-width: 22ch; }
 .numbers-offer { margin: 40px 0 0; }
@@ -410,13 +413,31 @@ input, textarea, select { caret-color: currentColor; }
 /* ---------- Mobile bottom bar ---------- */
 .mobile-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: grid; grid-template-columns: 1fr 1fr; height: var(--mobile-bar-h); border-top: 1px solid rgba(255, 255, 255, .16); padding-bottom: env(safe-area-inset-bottom); background: var(--black); }
 .mobile-bar a { display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; font-size: 16px; text-decoration: none; }
-.mb-call { background: var(--white); color: var(--black); }
+.mb-call { background: var(--accent); color: var(--ink); }
 .mb-quote { background: var(--black); color: var(--white); }
 @media (min-width: 1024px) { .mobile-bar { display: none; } }
 
+/* ---------- Industrial type (Mona Sans) ----------
+   Headings are condensed and heavy, like tool-case and service-manual lettering. Quotes and reading text
+   stay near normal width. Figures (odometer, steps, phone) are condensed bold, like a dashboard counter. */
+h1, h2, h3 { font-weight: 700; font-stretch: 82%; letter-spacing: -.01em; }
+h2 { font-weight: 750; font-stretch: 80%; line-height: 1.04; }
+h3 { font-stretch: 88%; }
+.hero h1 { font-weight: 800; font-stretch: 75%; letter-spacing: -.02em; line-height: .98; }
+.wordmark { font-weight: 800; font-stretch: 75%; text-transform: uppercase; letter-spacing: .04em; font-size: 1.3rem; }
+.footer-brand .wordmark { font-size: 1.6rem; }
+.cmp thead th, .faq summary, .footer-h, .rail-title, .people strong { font-weight: 700; font-stretch: 85%; }
+.hook, .cmp-close, .offer { font-weight: 700; font-stretch: 88%; letter-spacing: -.005em; }
+.hero-proof blockquote p, .featured-quote blockquote p, .short-sweet { font-weight: 500; font-stretch: 96%; letter-spacing: -.005em; }
+.brand-line { font-weight: 600; font-stretch: 92%; }
+.num { font-weight: 700; font-stretch: 75%; letter-spacing: -.01em; }
+.step-num { font-weight: 700; font-stretch: 75%; color: var(--fg2); }
+.phone-link { font-weight: 700; font-stretch: 85%; }
+@media (max-width: 1023px) { .main-nav a:not(.btn) { font-weight: 700; font-stretch: 85%; } }
+
 /* ---------- Hover (real pointers only) ---------- */
 @media (hover: hover) and (pointer: fine) {
-  .btn-solid:hover { background: var(--fg2); }
+  .btn-solid:hover { background: var(--accent-hover); }
   .btn-line:hover { background: var(--fg); color: var(--bg); }
   .main-nav a:not(.btn):hover { color: var(--fg); }
   .header-call:hover span, .phone-link:hover, .footer-phone:hover { text-decoration: underline; }

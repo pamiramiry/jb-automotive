@@ -4,121 +4,267 @@
   "title": "Design System: JB Automotive",
   "extensions": {
     "colorMeta": {
-      "carbon-black": { "role": "neutral", "displayName": "Carbon Black", "canonical": "#000000", "tonalRamp": ["#000000", "#0A0A0A", "#141414", "#262626", "#3A3A38", "#5C5C57", "#A3A39E", "#D4D4CF"] },
-      "gallery-white": { "role": "neutral", "displayName": "Gallery White", "canonical": "#FFFFFF", "tonalRamp": ["#5C5C57", "#8A8A85", "#A3A39E", "#C4C4BF", "#D4D4CF", "#E2E1DC", "#F3F3F0", "#FFFFFF"] },
-      "ash-grey": { "role": "neutral", "displayName": "Ash Grey", "canonical": "#A3A39E" },
-      "slate-grey": { "role": "neutral", "displayName": "Slate Grey", "canonical": "#5C5C57" },
-      "pale-steel": { "role": "neutral", "displayName": "Pale Steel", "canonical": "#D4D4CF" },
-      "graphite-ink": { "role": "neutral", "displayName": "Graphite Ink", "canonical": "#2B2B28" },
-      "fog": { "role": "neutral", "displayName": "Fog", "canonical": "#F3F3F0" },
-      "char": { "role": "neutral", "displayName": "Char", "canonical": "#141414" },
-      "hairline-light": { "role": "neutral", "displayName": "Hairline on white", "canonical": "#E2E1DC" },
-      "error-coral": { "role": "error", "displayName": "Error Coral", "canonical": "#FF9F8E" }
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#1B1C1E"
+      },
+      "concrete": {
+        "role": "neutral",
+        "displayName": "Concrete",
+        "canonical": "#ECEAE6"
+      },
+      "shop-white": {
+        "role": "neutral",
+        "displayName": "Shop White",
+        "canonical": "#F4F3F0"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#141517"
+      },
+      "steel-grey": {
+        "role": "neutral",
+        "displayName": "Steel Grey",
+        "canonical": "#A7A5A0"
+      },
+      "slate-grey": {
+        "role": "neutral",
+        "displayName": "Slate Grey",
+        "canonical": "#5B5A56"
+      },
+      "pale-steel": {
+        "role": "neutral",
+        "displayName": "Pale Steel",
+        "canonical": "#D6D4CF"
+      },
+      "graphite-text": {
+        "role": "neutral",
+        "displayName": "Graphite Text",
+        "canonical": "#2D2E30"
+      },
+      "fog": {
+        "role": "neutral",
+        "displayName": "Fog",
+        "canonical": "#E2DFD9"
+      },
+      "char": {
+        "role": "neutral",
+        "displayName": "Char",
+        "canonical": "#26272A"
+      },
+      "hairline-light": {
+        "role": "neutral",
+        "displayName": "Hairline on concrete",
+        "canonical": "#D1CDC6"
+      },
+      "machine-green": {
+        "role": "primary",
+        "displayName": "Machine Green",
+        "canonical": "#6FA383",
+        "tonalRamp": [
+          "#1F3328",
+          "#2D4A3A",
+          "#3E6450",
+          "#507E66",
+          "#5E9273",
+          "#6FA383",
+          "#9CC3AA",
+          "#CFE3D5"
+        ]
+      },
+      "machine-green-deep": {
+        "role": "primary",
+        "displayName": "Machine Green Deep",
+        "canonical": "#5E9273"
+      },
+      "error-coral": {
+        "role": "error",
+        "displayName": "Error Coral",
+        "canonical": "#FF9F8E"
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "The single H1, one line on desktop." },
-      "headline": { "displayName": "Headline", "purpose": "Section headings, max 20ch." },
-      "title": { "displayName": "Title", "purpose": "Sub-headings, step titles, FAQ questions, the offer line." },
-      "body": { "displayName": "Body", "purpose": "Reading text, max 64ch." },
-      "label": { "displayName": "Label", "purpose": "Captions, buttons, table row labels. Sentence case." },
-      "figures": { "displayName": "Figures", "purpose": "Odometer stats, step numbers and phone numbers, in tabular lining figures." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single H1: Mona Sans 800 at 75% width."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings: 750 at 80% width, max 20ch."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sub-headings, step titles, FAQ questions, statement lines."
+      },
+      "quote": {
+        "displayName": "Quote",
+        "purpose": "Customer quotes, near normal width."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text, max 64ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, captions, table labels. Sentence case."
+      },
+      "figures": {
+        "displayName": "Figures",
+        "purpose": "Odometer, step numbers, phone numbers: condensed bold, tabular."
+      }
     },
     "shadows": [
-      { "name": "odometer-fade", "value": "linear-gradient(180deg, var(--bg), transparent 26%, transparent 74%, var(--bg)) at 70% opacity", "purpose": "Inner fade on odometer cells so the digits read as a rolling wheel. The only depth effect in the system." }
+      {
+        "name": "odometer-fade",
+        "value": "linear-gradient(180deg, var(--bg), transparent 26%, transparent 74%, var(--bg)) at 70% opacity",
+        "purpose": "Inner fade on odometer cells so the digits read as a rolling wheel. The only depth effect in the system."
+      }
     ],
     "motion": [
-      { "name": "ease-out", "value": "cubic-bezier(.23, 1, .32, 1)", "purpose": "Every transition and entrance." },
-      { "name": "dur-press", "value": "140ms", "purpose": "Button press scale to 0.97." },
-      { "name": "dur-ui", "value": "200ms", "purpose": "Menu panel, menu icon cross-fade, FAQ answer, form messages, hover fills." },
-      { "name": "odometer", "value": "1.4s ease-out, 120ms stagger right to left", "purpose": "Authored moment: stats roll into place on scroll-in." },
-      { "name": "hero-opening", "value": "letterbox 1.3s ease-in-out; push 2.8s ease-out; words .95s ease-out from .75s, 90ms apart; copy .8s from 1.25s", "purpose": "Authored moment: the hero opens like a film, once, on load." },
-      { "name": "hero-video", "value": "fade in 1.4s ease-out at 2.4s, desktop only", "purpose": "Muted graded loop behind the hero; pauses off screen; visible pause button." }
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.23, 1, .32, 1)",
+        "purpose": "Every transition and entrance."
+      },
+      {
+        "name": "dur-press",
+        "value": "140ms",
+        "purpose": "Button press scale to 0.97."
+      },
+      {
+        "name": "dur-ui",
+        "value": "200ms",
+        "purpose": "Menu panel, menu icon cross-fade, FAQ answer, form messages, hover fills."
+      },
+      {
+        "name": "odometer",
+        "value": "1.4s ease-out, 120ms stagger right to left",
+        "purpose": "Authored moment: stats roll into place on scroll-in."
+      },
+      {
+        "name": "hero-opening",
+        "value": "letterbox 1.3s ease-in-out; push 2.8s ease-out; words .95s ease-out from .75s, 90ms apart; copy .8s from 1.25s",
+        "purpose": "Authored moment: the hero opens like a film, once, on load."
+      },
+      {
+        "name": "hero-video",
+        "value": "fade in 1.4s ease-out at 2.4s, desktop only",
+        "purpose": "Muted graded loop behind the hero; pauses off screen; visible pause button."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "480px" },
-      { "name": "md", "value": "768px" },
-      { "name": "split", "value": "900px" },
-      { "name": "lg", "value": "1024px" }
+      {
+        "name": "sm",
+        "value": "480px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "split",
+        "value": "900px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
     ]
   },
   "components": [
     {
-      "name": "Call Button on Black",
+      "name": "Call Button",
       "kind": "button",
-      "refersTo": "button-solid-on-black",
-      "description": "The primary action on dark bands: call the shop.",
+      "refersTo": "button-call",
+      "description": "The one coloured element: call the shop.",
       "html": "<a class=\"ds-btn-solid\" href=\"tel:+19052762732\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z\"/></svg>Call (905) 276-2732</a>",
-      "css": ".ds-btn-solid { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 14px 26px; border-radius: 2px; background: #FFFFFF; color: #000000; font: 600 15px/1.2 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: .02em; text-decoration: none; transition: background-color 200ms cubic-bezier(.23,1,.32,1), transform 140ms cubic-bezier(.23,1,.32,1); } .ds-btn-solid:hover { background: #A3A39E; } .ds-btn-solid:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 3px; } .ds-btn-solid:active { transform: scale(.97); }"
+      "css": ".ds-btn-solid { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 14px 26px; border-radius: 1px; background: #6FA383; color: #141517; font: 700 15px/1.2 'Mona Sans', system-ui, sans-serif; font-stretch: 92%; letter-spacing: .01em; text-decoration: none; transition: background-color 200ms cubic-bezier(.23,1,.32,1), transform 140ms cubic-bezier(.23,1,.32,1); } .ds-btn-solid:hover { background: #5E9273; } .ds-btn-solid:focus-visible { outline: 2px solid #F4F3F0; outline-offset: 3px; } .ds-btn-solid:active { transform: scale(.97); }"
     },
     {
-      "name": "Line Button on Black",
+      "name": "Line Button on Graphite",
       "kind": "button",
       "refersTo": "button-line",
       "description": "Secondary action (Get a Quote) beside the Call button, outside the first viewport.",
       "html": "<a class=\"ds-btn-line\" href=\"#quote\">Get a Quote</a>",
-      "css": ".ds-btn-line { display: inline-flex; align-items: center; min-height: 52px; padding: 14px 26px; border-radius: 2px; border: 1px solid #FFFFFF; color: #FFFFFF; background: transparent; font: 600 15px/1.2 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: .02em; text-decoration: none; transition: background-color 200ms cubic-bezier(.23,1,.32,1), color 200ms cubic-bezier(.23,1,.32,1), transform 140ms cubic-bezier(.23,1,.32,1); } .ds-btn-line:hover { background: #FFFFFF; color: #000000; } .ds-btn-line:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 3px; } .ds-btn-line:active { transform: scale(.97); }"
+      "css": ".ds-btn-line { display: inline-flex; align-items: center; min-height: 52px; padding: 14px 26px; border-radius: 1px; border: 1px solid #F4F3F0; color: #F4F3F0; background: #1B1C1E; font: 700 15px/1.2 'Mona Sans', system-ui, sans-serif; letter-spacing: .02em; text-decoration: none; transition: background-color 200ms cubic-bezier(.23,1,.32,1), color 200ms cubic-bezier(.23,1,.32,1), transform 140ms cubic-bezier(.23,1,.32,1); } .ds-btn-line:hover { background: #F4F3F0; color: #1B1C1E; } .ds-btn-line:focus-visible { outline: 2px solid #F4F3F0; outline-offset: 3px; } .ds-btn-line:active { transform: scale(.97); }"
     },
     {
-      "name": "Field on Black",
+      "name": "Field on Graphite",
       "kind": "input",
-      "refersTo": "input-on-black",
+      "refersTo": "input-on-graphite",
       "description": "Quote form field with its label and inline error.",
       "html": "<label class=\"ds-field\"><span>Phone</span><input type=\"tel\" placeholder=\"(905) 555-0100\"><em>Enter a phone number we can call you back on.</em></label>",
-      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; font: 600 14px 'Hanken Grotesk', system-ui, sans-serif; color: #FFFFFF; } .ds-field input { min-height: 50px; padding: 12px 14px; font: 400 16px 'Hanken Grotesk', system-ui, sans-serif; color: #FFFFFF; background: #141414; border: 1px solid rgba(255,255,255,.3); border-radius: 2px; } .ds-field input:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 1px; } .ds-field em { font-style: normal; font-size: 14px; color: #FF9F8E; }"
+      "css": ".ds-field { padding: 16px; background: #1B1C1E; display: flex; flex-direction: column; gap: 8px; font: 700 14px 'Mona Sans', system-ui, sans-serif; color: #F4F3F0; } .ds-field input { min-height: 50px; padding: 12px 14px; font: 400 16px 'Mona Sans', system-ui, sans-serif; color: #F4F3F0; background: #26272A; border: 1px solid rgba(255,255,255,.3); border-radius: 1px; } .ds-field input:focus-visible { outline: 2px solid #F4F3F0; outline-offset: 1px; } .ds-field em { font-style: normal; font-size: 14px; color: #FF9F8E; }"
     },
     {
       "name": "Header Bar",
       "kind": "nav",
-      "description": "Wordmark, quiet links, phone number after a hairline.",
+      "description": "Condensed uppercase wordmark, steel links, phone after a hairline.",
       "html": "<nav class=\"ds-nav\"><a class=\"ds-mark\" href=\"#\">JB Automotive</a><span class=\"ds-links\"><a href=\"#\">Services</a><a href=\"#\">Reviews</a><a href=\"#\">Visit</a><a href=\"#\">FAQ</a></span><a class=\"ds-tel\" href=\"tel:+19052762732\">(905) 276-2732</a></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; gap: 24px; min-height: 72px; padding: 0 24px; background: #000000; border-bottom: 1px solid rgba(255,255,255,.16); font-family: 'Hanken Grotesk', system-ui, sans-serif; } .ds-mark { font: 400 1.45rem/1 Marcellus, serif; color: #FFFFFF; text-decoration: none; } .ds-links { display: flex; gap: 20px; margin-left: auto; } .ds-links a { color: #A3A39E; text-decoration: none; font-size: 15px; font-weight: 500; } .ds-links a:hover { color: #FFFFFF; } .ds-tel { padding-left: 16px; border-left: 1px solid rgba(255,255,255,.16); color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none; font-variant-numeric: tabular-nums; } .ds-tel:hover { text-decoration: underline; }"
+      "css": ".ds-nav { display: flex; align-items: center; gap: 24px; min-height: 72px; padding: 0 24px; background: #1B1C1E; border-bottom: 1px solid rgba(255,255,255,.14); font-family: 'Mona Sans', system-ui, sans-serif; } .ds-mark { font: 800 1.3rem/1 'Mona Sans', system-ui, sans-serif; font-stretch: 75%; letter-spacing: .04em; text-transform: uppercase; color: #F4F3F0; text-decoration: none; } .ds-links { display: flex; gap: 20px; margin-left: auto; } .ds-links a { color: #A7A5A0; text-decoration: none; font-size: 15px; font-weight: 500; } .ds-links a:hover { color: #F4F3F0; } .ds-tel { padding-left: 16px; border-left: 1px solid rgba(255,255,255,.14); color: #F4F3F0; font-weight: 700; font-size: 15px; text-decoration: none; font-variant-numeric: tabular-nums; } .ds-tel:hover { text-decoration: underline; }"
     },
     {
       "name": "Customer Quote",
       "kind": "custom",
       "description": "Customers' words set as display text, the page's evidence.",
-      "html": "<figure class=\"ds-quote\"><blockquote>They have saved me more than once from my … dealer trying to pull one over on me.</blockquote><figcaption>Elyia M., Google review</figcaption></figure>",
-      "css": ".ds-quote { margin: 0; padding: 24px; background: #FFFFFF; } .ds-quote blockquote { margin: 0 0 14px; font: 400 1.9rem/1.3 Marcellus, serif; color: #000000; max-width: 34ch; } .ds-quote figcaption { font: 400 14px 'Hanken Grotesk', system-ui, sans-serif; color: #5C5C57; }"
+      "html": "<figure class=\"ds-quote\"><blockquote>They have saved me more than once from my dealer trying to pull one over on me.</blockquote><figcaption>Elyia M., Google review</figcaption></figure>",
+      "css": ".ds-quote { margin: 0; padding: 24px; background: #ECEAE6; } .ds-quote blockquote { margin: 0 0 14px; font: 500 1.9rem/1.3 'Mona Sans', system-ui, sans-serif; font-stretch: 96%; color: #141517; max-width: 34ch; } .ds-quote figcaption { font: 400 14px 'Mona Sans', system-ui, sans-serif; color: #5B5A56; }"
     },
     {
       "name": "Odometer Stat",
       "kind": "custom",
-      "description": "Signature: a stat whose digits roll into place like a car odometer.",
+      "description": "Signature: digits roll into place like a dashboard counter.",
       "html": "<div class=\"ds-odo\"><span class=\"ds-odo-num\"><span>4</span><span class=\"ds-dot\">.</span><span>7</span></span><span class=\"ds-odo-label\">Stars on Google</span></div>",
-      "css": ".ds-odo { display: flex; flex-direction: column; gap: 14px; padding: 32px; background: #FFFFFF; } .ds-odo-num { display: inline-flex; gap: 4px; font: 400 5rem/1.15 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: -.04em; font-variant-numeric: tabular-nums lining-nums; color: #000000; } .ds-odo-num > span:not(.ds-dot) { padding: 0 .04em; background: #F3F3F0; border-radius: 2px; } .ds-odo-label { font: 400 15px 'Hanken Grotesk', system-ui, sans-serif; color: #5C5C57; }"
+      "css": ".ds-odo { display: flex; flex-direction: column; gap: 14px; padding: 32px; background: #ECEAE6; } .ds-odo-num { display: inline-flex; gap: 4px; font: 700 5rem/1.15 'Mona Sans', system-ui, sans-serif; font-stretch: 75%; letter-spacing: -.01em; font-variant-numeric: tabular-nums lining-nums; color: #141517; } .ds-odo-num > span:not(.ds-dot) { padding: 0 .04em; background: #E2DFD9; border-radius: 1px; } .ds-odo-label { font: 400 15px 'Mona Sans', system-ui, sans-serif; color: #5B5A56; }"
     }
   ],
   "narrative": {
     "northStar": "The Quiet Workshop",
-    "overview": "A family repair shop presented the way a high-end service house presents itself: silence, black and white, and nothing on the page that is not doing a job. Trust comes from restraint. The shop does not shout about honesty; the page is calm enough that customers' own words, set large in a flared serif, carry the argument. The page alternates full black and full white bands. Each band holds one idea, set wide, with a lot of empty space around it. Photography is the only texture and the only warmth: every photo carries the same muted colour grade (about 60% saturation, a slightly warm cast, a touch of shadow depth), and each screen gets at most one decisive frame, either full width or cropped beside text. The interface itself has no accent colour; emphasis comes from size, the serif, and white on black. Motion has two authored moments: the hero opening (the letterbox opens from the centre, the photo settles from a slow push-in, the headline words rise in turn), and the odometer digits rolling into place. On desktop a muted, graded video loop then fades in behind the hero, with a visible pause button. Everything else answers a visitor's own action (a button press, the menu, an FAQ answer, a form error).",
+    "overview": "A family repair shop presented with the calm of a high-end service house, but built from the materials of a real workshop: graphite and concrete grounds, condensed lettering like the labels on a tool case or the headings in a service manual, and photographs of hands at work. Trust comes from restraint and specifics; customers' own words carry the argument. Bands alternate graphite and concrete. Every photo carries the same muted colour grade. The interface has exactly one colour, machine green, and it only appears on the Call action. Motion has two authored moments, the hero opening and the odometer; on desktop a muted graded video loop fades in behind the hero with a visible pause button.",
     "keyCharacteristics": [
-      "True black and white bands, two greys, no accent colour.",
-      "Marcellus for every heading and every customer quote; Hanken Grotesk for reading and controls.",
+      "Graphite and concrete bands, steel greys, one machine-green accent for Call only.",
+      "Mona Sans throughout: condensed and heavy for headings, near normal width for reading.",
       "Muted colour photography (about 60% saturation, slightly warm), square-edged, never under text.",
-      "Hairline rules (1px) are the only structure: no cards, no boxes, no shadows on content.",
-      "Buttons are near-square solid blocks (2px corners)."
+      "A cinematic 2.39:1 hero with static film grain and a soft vignette.",
+      "Hairline rules (1px) are the only structure: no cards, no boxes, no shadows on content."
     ],
     "rules": [
-      { "name": "The No Accent Rule", "body": "Nothing in the interface is coloured except form errors; the photographs carry the only warmth. Emphasis is size, the serif, or white on black.", "section": "colors" },
-      { "name": "The Two Grounds Rule", "body": "Bands alternate full black and full white, never two of the same tone side by side, except the quote band and the footer, which a hairline separates. Every component reads its colours from the band it sits in.", "section": "colors" },
-      { "name": "The Lining Figures Rule", "body": "Marcellus has old-style figures (the 7 and 9 drop below the line). Any number that must read cleanly (stats, steps, phone numbers) is set in Hanken Grotesk with tabular lining figures.", "section": "typography" },
-      { "name": "The Serif Speaks Rule", "body": "Headings and customers' words use the serif; everything a visitor operates uses the sans.", "section": "typography" },
-      { "name": "The Hairline Rule", "body": "Structure is 1px rules. No cards, no boxed panels, no drop shadows.", "section": "elevation" }
+      {
+        "name": "The One Working Colour Rule",
+        "body": "Machine green means \"call the shop\" and nothing else. If it appears anywhere that isn't a Call action, it is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Grounds Rule",
+        "body": "Bands alternate graphite and concrete, never two of the same tone side by side, except the quote band and the footer, which a hairline separates. Components read their colours from the band.",
+        "section": "colors"
+      },
+      {
+        "name": "The Shop Lettering Rule",
+        "body": "Headings are condensed and heavy; reading text is not. Never set paragraphs or quotes below 92% width.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Structure is 1px rules. No cards, no boxed panels, no drop shadows.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do give every photograph the same muted colour grade (saturation 0.6, a slight warm cast, linear 1.05 / -6) and each screen one decisive frame.",
-      "Do alternate black and white bands, and let components read their colours from the band.",
-      "Do set customer quotes large in Marcellus; they are the page's evidence.",
-      "Do use Hanken tabular lining figures for every number that has to read cleanly.",
-      "Do keep one solid button in the first viewport (Call), with Get a Quote as a text link."
+      "Do alternate graphite and concrete bands, and let components read their colours from the band.",
+      "Do set headings condensed and heavy, and reading text near normal width.",
+      "Do keep the Call button inside the first screen."
     ],
     "donts": [
-      "Don't add an accent colour, a gradient or a tint to the interface; colour lives in the photographs and the form error only.",
+      "Don't use machine green for anything but Call actions.",
       "Don't put text over a photograph.",
       "Don't box content into cards or add drop shadows; use hairline rules.",
-      "Don't add eyebrow labels above headings or uppercase tracked labels.",
-      "Don't use Marcellus for numbers in stats or phone numbers.",
-      "Don't add scroll-triggered fade-ins to sections; the hero opening and the odometer are the only authored moments.", "Don't autoplay any other media, and never ship the hero video without its pause button."
+      "Don't add eyebrow labels above headings or uppercase labels (the wordmark is the only uppercase).",
+      "Don't add scroll-triggered fade-ins to sections; the hero opening and the odometer are the only authored moments.",
+      "Don't autoplay any other media, and never ship the hero video without its pause button."
     ]
   }
 }

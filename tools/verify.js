@@ -233,7 +233,7 @@ function walk(dir) {
     });
     return [...new Set(out)];
   });
-  check(colourful.length === 0, "text stays black, white and grey (no accent colour)", colourful.slice(0, 6).join(", "));
+  check(colourful.length === 0, "text stays neutral (green is a Call fill only)", colourful.slice(0, 6).join(", "));
 
 
   // ---- 7b. Odometer numbers
@@ -289,10 +289,15 @@ function walk(dir) {
   for (const [w, h] of [[1440, 900], [1280, 800], [1280, 720]]) {
     const fv = await browser.newPage();
     await fv.setRequestInterception(true);
-    fv.on("request", (r) => (r.url().startsWith(base) || r.url().startsWith("data:") ? r.continue() : r.abort()));
+    // this check measures what visitors see, so it lets the real web font load
+    const fontHost = (u) => u.startsWith("https://fonts.googleapis.com/") || u.startsWith("https://fonts.gstatic.com/");
+    fv.on("request", (r) => (r.url().startsWith(base) || r.url().startsWith("data:") || fontHost(r.url()) ? r.continue() : r.abort()));
     await fv.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
     await fv.setViewport({ width: w, height: h });
-    await fv.goto(base, { waitUntil: "load" });
+    await fv.goto(base, { waitUntil: "networkidle2" });
+    await fv.evaluate(async () => { await document.fonts.ready; await document.fonts.load('800 6rem "Mona Sans"'); });
+    const family = await fv.evaluate(() => document.fonts.check('800 6rem "Mona Sans"'));
+    if (!family) console.log("note: Mona Sans did not load for the first-screen check (offline?)");
     const bottom = await fv.evaluate(() => document.querySelector(".hero .btn-solid").getBoundingClientRect().bottom);
     check(bottom <= h, `hero Call button is in the first screen at ${w}x${h}`, `bottom=${Math.round(bottom)}`);
     await fv.close();

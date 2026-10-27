@@ -1,14 +1,14 @@
 # JB Automotive: Design Rules (read before every change)
 
-Redesigned 2026-10-27 as "The Quiet Workshop" (the user's pick: Quiet Luxury Workshop). The visual system lives in DESIGN.md: read it first. PRODUCT.md holds the product truth; .impeccable/surfaces/index-html.md holds the direction contract. This file keeps the working rules that are not visual.
+Redesigned 2026-10-27 as "The Quiet Workshop" (the user's pick: Quiet Luxury Workshop), then given a shop-floor edition the same day: Mona Sans, graphite and concrete, machine-green Call. The visual system lives in DESIGN.md: read it first. PRODUCT.md holds the product truth; .impeccable/surfaces/index-html.md holds the direction contract. This file keeps the working rules that are not visual.
 
 ## Visual (summary; DESIGN.md is the authority)
 
 - One-page site. Vanilla HTML/CSS/JS. No frameworks.
-- Black and white bands, two greys, no accent colour. The only hue is the form error red (#FF9F8E). No colourway switcher.
-- Marcellus for headings and customer quotes; Hanken Grotesk for reading, controls and every number (Marcellus's old-style figures clip in the odometer and look odd in phone numbers).
+- Graphite (#1B1C1E) and concrete (#ECEAE6) bands with steel greys. One accent, machine green (#6FA383, ink text), used ONLY on Call buttons and the phone call bar (2026-10-27: the user felt the black and white serif look was too 'fine dining'; orange, red and amber are already used on other client sites). Form errors (#FF9F8E) are the only other hue. No colourway switcher.
+- Mona Sans everywhere (one variable family): headings condensed and heavy (H1 800 at 75% width, H2 750 at 80%), reading text near normal width, figures condensed bold and tabular. The wordmark is the only uppercase text. Marcellus and Hanken Grotesk were retired 2026-10-27.
 - Every photo gets the same muted colour grade (sharp: modulate saturation 0.6, a slight warm recomb (red x1.04, blue x0.93), then linear 1.05 / -6; changed from black and white at the user's request 2026-10-27), one decisive frame per screen, square edges, never under text.
-- Structure is 1px hairline rules: no cards, no boxes, no shadows on content. Buttons are near-square (2px).
+- Structure is 1px hairline rules: no cards, no boxes, no shadows on content. Buttons and fields have 1px corners.
 - One solid button in the first viewport (Call); Get a Quote is a text link there.
 - Hero (2026-10-27, user asked for cinematic and chose both options): 2.39:1 letterboxed photo with static grain and a vignette, capped by screen height so the Call button stays in the first screen (verify checks 1440x900, 1280x800, 1280x720). A once-only CSS opening (letterbox opens, photo push settles, headline words rise). Then a muted 12s video loop on desktop only, graded like the photos, with a visible Pause/Play button and off-screen pause. This bends the brief's 'no autoplay' rule at the user's explicit request; never autoplay anything else.
 - Motion: the hero opening and the odometer are the authored moments. Everything else answers a visitor action (press scale .97, menu, FAQ, form errors). --ease-out and --dur tokens only; animate transform and opacity only; hovers only inside `@media (hover: hover) and (pointer: fine)`; prefers-reduced-motion turns it all off.
@@ -41,7 +41,7 @@ Redesigned 2026-10-27 as "The Quiet Workshop" (the user's pick: Quiet Luxury Wor
 
 ## Working notes
 
-- `node tools/verify.js` (with NODE_PATH pointing at C:/Users/user/node_modules) runs the rendered checks: keyword placement, headings, schema, overflow at 5 widths, contrast, no accent colour, dashes, banned words, images, odometer, form, menu, logo link, review row. It must stay green.
+- `node tools/verify.js` (with NODE_PATH pointing at C:/Users/user/node_modules) runs the rendered checks: keyword placement, headings, schema, overflow at 5 widths, contrast, neutral text (green is a Call fill only), dashes, banned words, images, odometer, form, menu, logo link, review row. It must stay green.
 - `impeccable detect --json index.html` leaves known, intentional findings: tight leading on display headlines and buttons, and "cramped padding" false positives (sections have 72px to 136px of inset; the hero photo is flush by design).
 - Preview with a local server (`npx serve .` or `python -m http.server`), not by opening index.html from disk.
 - Internal files kept off the live site by .vercelignore: DESIGN-RULES.md, DESIGN.md, PRODUCT.md, OPEN-QUESTIONS.md, images/*.md, tools/, .impeccable/.

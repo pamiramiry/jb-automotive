@@ -11,9 +11,9 @@ Mode: Persuade. Visitor: a stranger from Google search on a phone, deciding in s
 
 ## Direction contract
 
-THESIS: A quiet luxury workshop. The page earns trust the way a high-end service house does: silence, black and white, one decisive photograph per screen, and customers' own words set large. It refuses the category default of a split hero with badges, a card grid of services, and a button pair after every section.
+THESIS: A quiet luxury workshop. The page earns trust the way a high-end service house does: silence, graphite and concrete, condensed shop lettering, one decisive photograph per screen, and customers' own words set large. It refuses the category default of a split hero with badges, a card grid of services, and a button pair after every section.
 
-OWN-WORLD: True black and white with two greys, no accent colour. Every photograph in one muted colour grade (about 60% saturation, slightly warm; changed from black and white at the user's request 2026-10-27), never under text. Marcellus (flared engraved serif) for display; Hanken Grotesk for text. Hairline rules, square photos edges, 2px button corners, generous empty space; buttons are solid white on black and solid black on white.
+OWN-WORLD: Graphite and concrete bands with steel greys and one machine-green accent used only on Call (shop-floor edition, 2026-10-27, after the user found the serif version too fine-dining). Every photograph in one muted colour grade (about 60% saturation, slightly warm), never under text. Mona Sans throughout: condensed and heavy headings like tool-case and service-manual lettering, near normal width for reading.
 
 STORY: The visitor sees a serious, calm shop; reads that JB tells the truth about the car and has saved a customer from dealer upsells more than once; believes it from the reviews and the 20-year regulars; calls John.
 

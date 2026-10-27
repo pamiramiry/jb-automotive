@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-CA" data-theme="steel">
+<html lang="en-CA">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,9 +8,7 @@
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <!-- CONFIRM: replace CONFIRM-domain with the real domain in canonical, og:url, og:image, JSON-LD, robots.txt and sitemap.xml -->
 <link rel="canonical" href="https://CONFIRM-domain/">
-<meta name="theme-color" content="#0F141A">
-<!-- PREVIEW ONLY: applies the saved colourway (or ?theme=brass / oxblood / navy). Steel blue is the default, set on <html> before paint so the page never flashes the wrong colours. Remove with the switcher once the shop picks one. -->
-<script>(function(){try{var t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("jb-theme");if(t==="brass"){document.documentElement.removeAttribute("data-theme");}else if(t==="oxblood"||t==="navy"||t==="steel"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
+<meta name="theme-color" content="#000000">
 
 <meta name="geo.region" content="CA-ON">
 <meta name="geo.placename" content="Mississauga">
@@ -36,11 +34,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,600;0,700;0,800;1,500&amp;family=Work+Sans:wght@400;500;600&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,600;0,700;0,800;1,500&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,600;0,700;0,800;1,500&amp;family=Work+Sans:wght@400;500;600&amp;display=swap"></noscript>
-<link rel="preload" as="image" media="(max-width: 1023px)" href="images/auto-repair-mississauga-jb-automotive.webp" imagesrcset="images/auto-repair-mississauga-jb-automotive-900.webp 900w, images/auto-repair-mississauga-jb-automotive.webp 1800w" imagesizes="calc(100vw - 32px)" fetchpriority="high">
-<link rel="preload" as="image" media="(min-width: 1024px)" href="images/auto-repair-mississauga-jb-automotive-portrait.webp" imagesrcset="images/auto-repair-mississauga-jb-automotive-portrait-640.webp 640w, images/auto-repair-mississauga-jb-automotive-portrait.webp 1000w" imagesizes="(min-width: 1224px) 540px, 45vw" fetchpriority="high">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Marcellus&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap"></noscript>
+<link rel="preload" as="image" media="(max-width: 767px)" href="images/auto-repair-mississauga-jb-automotive-m.webp" fetchpriority="high">
+<link rel="preload" as="image" media="(min-width: 768px)" href="images/auto-repair-mississauga-jb-automotive.webp" imagesrcset="images/auto-repair-mississauga-jb-automotive-1200.webp 1200w, images/auto-repair-mississauga-jb-automotive.webp 2400w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="css/styles.css">
 <script src="js/main.js" defer></script>
 
@@ -167,15 +165,8 @@
 </head>
 <body>
 
-<!-- Icon sprite and shared SVG defs (kept off-screen, not display:none, so the stamp filter renders) -->
+<!-- Icon sprite (kept off-screen) -->
 <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
-  <defs>
-    <filter id="stamp-rough" x="-5%" y="-5%" width="110%" height="110%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-    <path id="stamp-ring" d="M100,100 m-71,0 a71,71 0 1,1 142,0 a71,71 0 1,1 -142,0"/>
-  </defs>
   <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
   <symbol id="i-wrench" viewBox="0 0 24 24"><path fill="currentColor" d="M22.7 19.1l-9.1-9.1c.9-2.3.4-5-1.5-6.9C10.1 1.1 7.1.7 4.7 1.8L9 6.1 6 9.1 1.6 4.8C.4 7.2.9 10.2 2.9 12.2c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1 .1-1.4z"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5l5 5L20 6.5"/></symbol>
@@ -184,44 +175,28 @@
   <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15M13 6l6 6-6 6"/></symbol>
 </svg>
 
-<!-- Target for the logo links. It must not be the sticky header, or "back to top" only scrolls up a few pixels. -->
 <span id="top"></span>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="utility">
-  <div class="wrap utility-inner">
-    <span>Mon-Fri 8-6, closed weekends</span>
-    <span>922 Dundas St E, Unit 9, Mississauga</span>
-    <a href="tel:+19052762732">(905) 276-2732</a>
-  </div>
-</div>
-
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="wordmark" href="#top" aria-label="JB Automotive, back to top">
-      <span class="wm-badge" aria-hidden="true">JB</span>
-      <span class="wm-text">
-        <span class="wm-name">AUTOMOTIVE</span>
-        <span class="wm-sub">Family-owned in Mississauga</span>
-      </span>
-    </a>
+    <a class="wordmark" href="#top" aria-label="JB Automotive, back to top">JB Automotive</a>
     <nav class="main-nav" id="main-nav" aria-label="Main">
       <ul>
         <li><a href="#services">Services</a></li>
-        <li><a href="#why-us">Why Us</a></li>
         <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#visit">Contact</a></li>
       </ul>
-      <a class="btn btn-primary nav-call" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
+      <a class="btn btn-solid nav-call" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
     </nav>
-    <a class="btn btn-primary header-call" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
+    <a class="header-call" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>(905) 276-2732</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
       <svg class="menu-icon" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
-        <g class="menu-bars" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        <g class="menu-bars" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <line x1="3" y1="8" x2="21" y2="8"/><line x1="3" y1="16" x2="21" y2="16"/>
         </g>
-        <g class="menu-close" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <g class="menu-close" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
           <line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/>
         </g>
       </svg>
@@ -231,96 +206,72 @@
 
 <main id="main">
 
-<!-- 5.2 HERO -->
-<section class="hero" aria-labelledby="hero-title">
-  <div class="wrap hero-grid">
+<section class="hero dark" aria-labelledby="hero-title">
+  <picture class="hero-photo">
+    <source media="(min-width: 768px)" srcset="images/auto-repair-mississauga-jb-automotive-1200.webp 1200w, images/auto-repair-mississauga-jb-automotive.webp 2400w" sizes="100vw" width="2400" height="900">
+    <img src="images/auto-repair-mississauga-jb-automotive-m.webp" width="1000" height="750" fetchpriority="high" decoding="async"
+         alt="Auto Repair in Mississauga at JB Automotive">
+  </picture>
+  <div class="wrap hero-body">
+    <h1 id="hero-title">Auto Repair in Mississauga</h1>
+    <div class="hero-grid">
       <div class="hero-copy">
-        <h1 id="hero-title">Auto Repair in Mississauga</h1>
         <p class="lede">Auto Repair in Mississauga, from a family-run shop on Dundas St E that tells you the truth about your car and fixes it so it stays fixed.</p>
-        <p class="support">Ask for John or Chris. They'll tell you what's really wrong, what it costs, and what can wait.</p>
-        <p class="offer">Bring your dealer quote. We'll give you a straight second opinion.</p>
-        <!-- CONFIRM: "Get a Quote" is placeholder wording for the secondary button everywhere on the page. Shop to approve or rename. -->
-        <div class="cta-pair">
-          <a class="btn btn-primary" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
-          <a class="btn btn-secondary" href="#quote">Get a Quote</a>
+        <p>Ask for John or Chris. They'll tell you what's really wrong, what it costs, and what can wait.</p>
+        <!-- "Get a Quote" is placeholder wording for the secondary action everywhere on the page. Shop to approve or rename. -->
+        <div class="actions actions-hero">
+          <a class="btn btn-solid" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
+          <a class="text-cta" href="#quote">Get a Quote</a>
         </div>
         <p class="brand-line">We tell you what's really wrong. Then we fix it so it stays fixed.</p>
         <p class="micro">Mon-Fri 8-6 · 922 Dundas St E, Unit 9 · Ask for John.</p>
       </div>
-
-      <div class="hero-media">
-        <picture>
-          <source media="(min-width: 1024px)" srcset="images/auto-repair-mississauga-jb-automotive-portrait-640.webp 640w, images/auto-repair-mississauga-jb-automotive-portrait.webp 1000w" sizes="(min-width: 1224px) 540px, 45vw" width="1000" height="1250">
-          <img src="images/auto-repair-mississauga-jb-automotive.webp"
-               srcset="images/auto-repair-mississauga-jb-automotive-900.webp 900w, images/auto-repair-mississauga-jb-automotive.webp 1800w"
-               sizes="calc(100vw - 32px)"
-               width="1800" height="771" fetchpriority="high" decoding="async"
-               alt="Auto Repair in Mississauga at JB Automotive">
-        </picture>
-        <svg class="stamp stamp-hero" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-          <g filter="url(#stamp-rough)">
-            <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="4"/>
-            <circle cx="100" cy="100" r="86" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="100" cy="100" r="55" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <text class="stamp-ring"><textPath href="#stamp-ring" textLength="440" lengthAdjust="spacing">FAMILY-OWNED · DUNDAS ST E · MISSISSAUGA ·</textPath></text>
-            <text class="stamp-jb" x="100" y="115" text-anchor="middle">JB</text>
-          </g>
-        </svg>
-        <ul class="signboard" aria-label="At a glance">
-          <li><span class="stars" aria-hidden="true"><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg></span><span><strong>4.7</strong> from 41 Google reviews</span></li>
-          <li>Customers for almost 20 years</li>
-          <li>Mon-Fri 8-6</li>
-        </ul>
-      </div>
+      <figure class="hero-proof">
+        <blockquote><p>They have saved me more than once from my … dealer trying to pull one over on me.</p></blockquote>
+        <figcaption>Elyia M., Google review</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
-<!-- 5.3 TRUST RIBBON -->
-<section class="ribbon" aria-label="Why drivers choose JB Automotive">
+<section class="sec light" id="numbers" aria-labelledby="num-title">
   <div class="wrap">
-    <ul class="ribbon-list">
-      <li>Bring your dealer quote for a straight second opinion</li>
-      <li>Family-owned and operated</li>
-      <li>Honest second opinions on dealer quotes</li>
-      <li>Diagnostics, batteries and general repair</li>
-      <li>Older cars kept on the road</li>
-      <li>4.7 stars from 41 Google reviews</li>
-      <li>Weekdays from 8 AM for drop-off before work</li>
+    <h2 id="num-title">Mississauga Auto Repair, by the Numbers</h2>
+    <ul class="numbers">
+      <li><span class="num" data-odometer="4.7"><span class="sr-only">4.7</span><span class="odo" aria-hidden="true">4.7</span></span><span class="num-label">Stars on Google</span></li>
+      <li><span class="num" data-odometer="41"><span class="sr-only">41</span><span class="odo" aria-hidden="true">41</span></span><span class="num-label">Google reviews</span></li>
+      <li><span class="num" data-odometer="~20"><span class="sr-only">About 20</span><span class="odo" aria-hidden="true">~20</span></span><span class="num-label">Years some customers have been coming</span></li>
     </ul>
+    <p class="offer numbers-offer">Bring your dealer quote. We'll give you a straight second opinion.</p>
   </div>
 </section>
 
-<!-- 5.4 SECOND OPINION -->
-<section class="sec bg-dark tone-light" id="second-opinion" aria-labelledby="so-title">
+<section class="sec dark" id="second-opinion" aria-labelledby="so-title">
   <div class="wrap">
-    <div class="narrow">
-      <h2 id="so-title">Mississauga Auto Repair That Tells You the Truth</h2>
-      <p class="hook">"The quote had six things on it. Your car needed two."</p>
-      <p>You brought it in for one noise. You left with a printout, a total at the bottom, and a list of things marked "recommended." Nobody walked you through which lines are urgent. You're left guessing.</p>
-      <p>Maybe it's the light that came back on a week after someone else "fixed" it. Maybe somebody told you your car isn't worth fixing anymore, and you're not ready to let it go.</p>
-      <p>That's the moment people call us.</p>
+    <div class="split">
+      <div>
+        <h2 id="so-title">Mississauga Auto Repair That Tells You the Truth</h2>
+        <p class="hook">"The quote had six things on it. Your car needed two."</p>
+      </div>
+      <div class="split-text">
+        <p>You brought it in for one noise. You left with a printout, a total at the bottom, and a list of things marked "recommended." Nobody walked you through which lines are urgent. You're left guessing.</p>
+        <p>Maybe it's the light that came back on a week after someone else "fixed" it. Maybe somebody told you your car isn't worth fixing anymore, and you're not ready to let it go.</p>
+        <p>That's the moment people call us.</p>
+      </div>
     </div>
 
-    <article class="sheet wo-story" aria-labelledby="story-title">
-      <div class="wo-head"><span>WORK ORDER</span><span class="wo-no">No. 922</span></div>
-      <div class="wo-story-grid">
-        <img src="images/older-car-repair-mississauga.webp" width="1200" height="900" loading="lazy" decoding="async"
-             alt="Older car with the hood propped open in a repair bay at a Mississauga garage">
-        <div class="wo-story-body">
-          <dl class="wo-fields">
-            <div><dt>Customer</dt><dd>Elyia M.</dd></div>
-            <div><dt>Vehicle</dt><dd>Nissan Juke, no longer made</dd></div>
-            <div><dt>Complaint</dt><dd>Dealer quotes for work the car didn't need</dd></div>
-          </dl>
-          <h3 id="story-title">Saved more than once, and still driving the car Elyia loves</h3>
-          <p>Elyia's dealer kept finding work for the car. Elyia put it this way: "They have saved me more than once from my … dealer trying to pull one over on me."</p>
-          <p>Now the job is different. The Juke isn't made anymore, and Elyia isn't ready to give it up. So we're keeping it on the road for as long as it makes sense.</p>
-          <p class="wo-sign">That's Elyia's experience, not a promise about every quote. What we can promise is the straight answer.</p>
-        </div>
+    <article class="story" aria-labelledby="story-title">
+      <img src="images/older-car-repair-mississauga.webp" width="1200" height="900" loading="lazy" decoding="async"
+           alt="Older car with the hood propped open in a repair bay at a Mississauga garage">
+      <div class="story-body">
+        <h3 id="story-title">Saved more than once, and still driving the car Elyia loves</h3>
+        <p>Elyia's dealer kept finding work for the car. More than once, we kept Elyia from paying for work the car didn't need.</p>
+        <p>Now the job is different. The Juke isn't made anymore, and Elyia isn't ready to give it up. So we're keeping it on the road for as long as it makes sense.</p>
+        <p class="aside">That's Elyia's experience, not a promise about every quote. What we can promise is the straight answer.</p>
       </div>
     </article>
 
-    <div class="mini-stories">
+    <div class="pair-stories">
       <div>
         <h3>"Fixed means fixed."</h3>
         <p>A local business owner told us trust is the biggest thing with a mechanic. They don't mind paying. They want the problem gone when they pick the car up. With us, it is, and in their words, the car "drives beautiful."</p>
@@ -331,160 +282,140 @@
       </div>
     </div>
 
-    <div class="narrow">
-      <h3 class="h3-plain">What putting it off costs you</h3>
-      <p>A battery that's struggling in fall usually quits on the first cold morning. Brake pads left too long can damage the rotors. A check engine light can be minor, but a scan is the only way to know. Skipped oil changes wear an engine out early.</p>
-      <p class="one-liner">You don't have to take a quote on faith.</p>
-      <p>Bring it in. We'll go through it line by line and tell you what's needed now and what can wait.</p>
-      <div class="cta-pair">
-        <a class="btn btn-primary" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
-        <a class="btn btn-secondary" href="#quote">Get a Quote</a>
+    <div class="split split-close">
+      <div>
+        <h3>What putting it off costs you</h3>
+        <p>A battery that's struggling in fall usually quits on the first cold morning. Brake pads left too long can damage the rotors. A check engine light can be minor, but a scan is the only way to know. Skipped oil changes wear an engine out early.</p>
+      </div>
+      <div>
+        <p class="offer">Bring your dealer quote. We'll give you a straight second opinion.</p>
+        <p>You don't have to take a quote on faith. Bring it in. We'll go through it line by line and tell you what's needed now and what can wait.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
+          <a class="btn btn-line" href="#quote">Get a Quote</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 5.5 NOTE FROM THE SHOP -->
-<section class="sec bg-panel" id="why-us" aria-labelledby="why-title">
+<figure class="band">
+  <picture>
+    <source media="(min-width: 768px)" srcset="images/engine-crankshaft-repair-mississauga.webp" width="1600" height="533">
+    <img src="images/engine-crankshaft-repair-mississauga-m.webp" width="900" height="600" loading="lazy" decoding="async" alt="Crankshaft inside an open engine block, close up">
+  </picture>
+</figure>
+
+<section class="sec light" id="services" aria-labelledby="services-title">
   <div class="wrap">
-    <h2 id="why-title">Why Mississauga Drivers Keep Coming Back to Our Mechanics</h2>
-    <div class="letter-layout">
-      <article class="letter paper" aria-label="A note from John">
-        <div class="letter-body">
-        <p class="letter-from">From John at JB Automotive</p>
-        <p><strong>We tell you the truth, even when it's not the expensive answer.</strong> If your brakes have a few more months in them, I'll say so. If something on a quote can wait until spring, you'll hear that from me before anything gets done.</p>
-        <p><strong>You talk to the person fixing your car.</strong> Call and you get me or Chris. Whoever looks at your car is the one who explains it to you. Next time you call, it's the same voice.</p>
-        <p><strong>We'd rather keep your car running than sell you a new one.</strong> A car with some years on it isn't a problem here. One of our regulars drives a Juke that isn't made anymore, and we're keeping it going. When the day comes that a repair stops making sense, we'll tell you that too.</p>
-        <p><strong>Fair prices, and you hear them first.</strong> Before we start, you know what's wrong and what it costs. Nothing extra gets done without your OK.</p>
-        <p><strong>It's a family shop. You'll see the same faces next time.</strong> One customer wrote that they've been with us for almost 20 years. Another drives across the city so that Chris and I are the ones working on their cars. We don't take that lightly.</p>
-        <p>Call me at <a href="tel:+19052762732">(905) 276-2732</a>, Monday to Friday from 8 to 6. If you've got a quote from somewhere else, bring it.</p>
-        </div>
-        <div class="signature">
-          <svg viewBox="0 0 160 70" aria-hidden="true" focusable="false">
-            <path d="M30 12c10-2 14 1 11 22-2 16-9 26-20 24-7-1-9-7-6-11 M54 34c-8 0-10 15-1 15s10-15 1-15z M72 6l-8 44 M65 38c4-9 15-11 15-1l-1 12 M90 49l2-14 M92 39c5-8 17-9 16 1l-1 10c2 4 9 4 15-4 M20 62c30-4 70-6 112-3" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <p>John, JB Automotive</p>
-        </div>
-        <p class="brand-line">We tell you what's really wrong. Then we fix it so it stays fixed.</p>
-      </article>
-
-      <!-- Drop in when the shop sends it:
-      <img src="images/john-going-over-quote-jb-automotive-mississauga.webp" width="960" height="1200" loading="lazy" decoding="async" alt="John at the JB Automotive counter going over a repair quote with a customer">
-      -->
-      <figure class="ph ph-4x5 letter-aside">
-        <div class="ph-inner">
-          <span class="ph-tag">Shop photo coming</span>
-          <p class="ph-shot">John at the counter going over a quote with a customer</p>
-        </div>
-      </figure>
+    <div class="split">
+      <h2 id="services-title">Car Repair and Maintenance Services in Mississauga</h2>
+      <p>Most people call us about one of these. If yours isn't here, call anyway and tell us what it's doing.</p>
     </div>
-
-    <!-- Video slot. Drop in either:
-    <video controls preload="none" width="1280" height="720" poster="images/john-quote-video-poster.webp"><source src="video/john-going-through-a-quote.mp4" type="video/mp4"></video>
-    or a YouTube embed, loaded lazily:
-    <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="John going through a real quote with a customer" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
-    -->
-    <figure class="ph ph-16x9 video-slot">
-      <div class="ph-inner">
-        <span class="ph-tag">Video coming</span>
-        <p class="ph-shot">30 to 60s: John going through a real quote with a customer, explaining what's needed now and what can wait</p>
-      </div>
-    </figure>
-  </div>
-</section>
-
-<!-- 5.6 SERVICES -->
-<section class="sec bg-dark" id="services" aria-labelledby="services-title">
-  <div class="wrap">
-    <h2 id="services-title">Car Repair and Maintenance Services in Mississauga</h2>
-    <p class="section-intro">Most people call us about one of these. If yours isn't here, call anyway and tell us what it's doing.</p>
-    <div class="services-cols">
-      <div class="sheet paper services-sheet">
-        <div class="wo-head"><span>WORK ORDER · DIAGNOSE &amp; REPAIR</span><span class="wo-no">No. 922</span></div>
-        <ul class="svc-list">
-          <li><span class="svc-name">Engine diagnostics and check engine lights</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Cause found before we quote</span></li>
-          <li><span class="svc-name">Battery testing and replacement</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Tested before it's replaced</span></li>
-          <li><span class="svc-name">General repairs</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">The noises and leaks</span></li>
-          <li><span class="svc-name">Brakes: pads, rotors, calipers</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">How much pad is left</span></li>
-          <li><span class="svc-name">Steering and suspension</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Clunks and pulling</span></li>
-          <li><span class="svc-name">Cooling system and overheating</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Leaks, fans, thermostats</span></li>
-          <li><span class="svc-name">Electrical problems</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Starters and charging</span></li>
-          <li><span class="svc-name">A/C repair and recharge</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Cold air back</span></li>
-          <li><span class="svc-name">Exhaust</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Rattles and leaks</span></li>
-        </ul>
-      </div>
-      <div class="sheet paper services-sheet">
-        <div class="wo-head"><span>WORK ORDER · MAINTAIN &amp; INSPECT</span><span class="wo-no">No. 922</span></div>
-        <ul class="svc-list">
-          <li><span class="svc-name">Oil changes, conventional and synthetic</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">The oil your engine needs</span></li>
-          <li><span class="svc-name">Scheduled maintenance and tune-ups</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">By the book, no padding</span></li>
-          <li><span class="svc-name">Timing belts and drive belts</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Before one lets go</span></li>
-          <li><span class="svc-name">Seasonal tire changeovers</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Spring and fall swaps</span></li>
-          <li><span class="svc-name">Second opinion on a dealer or shop quote</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">What can wait, and why</span></li>
-          <li><span class="svc-name">Pre-purchase inspections on used cars</span><span class="leader" aria-hidden="true"></span><span class="svc-desc">Before you hand over cash</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="svc-photos">
-      <img src="images/car-diagnostics-mississauga.webp" width="1200" height="900" loading="lazy" decoding="async"
-           alt="Mechanic reading engine codes on a diagnostic tablet plugged into a car's OBD port">
-      <img src="images/car-battery-testing-mississauga.webp" width="1200" height="900" loading="lazy" decoding="async"
-           alt="Charger clamps connected to a car battery under the hood for testing">
-      <img src="images/brake-repair-mississauga-jb-automotive.webp" width="1200" height="900" loading="lazy" decoding="async"
+    <div class="services-grid">
+      <img class="services-photo" src="images/brake-repair-mississauga-jb-automotive.webp" width="720" height="900" loading="lazy" decoding="async"
            alt="Brake rotor and caliper being serviced at JB Automotive in Mississauga">
+      <div class="svc-cols">
+        <div>
+          <h3>Diagnose and repair</h3>
+          <ul class="svc-list">
+            <li><span class="svc-name">Engine diagnostics and check engine lights</span><span class="svc-desc">Cause found before we quote</span></li>
+            <li><span class="svc-name">Battery testing and replacement</span><span class="svc-desc">Tested before it's replaced</span></li>
+            <li><span class="svc-name">General repairs</span><span class="svc-desc">The noises and leaks</span></li>
+            <li><span class="svc-name">Brakes: pads, rotors, calipers</span><span class="svc-desc">How much pad is left</span></li>
+            <li><span class="svc-name">Steering and suspension</span><span class="svc-desc">Clunks and pulling</span></li>
+            <li><span class="svc-name">Cooling system and overheating</span><span class="svc-desc">Leaks, fans, thermostats</span></li>
+            <li><span class="svc-name">Electrical problems</span><span class="svc-desc">Starters and charging</span></li>
+            <li><span class="svc-name">A/C repair and recharge</span><span class="svc-desc">Cold air back</span></li>
+            <li><span class="svc-name">Exhaust</span><span class="svc-desc">Rattles and leaks</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Maintain and inspect</h3>
+          <ul class="svc-list">
+            <li><span class="svc-name">Oil changes, conventional and synthetic</span><span class="svc-desc">The oil your engine needs</span></li>
+            <li><span class="svc-name">Scheduled maintenance and tune-ups</span><span class="svc-desc">By the book, no padding</span></li>
+            <li><span class="svc-name">Timing belts and drive belts</span><span class="svc-desc">Before one lets go</span></li>
+            <li><span class="svc-name">Seasonal tire changeovers</span><span class="svc-desc">Spring and fall swaps</span></li>
+            <li><span class="svc-name">Second opinion on a dealer or shop quote</span><span class="svc-desc">What can wait, and why</span></li>
+            <li><span class="svc-name">Pre-purchase inspections on used cars</span><span class="svc-desc">Before you hand over cash</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="makes narrow">
-      <h3>Cars We Work On in Mississauga</h3>
-      <p>Everyday cars, older cars and the ones that aren't made anymore. Not sure about yours? Call and ask.</p>
-    </div>
-    <div class="cta-pair">
-      <a class="btn btn-primary" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
-      <a class="btn btn-secondary" href="#quote">Get a Quote</a>
-    </div>
-  </div>
-</section>
-
-<!-- 5.7 SYMPTOMS -->
-<section class="sec bg-panel tone-light" id="symptoms" aria-labelledby="sym-title">
-  <div class="wrap narrow">
-    <h2 id="sym-title">When to Call a Mechanic in Mississauga</h2>
-    <p class="section-intro">This is a rough guide, not a diagnosis. If your car is doing one of these, tell us what you're hearing or seeing and we'll take it from there.</p>
-    <ul class="symptoms">
-      <li><svg class="i sym-icon" aria-hidden="true"><use href="#i-wrench"/></svg><p><strong>Car is slow to start, or the battery keeps dying</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Often the battery, sometimes the charging system. Test it before replacing anything. <a href="tel:+19052762732">Call and describe it.</a></p></li>
-      <li><svg class="i sym-icon" aria-hidden="true"><use href="#i-wrench"/></svg><p><strong>Check engine light on, or back on after a repair</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Could be minor or not. A scan tells us where to look. <a href="tel:+19052762732">Call and describe it.</a></p></li>
-      <li><svg class="i sym-icon" aria-hidden="true"><use href="#i-wrench"/></svg><p><strong>Squealing or grinding when you brake</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Pads are often getting low. Grinding means book it now. <a href="tel:+19052762732">Call and describe it.</a></p></li>
-      <li><svg class="i sym-icon" aria-hidden="true"><use href="#i-wrench"/></svg><p><strong>Temperature gauge climbing</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Don't drive it far. Often a coolant leak, the thermostat or a fan. <a href="tel:+19052762732">Call and describe it.</a></p></li>
-      <li><svg class="i sym-icon" aria-hidden="true"><use href="#i-wrench"/></svg><p><strong>Car pulls, or the steering feels loose</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Often alignment, tires or a worn suspension part. <a href="tel:+19052762732">Call and describe it.</a></p></li>
-      <li><svg class="i sym-icon" aria-hidden="true"><use href="#i-wrench"/></svg><p><strong>New rattle or clunk over bumps</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Usually a suspension or exhaust part working loose. <a href="tel:+19052762732">Call and describe it.</a></p></li>
-      <li><svg class="i sym-icon" aria-hidden="true"><use href="#i-wrench"/></svg><p><strong>You've got a quote and aren't sure about it</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Bring the paperwork and we'll go through it with you. <a href="tel:+19052762732">Call and describe it.</a></p></li>
+    <div class="split split-gap">
+      <div>
+        <h3>Cars We Work On in Mississauga</h3>
+        <p>Everyday cars, older cars and the ones that aren't made anymore. Not sure about yours? Call and ask.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
+          <a class="btn btn-line" href="#quote">Get a Quote</a>
+        </div>
+      </div>
+      <div>
+        <h3>When to Call a Mechanic in Mississauga</h3>
+        <p class="small">A rough guide, not a diagnosis. Tell us what you're hearing or seeing and we'll take it from there.</p>
+        <ul class="symptoms">
+      <li><p><strong>Car is slow to start, or the battery keeps dying</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Often the battery, sometimes the charging system. Test it before replacing anything. <a href="tel:+19052762732">Call and describe it.</a></p></li>
+      <li><p><strong>Check engine light on, or back on after a repair</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Could be minor or not. A scan tells us where to look. <a href="tel:+19052762732">Call and describe it.</a></p></li>
+      <li><p><strong>Squealing or grinding when you brake</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Pads are often getting low. Grinding means book it now. <a href="tel:+19052762732">Call and describe it.</a></p></li>
+      <li><p><strong>Temperature gauge climbing</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Don't drive it far. Often a coolant leak, the thermostat or a fan. <a href="tel:+19052762732">Call and describe it.</a></p></li>
+      <li><p><strong>Car pulls, or the steering feels loose</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Often alignment, tires or a worn suspension part. <a href="tel:+19052762732">Call and describe it.</a></p></li>
+      <li><p><strong>New rattle or clunk over bumps</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Usually a suspension or exhaust part working loose. <a href="tel:+19052762732">Call and describe it.</a></p></li>
+      <li><p><strong>You've got a quote and aren't sure about it</strong> <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Bring the paperwork and we'll go through it with you. <a href="tel:+19052762732">Call and describe it.</a></p></li>
     </ul>
-    <figure class="sym-photo">
-      <img src="images/oil-change-maintenance-mississauga.webp" width="1200" height="675" loading="lazy" decoding="async"
-           alt="Hand pulling the oil dipstick to check engine oil under an open hood">
-    </figure>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- 5.8 REVIEWS -->
-<!-- A live Google reviews widget can replace these static quotes later. Keep the layout: featured quote, two-column list, short line. -->
-<section class="sec bg-dark" id="reviews" aria-labelledby="reviews-title">
+<section class="sec dark" id="how" aria-labelledby="how-title">
   <div class="wrap">
-    <div class="reviews-head">
-      <h2 id="reviews-title">JB Automotive Auto Repair Reviews from Mississauga Drivers</h2>
-      <p class="rating-chip"><span class="stars" aria-hidden="true"><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg></span> 4.7 from 41 Google reviews</p>
+    <h2 id="how-title">How Our Auto Repair in Mississauga Works</h2>
+    <ol class="steps">
+      <li>
+        <span class="step-num" aria-hidden="true">1</span>
+        <h3>Call and tell us what it's doing.</h3>
+        <p>Got a quote from somewhere else? Bring it. We'll tell you when to drop it off.</p>
+      </li>
+      <li>
+        <span class="step-num" aria-hidden="true">2</span>
+        <h3>We find out what's wrong.</h3>
+        <p>You hear what it is and the price, and you approve it before we start.</p>
+      </li>
+      <li>
+        <span class="step-num" aria-hidden="true">3</span>
+        <h3>We fix it and road-test it.</h3>
+        <p>When you pick it up, it's fixed. If something else can wait, we'll tell you it can wait.</p>
+      </li>
+    </ol>
+    <ul class="promises">
+      <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>We tell you what's wrong before we fix anything.</li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>You hear the price before any work starts.</li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Nothing extra gets done without your OK.</li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>If something can wait, we'll tell you it can wait.</li>
+    </ul>
+    <div class="actions">
+      <a class="btn btn-solid" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
+      <a class="btn btn-line" href="#quote">Get a Quote</a>
     </div>
+  </div>
+</section>
 
+<section class="sec light" id="reviews" aria-labelledby="reviews-title">
+  <div class="wrap">
+    <div class="split">
+      <h2 id="reviews-title">JB Automotive Auto Repair Reviews from Mississauga Drivers</h2>
+      <p class="rating"><span class="stars" aria-hidden="true"><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg></span> 4.7 from 41 Google reviews</p>
+    </div>
+    <!-- A live Google reviews widget can replace these static quotes later. -->
     <figure class="featured-quote">
-      <blockquote>
-        <p>I swear by this family run shop. From service, to professionalism, to honesty and integrity, to their welcoming nature. You 100% get what you pay for. They have saved me more than once from my … dealer trying to pull one over on me… They are currently helping me keep my Nissan Juke (which I love and is now unfortunately discontinued) on the road for as long as possible.</p>
-      </blockquote>
+      <blockquote><p>I swear by this family run shop. From service, to professionalism, to honesty and integrity, to their welcoming nature. You 100% get what you pay for. They have saved me more than once from my … dealer trying to pull one over on me… They are currently helping me keep my Nissan Juke (which I love and is now unfortunately discontinued) on the road for as long as possible.</p></blockquote>
       <figcaption><span class="q-name">Elyia M.</span> <span class="q-context">keeping a Nissan Juke on the road</span></figcaption>
     </figure>
-
-    <div class="review-rail-head">
-      <p class="review-rail-title">More from Google reviews</p>
+    <div class="rail-head">
+      <p class="rail-title">More from Google reviews</p>
       <div class="rail-controls">
         <button type="button" class="rail-btn" data-rail-prev aria-controls="review-rail" aria-label="Previous reviews"><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
         <button type="button" class="rail-btn" data-rail-next aria-controls="review-rail" aria-label="Next reviews"><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
@@ -521,158 +452,93 @@
         <figcaption><span class="q-name">Alana F.</span></figcaption>
       </figure>
     </div>
-
     <p class="short-sweet"><span class="ss-label">Short and sweet:</span> <q>Great honest service</q> <q>Honest and reliable service.</q> <q>Simply the best</q> <q>Amazing</q></p>
-
-    <div class="cta-pair">
-      <a class="btn btn-primary" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
-      <a class="btn btn-secondary" href="#quote">Get a Quote</a>
-      <!-- TODO: swap for the direct Google Business Profile reviews link once the shop shares it -->
+    <div class="actions">
+      <a class="btn btn-solid" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
+      <a class="btn btn-line" href="#quote">Get a Quote</a>
     </div>
-    <p class="reviews-more"><a class="text-link" href="https://www.google.com/search?q=JB+Automotive+922+Dundas+St+E+Mississauga+reviews" target="_blank" rel="noopener">Read all 41 reviews on Google</a></p>
+    <!-- TODO: swap for the direct Google Business Profile reviews link once the shop shares it -->
+    <p class="reviews-more"><a href="https://www.google.com/search?q=JB+Automotive+922+Dundas+St+E+Mississauga+reviews" target="_blank" rel="noopener">Read all 41 reviews on Google</a></p>
   </div>
 </section>
 
-<!-- 5.9 DEALER VS JB -->
-<section class="sec bg-panel" id="compare" aria-labelledby="cmp-title">
+<section class="sec dark" id="compare" aria-labelledby="cmp-title">
   <div class="wrap">
-    <div class="cmp-intro">
-      <div>
-        <h2 id="cmp-title">Dealer or Family Mechanic? Car Repair in Mississauga Compared</h2>
-        <p>The difference isn't the wrenches. It's how the visit goes. At a big service department, you usually talk to an advisor, and the person who works on your car is somewhere out back. Here, you talk to the person doing the work. You hear what's wrong and what it costs, and then the work starts.</p>
-      </div>
-      <img src="images/second-opinion-car-repair-quote-mississauga.webp" width="1200" height="900" loading="lazy" decoding="async"
-           alt="Repair quote on a clipboard being reviewed line by line">
+    <div class="split">
+      <h2 id="cmp-title">Dealer or Family Mechanic? Car Repair in Mississauga Compared</h2>
+      <p>The difference isn't the wrenches. It's how the visit goes. At a big service department, you usually talk to an advisor, and the person who works on your car is somewhere out back. Here, you talk to the person doing the work. You hear what's wrong and what it costs, and then the work starts.</p>
     </div>
-    <div class="cmp">
-      <div class="cmp-col cmp-dealer">
-        <h3 class="cmp-head">At the dealer</h3>
-        <div class="cmp-row"><span class="cmp-label">Who you talk to</span><span>A service advisor</span></div>
-        <div class="cmp-row"><span class="cmp-label">Older or discontinued car</span><span>You may be steered toward something newer</span></div>
-        <div class="cmp-row"><span class="cmp-label">Extra work on the quote</span><span>Recommended extras are common</span></div>
-        <div class="cmp-row"><span class="cmp-label">Same people every visit</span><span>It varies</span></div>
-        <div class="cmp-row"><span class="cmp-label">Up-front offer</span><span>A standard service menu</span></div>
-        <div class="cmp-row"><span class="cmp-label">Price</span><span>Dealer labour rates</span></div>
-      </div>
-      <div class="cmp-col cmp-jb">
-        <h3 class="cmp-head">At JB Automotive</h3>
-        <svg class="stamp stamp-small" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-          <g filter="url(#stamp-rough)">
-            <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="5"/>
-            <circle cx="100" cy="100" r="86" fill="none" stroke="currentColor" stroke-width="2"/>
-            <text class="stamp-ring"><textPath href="#stamp-ring" textLength="440" lengthAdjust="spacing">FAMILY-OWNED · DUNDAS ST E · MISSISSAUGA ·</textPath></text>
-            <text class="stamp-jb" x="100" y="112" text-anchor="middle">JB</text>
-          </g>
-        </svg>
-        <div class="cmp-row"><span class="cmp-label">Who you talk to</span><span>John or Chris, the people fixing it</span></div>
-        <div class="cmp-row"><span class="cmp-label">Older or discontinued car</span><span>We'll keep it going as long as it makes sense</span></div>
-        <div class="cmp-row"><span class="cmp-label">Extra work on the quote</span><span>We tell you what can wait</span></div>
-        <div class="cmp-row"><span class="cmp-label">Same people every visit</span><span>The same family, for years</span></div>
-        <div class="cmp-row"><span class="cmp-label">Up-front offer</span><span><span class="offer offer-inline">Bring your dealer quote. We'll give you a straight second opinion.</span></span></div>
-        <div class="cmp-row"><span class="cmp-label">Price</span><span>Fair, and you hear it first</span></div>
-      </div>
-    </div>
+    <table class="cmp">
+      <caption class="sr-only">How a visit to the dealer compares with JB Automotive</caption>
+      <thead>
+        <tr><td></td><th scope="col">At the dealer</th><th scope="col">At JB Automotive</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Who you talk to</th><td data-label="At the dealer">A service advisor</td><td data-label="At JB Automotive">John or Chris, the people fixing it</td></tr>
+        <tr><th scope="row">Older or discontinued car</th><td data-label="At the dealer">You may be steered toward something newer</td><td data-label="At JB Automotive">We'll keep it going as long as it makes sense</td></tr>
+        <tr><th scope="row">Extra work on the quote</th><td data-label="At the dealer">Recommended extras are common</td><td data-label="At JB Automotive">We tell you what can wait</td></tr>
+        <tr><th scope="row">Same people every visit</th><td data-label="At the dealer">It varies</td><td data-label="At JB Automotive">The same family, for years</td></tr>
+        <tr><th scope="row">Up-front offer</th><td data-label="At the dealer">A standard service menu</td><td data-label="At JB Automotive"><span class="offer offer-inline">Bring your dealer quote. We'll give you a straight second opinion.</span></td></tr>
+        <tr><th scope="row">Price</th><td data-label="At the dealer">Dealer labour rates</td><td data-label="At JB Automotive">Fair, and you hear it first</td></tr>
+      </tbody>
+    </table>
     <p class="cmp-close">You don't need a cheaper mechanic. You need one who tells you the truth.</p>
   </div>
 </section>
 
-<!-- 5.10 HOW IT WORKS -->
-<section class="sec bg-dark tone-light" id="how" aria-labelledby="how-title">
-  <div class="wrap">
-    <h2 id="how-title">How Our Auto Repair in Mississauga Works</h2>
-    <p class="section-intro">Three steps. You know where things stand at each one.</p>
-    <ol class="steps">
-      <li>
-        <span class="step-num" aria-hidden="true">1</span>
-        <h3>Call and tell us what it's doing.</h3>
-        <p>Got a quote from somewhere else? Bring it. We'll tell you when to drop it off.</p>
-      </li>
-      <li>
-        <span class="step-num" aria-hidden="true">2</span>
-        <h3>We find out what's wrong.</h3>
-        <p>You hear what it is and the price, and you approve it before we start.</p>
-      </li>
-      <li>
-        <span class="step-num" aria-hidden="true">3</span>
-        <h3>We fix it and road-test it.</h3>
-        <p>When you pick it up, it's fixed. If something else can wait, we'll tell you it can wait.</p>
-      </li>
-    </ol>
-    <ul class="promises">
-      <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>We tell you what's wrong before we fix anything.</li>
-      <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>You hear the price before any work starts.</li>
-      <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Nothing extra gets done without your OK.</li>
-      <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>If something can wait, we'll tell you it can wait.</li>
-    </ul>
-    <div class="cta-pair">
-      <a class="btn btn-primary" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
-      <a class="btn btn-secondary" href="#quote">Get a Quote</a>
-    </div>
-  </div>
-</section>
-
-<!-- 5.11 MEET THE FAMILY -->
-<section class="sec bg-panel" id="family" aria-labelledby="family-title">
-  <div class="wrap family-grid">
-    <!-- Drop in when the shop sends it:
-    <img src="images/john-and-chris-jb-automotive-mississauga.webp" width="1200" height="800" loading="lazy" decoding="async" alt="John and Chris in the JB Automotive shop on Dundas St E in Mississauga">
+<section class="sec light" id="why-us" aria-labelledby="why-title">
+  <div class="wrap letter-grid">
+    <!-- Swap for a real photo when the shop sends it:
+    <img src="images/john-going-over-quote-jb-automotive-mississauga.webp" width="960" height="1200" loading="lazy" decoding="async" alt="John at the JB Automotive counter going over a repair quote with a customer">
     -->
-    <figure class="ph ph-3x2">
-      <div class="ph-inner">
-        <span class="ph-tag">Shop photo coming</span>
-        <p class="ph-shot">John and Chris in the shop</p>
+    <img class="letter-photo" src="images/mechanic-gloves-workbench-jb-automotive.webp" width="960" height="1200" loading="lazy" decoding="async"
+         alt="Worn work gloves and hand tools on a mechanic's workbench">
+    <div class="letter">
+      <h2 id="why-title">Why Mississauga Drivers Keep Coming Back to Our Mechanics</h2>
+      <p class="letter-from">From John at JB Automotive</p>
+        <p><strong>We tell you the truth, even when it's not the expensive answer.</strong> If your brakes have a few more months in them, I'll say so. If something on a quote can wait until spring, you'll hear that from me before anything gets done.</p>
+        <p><strong>You talk to the person fixing your car.</strong> Call and you get me or Chris. Whoever looks at your car is the one who explains it to you. Next time you call, it's the same voice.</p>
+        <p><strong>We'd rather keep your car running than sell you a new one.</strong> A car with some years on it isn't a problem here. One of our regulars drives a Juke that isn't made anymore, and we're keeping it going. When the day comes that a repair stops making sense, we'll tell you that too.</p>
+        <p><strong>Fair prices, and you hear them first.</strong> Before we start, you know what's wrong and what it costs. Nothing extra gets done without your OK.</p>
+        <p><strong>It's a family shop. You'll see the same faces next time.</strong> One customer wrote that they've been with us for almost 20 years. Another drives across the city so that Chris and I are the ones working on their cars. We don't take that lightly.</p>
+        <p>Call me at <a href="tel:+19052762732">(905) 276-2732</a>, Monday to Friday from 8 to 6. If you've got a quote from somewhere else, bring it.</p>
+        
+      <div class="signature">
+        <svg viewBox="0 0 160 70" aria-hidden="true" focusable="false">
+            <path d="M30 12c10-2 14 1 11 22-2 16-9 26-20 24-7-1-9-7-6-11 M54 34c-8 0-10 15-1 15s10-15 1-15z M72 6l-8 44 M65 38c4-9 15-11 15-1l-1 12 M90 49l2-14 M92 39c5-8 17-9 16 1l-1 10c2 4 9 4 15-4 M20 62c30-4 70-6 112-3" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        <p>John, JB Automotive</p>
       </div>
-    </figure>
-    <div>
-      <h2 id="family-title">Meet Your Mississauga Mechanics</h2>
-      <p class="hook hook-sm">Regulars don't call "the shop". They call John.</p>
-      <h3 class="h3-plain">Who you'll talk to</h3>
+      <p class="brand-line">We tell you what's really wrong. Then we fix it so it stays fixed.</p>
+      <h3 class="people-title">Who you'll talk to</h3>
       <ul class="people">
         <li><strong>John</strong> Diagnosis, repairs, and the straight answer on your quote.</li>
         <li><strong>Chris</strong> Repairs and service.</li>
       </ul>
-      <p>Family-owned means the people who fixed it last time are the people here this time. You don't have to explain your car from scratch.</p>
-      <p class="call-line">Ask for John: <a href="tel:+19052762732">(905) 276-2732</a></p>
+      <!-- Swap in when the shop sends it:
+      <img src="images/john-and-chris-jb-automotive-mississauga.webp" width="1200" height="800" loading="lazy" decoding="async" alt="John and Chris in the JB Automotive shop on Dundas St E in Mississauga">
+      -->
     </div>
   </div>
 </section>
 
-<!-- 5.12 BY THE NUMBERS -->
-<section class="sec bg-dark sec-tight" id="numbers" aria-labelledby="num-title">
+<section class="sec dark" id="visit" aria-labelledby="about-title">
   <div class="wrap">
-    <h2 id="num-title">Mississauga Auto Repair, by the Numbers</h2>
-    <ul class="numbers">
-      <li><span class="num" data-odometer="4.7"><span class="sr-only">4.7</span><span class="odo" aria-hidden="true">4.7</span> <svg class="i num-star" aria-hidden="true"><use href="#i-star"/></svg></span><span class="num-label">on Google</span></li>
-      <li><span class="num" data-odometer="41"><span class="sr-only">41</span><span class="odo" aria-hidden="true">41</span></span><span class="num-label">Google reviews</span></li>
-      <li><span class="num" data-odometer="~20"><span class="sr-only">About 20</span><span class="odo" aria-hidden="true">~20</span></span><span class="num-label">Customers for almost 20 years</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- 5.13 ABOUT + VISIT -->
-<section class="sec bg-panel tone-light" id="visit" aria-labelledby="about-title">
-  <div class="wrap about-grid">
-    <!-- Drop in when the shop sends it:
-    <img src="images/jb-automotive-922-dundas-st-e-mississauga.webp" width="1200" height="675" loading="lazy" decoding="async" alt="Unit 9 entrance at JB Automotive, 922 Dundas St E, Mississauga">
-    -->
-    <figure class="ph ph-16x9">
-      <div class="ph-inner">
-        <span class="ph-tag">Shop photo coming</span>
-        <p class="ph-shot">Shop exterior and the Unit 9 entrance at 922 Dundas St E</p>
-      </div>
-    </figure>
-    <div>
-      <h2 id="about-title">About JB Automotive, Auto Repair on Dundas St E</h2>
-      <p>JB Automotive is a family-owned shop at 922 Dundas St E, Unit 9, in Mississauga. People know us for a straight answer and a fair bill.</p>
-      <p>Customers tend to come in once and stay. One wrote that they went "from customer to friend to family." Some have been coming for almost 20 years. Some drive across the city to get here.</p>
-      <p class="find-us"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><span><strong>How to find us:</strong> we're Unit 9 at 922 Dundas St E. Can't spot us? Call and we'll talk you in.</span></p>
-      <div class="nap">
-        <p><strong>JB Automotive</strong><br>922 Dundas St E, Unit 9<br>Mississauga, ON L4Y 2B6</p>
-        <p><a class="phone-link" href="tel:+19052762732">(905) 276-2732</a></p>
-      </div>
-      <h3 class="h3-plain">Hours</h3>
-      <p class="today-status" id="today-status" hidden></p>
-      <ul class="hours" id="hours">
+    <h2 id="about-title">About JB Automotive, Auto Repair on Dundas St E</h2>
+    <div class="visit-grid">
+      <div>
+        <p>JB Automotive is a family-owned shop at 922 Dundas St E, Unit 9, in Mississauga. People know us for a straight answer and a fair bill.</p>
+        <p>Customers tend to come in once and stay. One wrote that they went "from customer to friend to family." Some have been coming for almost 20 years. Some drive across the city to get here.</p>
+        <p class="find-us"><strong>How to find us:</strong> we're Unit 9 at 922 Dundas St E. Can't spot us? Call and we'll talk you in.</p>
+        <address class="nap">
+          <span>JB Automotive</span>
+          <span>922 Dundas St E, Unit 9</span>
+          <span>Mississauga, ON L4Y 2B6</span>
+          <a class="phone-link" href="tel:+19052762732">(905) 276-2732</a>
+        </address>
+        <h3>Hours</h3>
+        <p class="today-status" id="today-status" hidden></p>
+        <ul class="hours" id="hours">
         <li data-day="1"><span>Monday</span><span>8:00 AM to 6:00 PM</span></li>
         <li data-day="2"><span>Tuesday</span><span>8:00 AM to 6:00 PM</span></li>
         <li data-day="3"><span>Wednesday</span><span>8:00 AM to 6:00 PM</span></li>
@@ -681,32 +547,30 @@
         <li data-day="6"><span>Saturday</span><span>Closed</span></li>
         <li data-day="0"><span>Sunday</span><span>Closed</span></li>
       </ul>
+      </div>
+      <div>
+        <!-- Swap in when the shop sends it:
+        <img src="images/jb-automotive-922-dundas-st-e-mississauga.webp" width="1200" height="675" loading="lazy" decoding="async" alt="Unit 9 entrance at JB Automotive, 922 Dundas St E, Mississauga">
+        -->
+        <div class="map-frame">
+          <iframe title="Map to JB Automotive, 922 Dundas St E, Unit 9, Mississauga"
+                  src="https://www.google.com/maps?q=922+Dundas+St+E,+Mississauga,+ON+L4Y+2B6&amp;output=embed"
+                  loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="450"></iframe>
+        </div>
+        <p class="map-link"><a href="https://www.google.com/maps/search/?api=1&amp;query=922+Dundas+St+E+Unit+9+Mississauga+ON+L4Y+2B6" rel="noopener" target="_blank">Open directions in Google Maps</a></p>
+        <h3>Auto Repair for Mississauga's East End and Beyond</h3>
+        <p>We're on Dundas St E, a short drive for most of Mississauga's east end: Applewood, Dixie, Cooksville, Mississauga Valleys, Lakeview, Rockwood Village, and drivers from Etobicoke.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 5.14 SERVICE AREA + MAP -->
-<section class="sec bg-dark" id="area" aria-labelledby="area-title">
-  <div class="wrap area-grid">
-    <div>
-      <h2 id="area-title">Auto Repair for Mississauga's East End and Beyond</h2>
-      <p>We're on Dundas St E, a short drive for most of Mississauga's east end.</p>
-      <p class="areas">Applewood · Dixie · Cooksville · Mississauga Valleys · Lakeview · Rockwood Village · and drivers from Etobicoke</p>
-      <p><a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=922+Dundas+St+E+Unit+9+Mississauga+ON+L4Y+2B6" rel="noopener" target="_blank">Open directions in Google Maps</a></p>
-    </div>
-    <div class="map-frame">
-      <iframe title="Map to JB Automotive, 922 Dundas St E, Unit 9, Mississauga"
-              src="https://www.google.com/maps?q=922+Dundas+St+E,+Mississauga,+ON+L4Y+2B6&amp;output=embed"
-              loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="400"></iframe>
-    </div>
-  </div>
-</section>
-
-<!-- 5.15 FAQ (FAQPage schema is generated from these blocks: node tools/sync-faq.js) -->
-<section class="sec bg-panel" id="faq" aria-labelledby="faq-title">
-  <div class="wrap narrow">
+<!-- FAQPage schema is generated from these blocks: node tools/sync-faq.js -->
+<section class="sec light" id="faq" aria-labelledby="faq-title">
+  <div class="wrap split split-top">
     <h2 id="faq-title">Auto Repair in Mississauga: Common Questions</h2>
-    <div class="faq">
+    <div>
+      <div class="faq">
       <details>
         <summary>How much does auto repair cost in Mississauga?</summary>
         <div class="faq-a"><p>It depends on the car and the part, so we won't throw out a number before we've looked. <span class="offer offer-inline">Bring your dealer quote. We'll give you a straight second opinion.</span> Either way, you hear what's wrong and the price before any work starts.</p></div>
@@ -744,24 +608,22 @@
         <div class="faq-a"><p>It's Unit 9 at 922 Dundas St E, Mississauga. If you can't spot it, call (905) 276-2732 and we'll talk you in.</p></div>
       </details>
     </div>
-    <p class="call-line">Still wondering about something? <a href="tel:+19052762732">Call (905) 276-2732</a> and ask.</p>
+      <p class="call-line">Still wondering about something? <a href="tel:+19052762732">Call (905) 276-2732</a> and ask.</p>
+    </div>
   </div>
 </section>
 
-<!-- 5.16 FINAL CTA + QUOTE FORM -->
-<section class="sec bg-dark tone-light" id="quote" aria-labelledby="quote-title">
-  <div class="wrap">
-    <div class="sheet ticket">
-      <div class="wo-head"><span>WORK ORDER</span><span class="wo-no">No. 922</span></div>
-      <div class="ticket-grid">
-        <div class="ticket-copy">
-          <h2 id="quote-title">Book Auto Repair in Mississauga</h2>
-          <p>Call and tell John what it's doing. If you've already got a quote somewhere else, bring it.</p>
-          <a class="btn btn-primary btn-big" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
-          <p class="micro">Mon-Fri 8-6 · 922 Dundas St E, Unit 9 · Ask for John.</p>
-          <p class="ticket-or">Rather write it down? Fill in the ticket and we'll call you back.</p>
-        </div>
-        <!-- TODO: connect form endpoint -->
+<section class="sec dark" id="quote" aria-labelledby="quote-title">
+  <div class="wrap split split-top">
+    <div class="quote-copy">
+      <h2 id="quote-title">Book Auto Repair in Mississauga</h2>
+      <p>Call and tell John what it's doing. If you've already got a quote somewhere else, bring it.</p>
+      <p class="offer">Bring your dealer quote. We'll give you a straight second opinion.</p>
+      <a class="btn btn-solid btn-big" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
+      <p class="micro">Mon-Fri 8-6 · 922 Dundas St E, Unit 9 · Ask for John.</p>
+      <p class="quote-or">Rather write it down? Send the details and we'll call you back.</p>
+    </div>
+    <!-- TODO: connect form endpoint -->
         <form class="quote-form" id="quote-form" novalidate>
           <div class="field">
             <label for="f-name">Name</label>
@@ -807,20 +669,10 @@
             <p class="field-error" id="f-contact-error" hidden>Choose how you'd like us to reach you.</p>
           </div>
           <div class="field-full form-foot">
-            <button class="btn btn-secondary-solid" type="submit">Send my ticket</button>
+            <button class="btn btn-secondary-solid" type="submit">Send my details</button>
             <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
           </div>
         </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 5.16b PRE-FOOTER OFFER BANNER -->
-<section class="offer-banner" aria-label="Our offer">
-  <div class="wrap offer-banner-inner">
-    <p class="offer-banner-text">Bring your dealer quote. We'll give you a straight second opinion.</p>
-    <a class="btn btn-dark" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
   </div>
 </section>
 
@@ -829,13 +681,7 @@
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
-      <a class="wordmark wordmark-light" href="#top" aria-label="JB Automotive, back to top">
-        <span class="wm-badge" aria-hidden="true">JB</span>
-        <span class="wm-text">
-          <span class="wm-name">AUTOMOTIVE</span>
-          <span class="wm-sub">Family-owned in Mississauga</span>
-        </span>
-      </a>
+      <a class="wordmark" href="#top" aria-label="JB Automotive, back to top">JB Automotive</a>
       <p>Family-owned auto repair in Mississauga. We tell you what's really wrong before we fix anything.</p>
       <p class="brand-line">We tell you what's really wrong. Then we fix it so it stays fixed.</p>
     </div>
@@ -867,13 +713,6 @@
       <p>922 Dundas St E, Unit 9<br>Mississauga, ON L4Y 2B6</p>
       <p><a class="footer-phone" href="tel:+19052762732">(905) 276-2732</a></p>
       <p>Mon-Fri 8 AM to 6 PM<br>Closed Saturday and Sunday</p>
-      <ul class="footer-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#why-us">Why Us</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#quote">Get a Quote</a></li>
-      </ul>
     </div>
   </div>
   <div class="wrap footer-base">
@@ -881,15 +720,6 @@
     <p>Website by AP</p>
   </div>
 </footer>
-
-<!-- PREVIEW ONLY: colourway switcher for the pitch. Remove this block, the inline theme script in <head> and the switcher code in main.js once the shop picks one. -->
-<div class="theme-switch" role="group" aria-label="Preview colourway">
-  <span class="ts-label" aria-hidden="true">Colourway</span>
-  <button type="button" data-theme-choice="steel" aria-pressed="true" aria-label="Steel blue"><span class="ts-swatch ts-steel" aria-hidden="true"></span><span class="ts-name">Steel blue</span></button>
-  <button type="button" data-theme-choice="brass" aria-pressed="false" aria-label="Brass"><span class="ts-swatch ts-brass" aria-hidden="true"></span><span class="ts-name">Brass</span></button>
-  <button type="button" data-theme-choice="oxblood" aria-pressed="false" aria-label="Oxblood"><span class="ts-swatch ts-oxblood" aria-hidden="true"></span><span class="ts-name">Oxblood</span></button>
-  <button type="button" data-theme-choice="navy" aria-pressed="false" aria-label="Navy workwear"><span class="ts-swatch ts-navy" aria-hidden="true"></span><span class="ts-name">Navy</span></button>
-</div>
 
 <nav class="mobile-bar" aria-label="Quick contact">
   <a class="mb-call" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call Now</a>

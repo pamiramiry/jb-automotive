@@ -1,49 +1,46 @@
 # JB Automotive: Design Rules (read before every change)
 
+Redesigned 2026-10-27 as "The Quiet Workshop" (the user's pick: Quiet Luxury Workshop). The visual system lives in DESIGN.md: read it first. PRODUCT.md holds the product truth; .impeccable/surfaces/index-html.md holds the direction contract. This file keeps the working rules that are not visual.
+
+## Visual (summary; DESIGN.md is the authority)
+
 - One-page site. Vanilla HTML/CSS/JS. No frameworks.
-- Direction: "garage at night" with a dark, dark, light rhythm (2026-10-16). Sections marked `.tone-light` (second opinion, symptoms, how it works, about, quote) switch to cream tokens; every other section is dark, alternating --bg and --panel. Cream --paper also appears on the letter from John and the two services work-order sheets, which sit on dark sections. NEVER put text over a photo.
-- Four colourways, each a full token set in styles.css (dark tokens on `:root[data-theme]`, light tokens on `.tone-light`): Steel blue is the DEFAULT (set with `<html data-theme="steel">`, chosen by the user 2026-10-16). Brass (gunmetal #121417, cream #F4EFE4, brass fill #D4A24C with ink text), Oxblood (#15110F, cream #F3EEE6, fill #8E2A30 with white text), Navy workwear (#0F1A2E, cream #F5F1E8, brick fill #B4492A with white text, used sparingly), Steel blue (#0F141A, off-white #EEF0F0, fill #346E95 with white text). Rust and the all-dark Brass were removed at the user's request. Each colourway uses one accent only.
-- Every colour must come from a token so all four colourways stay complete; never hard-code a hex in a component rule. The bottom-left switcher, the inline theme script in <head> and the switcher block in main.js are PREVIEW ONLY: once the shop picks one, delete them and make the chosen tokens the defaults. Link straight to one with `?theme=brass`, `?theme=oxblood` or `?theme=navy` (no parameter = Steel blue).
-- Three accent tokens: `--brass` is the fill (buttons, badge, step markers, banner, tags) and `--on-brass` is the text on it (ink for Brass, white for the others). `--accent` is for text, icons, links and lines: a light shade on dark sections, a darker shade on cream so it holds AA. Never use bright Brass fill as text on cream.
-- Brass is never text on the cream paper; on paper, ink carries text, links and focus rings. On dark, brass carries eyebrows, links, icons, stars, numerals and quote marks. Primary CTA = brushed brass pill (gradient over a solid brass base colour) with ink text. Secondary = outlined bone pill.
-- Fonts locked: Bitter (headings, pull-quotes), Work Sans (body/UI). Headings in title/sentence case, never uppercase H2s.
-- Radius 6px on images, panels and buttons (squared, signage-like). No pill buttons, no glossy gradients, no glows. Shadows only where a paper sheet lifts off the page.
-- Anti-template: no split hero with a text panel beside a photo, no uniform card grids, no auto-playing review carousel (the reviews row is a swipeable native scroll row with arrow buttons, added at the user's request 2026-10-16: no autoplay, no dots), no sticky numbered list, no 4-column comparison table, no icon "blurb" cards anywhere.
-- Signature elements stay: work-order sheets (perforated edge, "No. 922"), brass rubber stamp badge, ruled-paper letter from John, brass quote marks, odometer numbers (digits roll up on scroll-in; final values shown instantly under reduced motion; real values kept in .sr-only).
-- Images: stock only from Unsplash, Pexels or Pixabay (no attribution needed), fresh to this site, warm light, no brand logos, plates or other businesses' signage, every one logged in images/IMAGE-SOURCES.md. Shop and people photos stay as placeholders until the client sends real ones. No credits shown on the site.
-- Exact-match phrase "Auto Repair in Mississauga" must appear identically (same words, same order) in: title tag, H1, first sentence, meta description, OG/Twitter tags, hero alt, JSON-LD description. Title = keyword first | brand last. Never reword it.
-- Exactly one H1.
-- Every H2 contains "Auto Repair", "Mechanic" or "Car Repair", and most also contain "Mississauga". Never rewrite H2s to drop the keyword.
-- The signature offer appears in the hero, trust ribbon, dealer comparison, FAQ #1 and pre-footer banner.
-- The CTA pair (Call + Get a Quote) appears only at key moments: hero, second opinion, services, reviews, how it works, plus the big call button on the quote ticket. Other sections end with a plain text call line or nothing (loosened 2026-10-16 so the page reads hand-built, not templated).
-- No eyebrow labels above headings anywhere (removed 2026-10-20 in the impeccable pass: its craft floor bans them outright). Headings carry their own weight. Keep uppercase letter-spaced text to the work-order headers and the wordmark only.
-- No scroll-triggered fade-in on sections. The page has two authored motion moments only: the hero stamp roll and the odometer numbers. Motion otherwise answers a visitor action (press, menu, FAQ, form errors, colourway switch).
-- Icons are SVG from the sprite, never Unicode glyphs (no ★ or → characters standing in for icons). Text links carry no appended arrow.
-- No middle-dot meta strings except the brief's micro-line ("Mon-Fri 8-6 · 922 Dundas St E, Unit 9 · Ask for John."). Write "4.7 from 41 Google reviews", and put a review's name and context on separate lines.
-- Forms: every field has its own error message under it, linked with aria-describedby, checked on blur and on submit; the submit message says how many fields need fixing and focus moves to the first one.
-- Headings are left-aligned. Body copy uses --body (brighter than --muted); --muted is for secondary text only.
+- Black and white bands, two greys, no accent colour. The only hue is the form error red (#FF9F8E). No colourway switcher.
+- Marcellus for headings and customer quotes; Hanken Grotesk for reading, controls and every number (Marcellus's old-style figures clip in the odometer and look odd in phone numbers).
+- Every photo is black and white (grayscale, then sharp linear 1.08 / -8), one decisive frame per screen, square edges, never under text.
+- Structure is 1px hairline rules: no cards, no boxes, no shadows on content. Buttons are near-square (2px).
+- One solid button in the first viewport (Call); Get a Quote is a text link there.
+- Motion: the odometer is the one authored moment. Everything else answers a visitor action (press scale .97, menu, FAQ, form errors). --ease-out and --dur tokens only; animate transform and opacity only; hovers only inside `@media (hover: hover) and (pointer: fine)`; prefers-reduced-motion turns it all off.
+- Odometer digit cells are 1.15em tall because main.js moves each strip 1.15em per digit. Change both together or the 7 lands between two numbers.
+- No eyebrow labels above headings, no uppercase tracked labels, no Unicode glyphs as icons, no arrows appended to links, no middle-dot meta strings except the brief's micro-line ("Mon-Fri 8-6 · 922 Dundas St E, Unit 9 · Ask for John.").
+- Images: stock only from Unsplash, Pexels or Pixabay (no attribution needed), fresh to this site, no brand logos, plates, readable signage or faces standing in for John or Chris. Log every one in images/IMAGE-SOURCES.md. No credits on the site.
+
+## SEO (unchanged)
+
+- Exact-match phrase "Auto Repair in Mississauga" must appear identically in: title tag, H1, first sentence, meta description, OG/Twitter tags, hero alt, JSON-LD description. Title = keyword first | brand last. Never reword it.
+- Exactly one H1. Every H2 contains "Auto Repair", "Mechanic" or "Car Repair", and most also contain "Mississauga".
+- No aggregateRating in schema. The FAQPage JSON-LD is generated from the FAQ HTML: edit the `<details>` blocks, then run `node tools/sync-faq.js`.
+
+## Copy and facts (unchanged)
+
+- The signature offer ("Bring your dealer quote. We'll give you a straight second opinion.") appears in the numbers band, the second opinion, the comparison table, FAQ #1 and the quote section.
+- The Call + Get a Quote pair appears at key moments only: hero, second opinion, services, how it works, reviews, plus the big call button by the form.
+- Brand line "We tell you what's really wrong. Then we fix it so it stays fixed." appears under the hero actions, at the end of John's letter, and in the footer.
 - Sticky mobile bottom bar (Call / Quote) always present.
 - Name in copy: "JB Automotive". Legal name "JB Automotive Ltd" only in the footer © and JSON-LD legalName.
-- Never invent facts. The preview ships with NO visible [CONFIRM] placeholders (user request 2026-10-16): unconfirmed details are either written as safe, general defaults or left out, and every one is tracked in OPEN-QUESTIONS.md (internal, not served). Never state a founding year, licence, certification, warranty or price until the shop confirms it. Second-opinion savings and long-time loyalty are customer experiences, never promises. Don't promise walk-ins; closed weekends.
+- Never invent facts. No visible [CONFIRM] placeholders: unconfirmed details are safe defaults or left out, and every one is tracked in OPEN-QUESTIONS.md (not served). Never state a founding year, licence, certification, warranty or price until the shop confirms it. Second-opinion savings and loyalty are customer experiences, never promises. Don't promise walk-ins; closed weekends.
+- Keep paraphrases of reviews as close to the review's own words as possible; never add details a review doesn't say.
 - Never quote or reference negative reviews. No absolute claims ("every customer", "they all come back").
-- No "AI-sounding" copy (see banned phrase list in the build prompt). No em dashes or en dashes anywhere: not in copy, comments or docs. Write ranges as "Mon-Fri 8-6" or "8 to 6".
-- Brand line "We tell you what's really wrong. Then we fix it so it stays fixed." appears under the hero CTAs, at the end of the Note from the shop, and in the footer.
-- Copy follows the section 4b voice + persuasion playbook: John's voice, specifics over adjectives, honest framing, risk removed. If a paragraph could sit on any other shop's site unchanged, rewrite it.
+- No "AI-sounding" copy. No em dashes or en dashes anywhere: not in copy, comments or docs. Write ranges as "Mon-Fri 8-6" or "8 to 6".
+- Voice: John talking to a regular at the counter. Specifics over adjectives, honest framing, risk removed.
 - Never name a competitor, chain or dealership brand, including inside review excerpts. Never call dealers dishonest.
-- Don't state how John and Chris are related unless confirmed.
-- No car-brand logos. Text only.
-- No aggregateRating in schema.
-- Do not mention languages spoken or anyone's heritage.
+- Don't state how John and Chris are related unless confirmed. No car-brand logos. Do not mention languages spoken or anyone's heritage.
 - Do not reference or copy any other project or previous site.
-
-- Motion (Emil Kowalski principles, 2026-10-20): use the --ease-out curve and --dur-press / --dur-ui tokens; UI transitions stay under 300ms; animate only transform and opacity (never height, width or font-size); buttons press to scale(.97); every :hover lives inside `@media (hover: hover) and (pointer: fine)`; no bounce or elastic easing; prefers-reduced-motion turns everything off. One-off entrances (stamp roll, odometer) may run longer.
-- Polish (impeccable / taste principles): headings use text-wrap: balance and slight negative tracking; paragraphs text-wrap: pretty with a 68ch max width; no coloured stripe borders on boxes or callouts; no faux small caps; tabular figures for hours and phone numbers; one primary action per group, so secondary links are text links, not a third button. The signature offer is set as accent serif text, not a box.
-
-- Hero layout (2026-10-20, user chose "bolder hero"): desktop is the headline column on the left (H1 up to 5.5rem) and a tall 4:5 portrait photo on the right, served with <picture> from the -portrait files. The stamp overlaps the photo's top-right corner and the sign board hangs off its bottom-left corner as a stacked panel. Phone and tablet keep copy first, then the wide photo with the stamp on its corner and the sign below. This is copy beside a framed photo on the page background, not a dark text panel beside a photo, so the anti-template rule still holds. Text never sits on the photo.
+- Forms: every field has its own error message under it, linked with aria-describedby, checked on blur and on submit; the submit message says how many fields need fixing and focus moves to the first one.
 
 ## Working notes
 
-- Section backgrounds, top to bottom: hero dark, ribbon panel, second opinion LIGHT, letter section panel (cream letter), services dark (cream sheets), symptoms LIGHT, reviews dark, comparison panel, how it works LIGHT, family panel, numbers dark, about LIGHT, area dark, FAQ panel, quote ticket LIGHT, offer banner fill, footer deep. Classes: .bg-dark / .bg-panel, .tone-light, .paper.
-- The FAQPage JSON-LD is generated from the FAQ HTML. Edit the `<details>` blocks, then run `node tools/sync-faq.js`.
-- `node tools/verify.js` runs the rendered checks (contrast and the accent-on-paper rule run in both colourways) (keyword placement, headings, schema, overflow at 5 widths, contrast, dashes, banned words, images, form). It must stay green.
+- `node tools/verify.js` (with NODE_PATH pointing at C:/Users/user/node_modules) runs the rendered checks: keyword placement, headings, schema, overflow at 5 widths, contrast, no accent colour, dashes, banned words, images, odometer, form, menu, logo link, review row. It must stay green.
+- `impeccable detect --json index.html` leaves known, intentional findings: tight leading on display headlines and buttons, and "cramped padding" false positives (sections have 72px to 136px of inset; the hero photo is flush by design).
 - Preview with a local server (`npx serve .` or `python -m http.server`), not by opening index.html from disk.
+- Internal files kept off the live site by .vercelignore: DESIGN-RULES.md, DESIGN.md, PRODUCT.md, OPEN-QUESTIONS.md, images/*.md, tools/, .impeccable/.

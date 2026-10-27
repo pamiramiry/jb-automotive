@@ -53,15 +53,15 @@ function walk(dir) {
   const meta = await page.evaluate(() => {
     const m = (sel) => (document.querySelector(sel) || {}).content || "";
     const h1 = document.querySelectorAll("h1");
-    let first = h1[0] && h1[0].nextElementSibling;
-    while (first && first.tagName !== "P") first = first.nextElementSibling;
+    // the first paragraph that follows the H1 in document order
+    const first = h1[0] && [...document.querySelectorAll("p")].find((p) => h1[0].compareDocumentPosition(p) & Node.DOCUMENT_POSITION_FOLLOWING);
     const ld = [...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => s.textContent);
     return {
       title: document.title, h1count: h1.length, h1: h1[0] ? h1[0].textContent.trim() : "",
       first: first ? first.textContent.trim() : "",
       desc: m('meta[name="description"]'), ogt: m('meta[property="og:title"]'), ogd: m('meta[property="og:description"]'),
       twt: m('meta[name="twitter:title"]'), twd: m('meta[name="twitter:description"]'),
-      heroAlt: document.querySelector(".hero-media img").alt, ld,
+      heroAlt: document.querySelector(".hero-photo img").alt, ld,
       finalH2: document.getElementById("quote-title").textContent.trim(),
     };
   });
@@ -136,16 +136,16 @@ function walk(dir) {
 
   const offerSections = await page.evaluate(() => {
     const has = (sel) => { const n = document.querySelector(sel); return !!n && /Bring your dealer quote/.test(n.textContent); };
-    return { hero: has(".hero .offer"), ribbon: has(".ribbon"), compare: has("#compare .cmp-jb"), faq1: has(".faq details:first-child"), banner: has(".offer-banner") };
+    return { numbers: has("#numbers .offer"), secondOpinion: has("#second-opinion .offer"), compare: has("#compare .cmp"), faq1: has(".faq details:first-child"), quote: has("#quote .offer") };
   });
-  check(Object.values(offerSections).every(Boolean), "signature offer in hero, ribbon, comparison, FAQ #1, banner", JSON.stringify(offerSections));
+  check(Object.values(offerSections).every(Boolean), "signature offer in numbers, second opinion, comparison, FAQ #1, quote", JSON.stringify(offerSections));
   check(!/CONFIRM/.test(allText), "no [CONFIRM] placeholders visible on the page");
   check(!/CONFIRM/.test(meta.ld.join(" ").replace(/CONFIRM-domain/g, "")), "no placeholder text in the structured data (the domain token aside)");
   const brandLine = "We tell you what's really wrong. Then we fix it so it stays fixed.";
   const bl = await page.evaluate((t) => [".hero", "#why-us .letter", ".site-footer"].map((s) => [...document.querySelectorAll(s + " .brand-line")].some((n) => n.textContent.trim() === t)), brandLine);
   check(bl.every(Boolean), "brand line under hero CTAs, end of letter, footer", JSON.stringify(bl));
   const ctaGaps = await page.evaluate(() => ["#second-opinion", "#services", "#reviews", "#how"]
-    .filter((s) => { const p = document.querySelector(s + " .cta-pair"); return !p || !p.querySelector('a[href^="tel:"]') || !p.querySelector('a[href="#quote"]'); }));
+    .filter((s) => { const p = document.querySelector(s + " .actions"); return !p || !p.querySelector('a[href^="tel:"]') || !p.querySelector('a[href="#quote"]'); }));
   check(ctaGaps.length === 0, "key sections end with the Call + Get a Quote pair", ctaGaps.join(", "));
 
   // ---- 5. Images
@@ -160,9 +160,11 @@ function walk(dir) {
   const sources = fs.readFileSync(path.join(ROOT, "images/IMAGE-SOURCES.md"), "utf8");
   const unlogged = fs.readdirSync(path.join(ROOT, "images")).filter((f) => f.endsWith(".webp") && !sources.includes(f));
   check(unlogged.length === 0, "every stock photo logged in IMAGE-SOURCES.md", unlogged.join(", "));
-  check([...sources.matchAll(/https:\/\/www\.(pexels|unsplash|pixabay)\.com\/photo/g)].length >= 7, "sources are Pexels / Unsplash / Pixabay links");
-  const phs = await page.$$eval("figure.ph", (f) => f.length);
-  check(phs === 4, `4 placeholder slots (3 photos + 1 video): ${phs}`);
+  check([...sources.matchAll(/https:\/\/www\.(pexels|unsplash|pixabay)\.com\/photo/g)].length >= 5, "sources are Pexels / Unsplash / Pixabay links");
+  const ph = await page.evaluate(() => document.querySelectorAll("figure.ph, .ph-tag").length);
+  check(ph === 0, "no visible photo placeholders (real-photo swaps live in HTML comments)", String(ph));
+  const grey = await page.evaluate(() => [...document.querySelectorAll("main img")].map((i) => i.getAttribute("src")));
+  check(grey.length >= 5, `${grey.length} photographs on the page`);
 
   // ---- 6. Layout at five widths
   console.log("\n# Layout");
@@ -183,8 +185,7 @@ function walk(dir) {
   }
   await page.setViewport({ width: 1440, height: 900 });
 
-  const defaultTheme = await page.evaluate(() => document.documentElement.getAttribute("data-theme"));
-  check(defaultTheme === "steel", "Steel blue is the default colourway", String(defaultTheme));
+  check(await page.evaluate(() => !document.querySelector("[data-theme-choice], .theme-switch")), "no colourway switcher (one committed look)");
   // ---- 7. Contrast (every text node against its nearest solid background)
   console.log("\n# Contrast");
   const contrastFn = () => {
@@ -220,32 +221,19 @@ function walk(dir) {
     }
     return out;
   };
-  const brassFn = () => {
-    const accent = getComputedStyle(document.documentElement).getPropertyValue("--brass-rgb").trim().split(/\s+/).join(", ");
+  const low = await page.evaluate(contrastFn);
+  check(low.length === 0, "all text meets WCAG AA contrast", low.slice(0, 8).join(" | "));
+  const colourful = await page.evaluate(() => {
+    // monochrome world: every text colour must be a neutral grey (equal channels), except the form error red
     const out = [];
-    document.querySelectorAll("body *").forEach((el) => {
-      if (getComputedStyle(el).color !== `rgb(${accent})` || !el.textContent.trim()) return;
-      const light = el.closest(".paper") || el.closest(".tone-light");
-      if (light) out.push(el.className || el.tagName);
+    document.querySelectorAll("main *, .site-header *, .site-footer *").forEach((el) => {
+      if (!el.textContent.trim() || el.closest(".field-error")) return;
+      const m = getComputedStyle(el).color.match(/[\d.]+/g).map(Number);
+      if (Math.max(m[0], m[1], m[2]) - Math.min(m[0], m[1], m[2]) > 12) out.push((el.className.baseVal ?? el.className) || el.tagName);
     });
-    return out;
-  };
-  for (const theme of ["brass", "oxblood", "navy", "steel"]) {
-    await page.evaluate((t) => document.querySelector(`[data-theme-choice="${t}"]`).click(), theme);
-    await new Promise((r) => setTimeout(r, 300));
-    const state = await page.evaluate(() => ({ attr: document.documentElement.getAttribute("data-theme"), pressed: document.querySelector('[aria-pressed="true"]').getAttribute("data-theme-choice"), meta: document.querySelector('meta[name="theme-color"]').content }));
-    check(state.pressed === theme && (theme === "brass" ? state.attr === null : state.attr === theme), `switcher applies the ${theme} colourway`, JSON.stringify(state));
-    const low = await page.evaluate(contrastFn);
-    check(low.length === 0, `all text meets WCAG AA contrast (${theme})`, low.slice(0, 8).join(" | "));
-    // Bright brass is the only fill too light to read as text on cream; the other fills are dark and the contrast walk covers them
-    const bop = theme === "brass" ? await page.evaluate(brassFn) : [];
-    check(bop.length === 0, `bright brass is never text on a light background (${theme})`, bop.join(", "));
-  }
-  const saved = await page.evaluate(() => localStorage.getItem("jb-theme"));
-  await page.reload({ waitUntil: "load" });
-  const kept = await page.evaluate(() => document.documentElement.getAttribute("data-theme"));
-  check(saved === "steel" && kept === "steel", "colourway choice survives a reload");
-  await page.evaluate(() => { localStorage.removeItem("jb-theme"); document.querySelector('[data-theme-choice="brass"]').click(); });
+    return [...new Set(out)];
+  });
+  check(colourful.length === 0, "text stays black, white and grey (no accent colour)", colourful.slice(0, 6).join(", "));
 
 
   // ---- 7b. Odometer numbers
@@ -255,7 +243,9 @@ function walk(dir) {
       if (!part.classList.contains("odo-col")) return part.textContent;
       const strip = part.querySelector(".odo-strip");
       const y = new DOMMatrix(getComputedStyle(strip).transform).m42;
-      return String(Math.round(-y / strip.firstElementChild.getBoundingClientRect().height));
+      // the wheel must sit on a digit, not between two (a 5% drift shows half of the next number)
+      const d = -y / strip.firstElementChild.getBoundingClientRect().height;
+      return Math.abs(d - Math.round(d)) > 0.05 ? "?" : String(Math.round(d));
     }).join("");
     return { want: num.getAttribute("data-odometer"), shown, sr: num.querySelector(".sr-only").textContent };
   }));

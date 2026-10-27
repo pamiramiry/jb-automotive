@@ -123,28 +123,6 @@
     status.hidden = false;
   }
 
-  /* PREVIEW ONLY: colourway switcher. The choice is saved per browser and can be linked with ?theme=brass, ?theme=oxblood or ?theme=navy (Steel blue is the default) */
-  var THEME_COLORS = { brass: "#121417", oxblood: "#15110F", navy: "#0F1A2E", steel: "#0F141A" };
-  var themeMeta = document.querySelector('meta[name="theme-color"]');
-  var themeButtons = document.querySelectorAll("[data-theme-choice]");
-  function applyTheme(name) {
-    if (!THEME_COLORS[name]) name = "brass";
-    if (name === "brass") doc.removeAttribute("data-theme");
-    else doc.setAttribute("data-theme", name);
-    if (themeMeta) themeMeta.setAttribute("content", THEME_COLORS[name]);
-    themeButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-theme-choice") === name)); });
-  }
-  applyTheme(doc.getAttribute("data-theme") || "brass"); // <html data-theme="steel"> makes Steel blue the default; no attribute means Brass
-  themeButtons.forEach(function (b) {
-    b.addEventListener("click", function () {
-      var name = b.getAttribute("data-theme-choice");
-      // Cross-fade the colour change where the browser supports view transitions
-      if (document.startViewTransition && !reduceMotion) document.startViewTransition(function () { applyTheme(name); });
-      else applyTheme(name);
-      try { localStorage.setItem("jb-theme", name); } catch (err) { /* private mode: choice lasts this visit only */ }
-    });
-  });
-
   /* Footer year */
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());

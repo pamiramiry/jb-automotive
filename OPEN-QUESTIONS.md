@@ -20,7 +20,7 @@ The preview ships without any visible [CONFIRM] placeholders (user request, 2026
 - **"The quote had six things on it. Your car needed two."** is an illustrative line, not a real case.
 
 ## Removed (would have been invented facts)
-- **Year founded / years in business:** removed from the stamp ("Est.") and the numbers row (now 3 stats). Add back once known.
+- **Year founded / years in business:** not shown anywhere (the stamp was retired in the 2026-10-27 redesign; the numbers row has 3 stats). Add back once known.
 - **Founding story** sentence in About.
 - **Safety inspections:** service row and FAQ removed. Only add back if they are a licensed Motor Vehicle Inspection Station.
 - **Warranty FAQ:** removed. Add back with their real terms.
@@ -32,4 +32,4 @@ The preview ships without any visible [CONFIRM] placeholders (user request, 2026
 - **Domain:** `CONFIRM-domain` in canonical, og:url, og:image, JSON-LD, robots.txt and sitemap.xml. Replace with the real domain.
 - **Latitude / longitude:** geo meta tags and JSON-LD `geo` removed until the exact coordinates are confirmed (see the TODO comment in index.html).
 - **Form endpoint:** the quote form shows a success message but doesn't send anywhere yet (`TODO: connect form endpoint`).
-- **Shop photos and video:** 3 photo slots and 1 video slot still show "Shop photo coming" / "Video coming".
+- **Shop photos:** the redesign shows no placeholder boxes. Three swap slots wait in HTML comments (John at the counter, John and Chris, the Unit 9 entrance); see images/IMAGE-LIST.md. The old video slot was dropped in the redesign.

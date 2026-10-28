@@ -161,11 +161,17 @@
       if (userPaused) heroVideo.pause(); else heroVideo.play();
       setPaused(userPaused);
     });
-    setTimeout(function () {
-      heroVideo.src = heroSrc;
-      var p = heroVideo.play();
-      if (p && p.catch) p.catch(function () { /* autoplay refused: the still photo stays */ });
-    }, heroDesk ? 2400 : 300);
+    // start the download only after the page has fully loaded, so the clip never competes with the
+    // hero photo, the font or the CSS for bandwidth (it was delaying LCP on slow phone connections)
+    var startVideo = function () {
+      setTimeout(function () {
+        heroVideo.src = heroSrc;
+        var p = heroVideo.play();
+        if (p && p.catch) p.catch(function () { /* autoplay refused: the still photo stays */ });
+      }, heroDesk ? 1200 : 1000);
+    };
+    if (document.readyState === "complete") startVideo();
+    else window.addEventListener("load", startVideo, { once: true });
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (entries) {
         if (!heroVideo.src) return;

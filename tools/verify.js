@@ -286,7 +286,7 @@ function walk(dir) {
   await page.evaluate(() => document.querySelector(".menu-toggle").click());
   const menu = await page.evaluate(() => ({ open: document.getElementById("main-nav").classList.contains("is-open"), exp: document.querySelector(".menu-toggle").getAttribute("aria-expanded") }));
   check(menu.open && menu.exp === "true", "hamburger opens the menu and sets aria-expanded");
-  for (const [w, h] of [[1440, 900], [1280, 800], [1280, 720]]) {
+  for (const [w, h] of [[1366, 768], [1440, 900], [1920, 1080], [1280, 800], [1280, 720], [375, 667]]) {
     const fv = await browser.newPage();
     await fv.setRequestInterception(true);
     // this check measures what visitors see, so it lets the real web font load
@@ -298,8 +298,20 @@ function walk(dir) {
     await fv.evaluate(async () => { await document.fonts.ready; await document.fonts.load('800 6rem "Mona Sans"'); });
     const family = await fv.evaluate(() => document.fonts.check('800 6rem "Mona Sans"'));
     if (!family) console.log("note: Mona Sans did not load for the first-screen check (offline?)");
-    const bottom = await fv.evaluate(() => document.querySelector(".hero .btn-solid").getBoundingClientRect().bottom);
-    check(bottom <= h, `hero Call button is in the first screen at ${w}x${h}`, `bottom=${Math.round(bottom)}`);
+    const fold = await fv.evaluate(() => ({
+      call: document.querySelector(".hero .btn-solid").getBoundingClientRect().bottom,
+      trust: document.querySelector(".trust-row").getBoundingClientRect().bottom,
+      status: document.getElementById("open-status").textContent.trim(),
+      badge: document.querySelector(".hero-proof .g-badge") && document.querySelector(".hero-proof .g-badge").textContent.replace(/\s+/g, " ").trim(),
+    }));
+    // the mobile call bar covers the bottom 56px on phones
+    const limit = w < 1024 ? h - 56 : h;
+    check(fold.call <= limit, `hero Call button is in the first screen at ${w}x${h}`, `bottom=${Math.round(fold.call)}`);
+    if (w >= 1024) check(fold.trust <= h, `hero trust row is in the first screen at ${w}x${h}`, `bottom=${Math.round(fold.trust)}`);
+    if (w === 1366) {
+      check(/^(Open now until 6pm|Closed · opens (8am|8am tomorrow|Monday 8am))$/.test(fold.status), "trust row shows open or closed status in shop time", fold.status);
+      check(/4\.7 on Google · 41 reviews/.test(fold.badge || ""), "hero Google badge shows the real rating", fold.badge);
+    }
     await fv.close();
   }
   // hero video: desktop plays it after the opening; the button pauses it; phones and reduced motion never load it

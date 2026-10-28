@@ -132,7 +132,7 @@ Workshop neutrals with one working colour.
 - **Error Coral** (#FF9F8E): form errors only, on graphite.
 
 ### Named Rules
-**The One Working Colour Rule.** Machine green means "call the shop" and nothing else. If it appears anywhere that isn't a Call action, it is wrong.
+**The One Working Colour Rule.** Machine green means "call the shop". The only other places it appears are two quiet hero signals the user asked for (2026-10-27): the faint opening quotation mark on the hero review (55% opacity) and the "Open now" status dot. The Google badge stars are Google gold (#FBBC04), the only non-neutral colour outside photos and errors.
 
 **The Two Grounds Rule.** Bands alternate graphite and concrete, never two of the same tone side by side, except the quote band and the footer, which a hairline separates. Components read their colours from the band.
 
@@ -189,7 +189,7 @@ Square-edged photographs. Buttons, fields and odometer cells have a 1px corner: 
 - **Phone:** wordmark, phone icon and a two-line menu icon that cross-fades to an X; the menu opens as a graphite panel with condensed links. A fixed bottom bar carries Call Now (green) and Get a Quote.
 
 ### Cinematic hero (signature)
-A letterboxed 2.39:1 photo on desktop (4:3 on phones), capped by the screen height. Static film grain at 14% (overlay) and a soft radial vignette sit over the photo, never over text. The opening plays once on load (about 2 seconds, then holds still). On desktop only, a 12-second muted video loop fades in over the photo after the opening, pauses when scrolled away, and has a small round Pause/Play button (44px, label kept for screen readers). Phones, reduced motion and data-saver visitors keep the still photo.
+A short cinematic banner: clamp(180px, 28vh, 260px) tall from 768px, 160px on phones, so the headline, subcopy, Call button and trust row all fit in the first screen of a 1366x768 laptop. The pause button sits vertically centred on the right. Under the Call button, a trust row (live open/closed status in shop time, Family-run shop, Same mechanics every visit); in the right column, a Google rating badge (4.7, 41 reviews) above a smaller testimonial quote. Static film grain at 14% (overlay) and a soft radial vignette sit over the photo, never over text. The opening plays once on load (about 2 seconds, then holds still). On desktop only, a 12-second muted video loop fades in over the photo after the opening, pauses when scrolled away, and has a small round Pause/Play button (44px, label kept for screen readers). Phones, reduced motion and data-saver visitors keep the still photo.
 
 ### Odometer (signature)
 Stats roll into place like a dashboard counter when the band scrolls into view: one 1.15em cell per digit on a quiet surface with an inner fade, digits in Mona Sans 700 at 75% width with tabular figures, the rightmost wheel first. Reduced motion shows the final values.

@@ -147,6 +147,30 @@
     }
   }
 
+  /* Hero trust row: open or closed right now, in shop time. Hours: Mon-Fri 8am to 6pm, closed weekends. */
+  var openStatus = document.getElementById("open-status");
+  if (openStatus && window.Intl) {
+    try {
+      var parts = {};
+      new Intl.DateTimeFormat("en-CA", { weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23", timeZone: "America/Toronto" })
+        .formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
+      var wd = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(parts.weekday.slice(0, 3));
+      var mins = Number(parts.hour) * 60 + Number(parts.minute);
+      var weekday = wd >= 1 && wd <= 5;
+      var item = openStatus.parentNode;
+      if (weekday && mins >= 480 && mins < 1080) {
+        openStatus.innerHTML = "<strong>Open now</strong> until 6pm";
+        item.classList.add("is-open");
+      } else if (weekday && mins < 480) {
+        openStatus.innerHTML = "<strong>Closed</strong> · opens 8am";
+      } else if (wd >= 1 && wd <= 4) {
+        openStatus.innerHTML = "<strong>Closed</strong> · opens 8am tomorrow";
+      } else {
+        openStatus.innerHTML = "<strong>Closed</strong> · opens Monday 8am";
+      }
+    } catch (e) { /* keep the static hours */ }
+  }
+
   /* Today's hours, using shop time (Mississauga) */
   var day;
   try {

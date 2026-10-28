@@ -35,3 +35,5 @@ The preview ships without any visible [CONFIRM] placeholders (user request, 2026
 - **Shop photos:** the redesign shows no placeholder boxes. Three swap slots wait in HTML comments (John at the counter, John and Chris, the Unit 9 entrance); see images/IMAGE-LIST.md. The old video slot was dropped in the redesign.
 
 - Numbers band: a fourth stat would be strongest as years in business ("Since 19XX"). Ask the shop. The third stat says almost 20 years because Aranka L.'s review says "almost 20 years": do not change it to 20+ unless a customer or the shop confirms more than 20.
+- Hero trust row: the user's spec wanted "Family-run since [YEAR]" and a "[12-month / 12,000 km] warranty". Ask the shop for the founding year and their actual warranty terms; until then the row says "Family-run shop" and "Same mechanics every visit". Also confirm there are no Saturday hours (the spec's placeholder said Sat 9-2; everything we know says closed weekends).
+- Google badge link: swap the reviews search URL for the shop's direct Google Maps reviews link.

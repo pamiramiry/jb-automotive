@@ -28,3 +28,5 @@ Retired (files deleted, no longer on the site): the black and white set from the
 Considered and rejected for brand marks or faces: 22799423 (Mercedes-Benz wrench, tool brands), 34337558 (Ford, Motorcraft, Istobal signage), 4116207 (VW badge), and several shots with faces that could read as John or Chris.
 
 Pexels License notes: no attribution needed, but do not imply that a person in a photo endorses the business, and do not sell the photos unaltered.
+
+Phone hero clip: video/hero-phone.mp4 (720x1280, 13.5s, 1MB). User-supplied clip copied from the Fam's Automotive preview (images/hero-mobile.mp4 there) at the user's request, 2026-10-28. Origin and licence not recorded in either project: confirm before launch, and note that both sites now share this hero clip.

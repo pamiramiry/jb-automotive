@@ -38,3 +38,4 @@ The preview ships without any visible [CONFIRM] placeholders (user request, 2026
 - Hero trust row: the user's spec wanted "Family-run since [YEAR]" and a "[12-month / 12,000 km] warranty". Ask the shop for the founding year and their actual warranty terms; until then the row says "Family-run shop" and "Same mechanics every visit". Also confirm there are no Saturday hours (the spec's placeholder said Sat 9-2; everything we know says closed weekends).
 - Google badge link: swap the reviews search URL for the shop's direct Google Maps reviews link.
 - Hero trust row: the user's brief asked for "All makes & models". Unconfirmed, so the row says "Older cars welcome" (backed by the FAQ and the Juke story). Swap it in if John confirms they take all makes.
+- Phone hero video: the same clip as the Fam's Automotive preview (user's choice for comparison, pushed 2026-10-28). Its source and licence are unknown. Replace with a JB-only clip, or confirm the licence, before launch.

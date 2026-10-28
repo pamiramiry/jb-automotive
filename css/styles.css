@@ -560,3 +560,6 @@ h3 { font-stretch: 88%; }
   .hero h1 { font-size: min(12vw, 3.4rem); margin-bottom: 14px; }
   .hero .lede { margin-bottom: 24px; color: rgba(245, 243, 238, .9); }
 }
+
+/* phones: the portrait clip fills the hero */
+@media (max-width: 1023px) { .hero-video { object-position: 50% 40%; } }

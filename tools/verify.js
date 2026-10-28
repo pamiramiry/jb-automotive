@@ -335,7 +335,7 @@ function walk(dir) {
     check(atTop === "hidden" && past === "visible", "call bar hidden over the hero, shown once it scrolls away", `${atTop} / ${past}`);
     await mb.close();
   }
-  // hero video: desktop plays it after the opening; the button pauses it; phones and reduced motion never load it
+  // hero video: desktop plays its loop after the opening; phones play the portrait clip; reduced motion never loads one
   {
     const dv = await browser.newPage();
     await dv.setRequestInterception(true);
@@ -362,7 +362,8 @@ function walk(dir) {
       await pv.goto(base, { waitUntil: "load" });
       await new Promise((r) => setTimeout(r, 3000));
       const src = await pv.evaluate(() => document.querySelector(".hero-video").getAttribute("src"));
-      check(!src, `hero video never loads for ${label}`);
+      if (label === "phones") check(src === "video/hero-phone.mp4", "phones load the portrait hero clip, not the desktop loop", String(src));
+      else check(!src, `hero video never loads for ${label}`);
       await pv.close();
     }
   }

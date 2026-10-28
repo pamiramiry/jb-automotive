@@ -214,8 +214,8 @@
         <img src="images/auto-repair-mississauga-jb-automotive-p.webp" width="900" height="1200" loading="eager" fetchpriority="high" decoding="async"
              alt="Auto Repair in Mississauga: a mechanic's hands working in a car's engine bay at JB Automotive">
       </picture>
-      <!-- Desktop only: main.js loads this muted loop after the opening, never on phones, reduced motion or data saver -->
-      <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" data-src="video/mechanic-at-work-jb-automotive.mp4"></video>
+      <!-- main.js loads the desktop or phone loop after the opening; never with reduced motion or data saver -->
+      <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" data-src="video/mechanic-at-work-jb-automotive.mp4" data-src-phone="video/hero-phone.mp4"></video><!-- Phones play a portrait clip (the same clip as the Fam's Automotive preview, by the user's choice 2026-10-28); desktop plays data-src -->
       <span class="grain" aria-hidden="true"></span>
       <span class="hero-shade" aria-hidden="true"></span>
       <button class="video-toggle" type="button" aria-pressed="false" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="ic-pause" fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="ic-play" fill="currentColor" d="M8 5l11 7-11 7z"/></svg><span class="sr-only">Pause video</span></button>

@@ -526,7 +526,8 @@ h3 { font-stretch: 88%; }
    darkening starts just above the address line and eases in, so taller phones don't go muddy. */
 /* phones break the headline as Auto Repair / in Mississauga; it can still wrap if the font is slow */
 .hero h1 .h1-br { display: none; }
-@media (max-width: 767px) { .hero h1 .h1-br { display: inline; } }
+/* "Auto Repair" never splits; "in Mississauga" is the longer line and can still wrap if it ever has to, so nothing overflows */
+@media (max-width: 767px) { .hero h1 .h1-br { display: inline; } .hero h1 .ln { white-space: nowrap; } }
 @media (max-width: 767px) {
   .hero-stage { min-height: min(84vh, 720px); min-height: min(84svh, 720px); }
   .hero-photo img { object-position: 42% 22%; }
@@ -535,6 +536,7 @@ h3 { font-stretch: 88%; }
   .hero-body::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: 0; bottom: 0; pointer-events: none;
     background: linear-gradient(180deg, rgba(27, 28, 30, 0) 0, rgba(27, 28, 30, .18) 40px, rgba(27, 28, 30, .5) 84px, rgba(27, 28, 30, .78) 124px, rgba(27, 28, 30, .9) 160px, rgba(27, 28, 30, .94) 100%); }
   .hero-eyebrow { margin-bottom: 10px; font-size: 12.5px; letter-spacing: .03em; opacity: .9; }
-  .hero h1 { font-size: clamp(2.75rem, 12.4vw, 3.4rem); margin-bottom: 14px; }
+  /* sized by screen width only: a rem floor grows with the phone's text-size setting and broke the line */
+  .hero h1 { font-size: min(12vw, 3.4rem); margin-bottom: 14px; }
   .hero .lede { margin-bottom: 24px; color: rgba(245, 243, 238, .9); }
 }

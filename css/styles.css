@@ -107,11 +107,14 @@ input, textarea, select { caret-color: currentColor; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 @media (max-width: 479px) { .actions .btn { flex: 1 1 100%; } }
 .actions-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.actions-hero .btn { width: 100%; padding: 12px 8px; font-size: 14px; white-space: normal; text-align: center; }
-@media (min-width: 600px) { .actions-hero { display: flex; gap: 12px; } .actions-hero .btn { width: auto; padding: 14px 26px; font-size: 15px; } }
+.actions-hero .btn { width: 100%; min-height: 48px; padding: 10px 10px; gap: 8px; font-size: 14.5px; white-space: normal; text-align: center; }
+@media (min-width: 600px) { .actions-hero { display: flex; gap: 12px; } .actions-hero .btn { width: auto; min-height: 52px; padding: 14px 26px; font-size: 15px; } }
 .btn-accent-line { border-color: var(--accent); }
+.hero .btn-accent-line { background: rgba(20, 21, 23, .5); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 /* small phones: drop the icon so the number stays on one line */
-@media (max-width: 389px) { .actions-hero .btn-solid .i { display: none; } .actions-hero .btn { font-size: 13.5px; padding: 12px 6px; } }
+/* phones up to 420px: the number needs the room more than the icon does */
+@media (max-width: 419px) { .actions-hero .btn-solid .i { display: none; } }
+@media (max-width: 374px) { .actions-hero .btn { font-size: 13.5px; padding: 10px 6px; } }
 .text-cta { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; font-size: 15px; letter-spacing: .02em; color: var(--fg); text-underline-offset: 6px; }
 
 /* ---------- Header ---------- */
@@ -205,8 +208,8 @@ input, textarea, select { caret-color: currentColor; }
 .hero-copy > p:not(.lede):not(.brand-line):not(.micro) { color: var(--body); }
 .lede { font-size: 1.05rem; line-height: 1.5; color: var(--fg); max-width: 34ch; margin-bottom: 22px; }
 /* the review sits under the photo on phones and tablets, and bottom-right over it on wide screens */
-.hero-after { padding-top: 32px; padding-bottom: clamp(56px, 7vw, 72px); }
-.hero-proof { border-top: 1px solid var(--line); padding-top: 24px; }
+.hero-after { padding-top: 36px; padding-bottom: clamp(56px, 7vw, 72px); }
+.hero-proof { border-top: 0; padding-top: 0; } /* the trust strip above already divides it from the photo */
 .hero-proof blockquote { position: relative; }
 .hero-proof blockquote::before { content: "\201C"; display: block; height: .5em; margin-bottom: 4px; font: 800 3.4rem/1 var(--display); color: var(--accent); opacity: .55; }
 .hero-proof blockquote p { font-family: var(--display); font-size: clamp(1.15rem, 1.02rem + .45vw, 1.4rem); line-height: 1.4; color: rgba(245, 243, 238, .85); margin-bottom: 14px; }
@@ -219,17 +222,26 @@ input, textarea, select { caret-color: currentColor; }
 .g-count { color: var(--fg2); }
 .g-badge:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
 /* 4. trust row under the buttons */
-.trust-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 22px; margin: 20px 0 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.4; color: var(--fg2); }
-.trust-row li { display: inline-flex; align-items: center; gap: 4px; }
+.hero-status { display: flex; align-items: center; gap: 4px; margin: 16px 0 0; font-size: 13px; line-height: 1.4; color: var(--fg2); }
 /* thin dividers only where the row fits on one line, so a wrapped line never starts with one */
-@media (min-width: 1280px) { .trust-row { column-gap: 0; } .trust-row li + li::before { content: ""; width: 1px; height: 14px; margin: 0 14px; background: var(--line); } }
-.trust-row strong { color: var(--fg); font-weight: 600; }
+.hero-status strong { color: var(--fg); font-weight: 600; }
 .status-dot { width: 8px; height: 8px; margin-right: 4px; border-radius: 50%; background: var(--fg2); }
 .trust-open.is-open .status-dot { background: var(--accent); box-shadow: 0 0 0 3px rgba(111, 163, 131, .2); }
 .trust-open.is-closed .status-dot { background: #E0A43A; }
-.trust-row a { color: var(--fg2); text-decoration: none; text-underline-offset: 3px; }
-.trust-row a:hover, .trust-row a:focus-visible { color: var(--fg); text-decoration: underline; }
-@media (max-width: 599px) { .trust-row { flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 16px; } }
+.hero-status a { color: var(--fg2); text-decoration: none; text-underline-offset: 3px; }
+.hero-status a:hover, .hero-status a:focus-visible { color: var(--fg); text-decoration: underline; }
+.status-dot { flex: none; }
+/* the two shop facts, in a quiet strip right under the hero */
+.trust-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--black); }
+.trust-strip ul { display: grid; grid-template-columns: 1fr 1fr; margin: 0 auto; list-style: none; }
+.trust-strip li { display: flex; flex-direction: column; gap: 2px; padding: 16px 0; font-size: 13.5px; line-height: 1.35; color: var(--fg2); }
+.trust-strip li + li { padding-left: 20px; border-left: 1px solid var(--line); }
+.trust-strip strong { font-size: 15px; font-weight: 700; font-stretch: 88%; color: var(--fg); }
+@media (min-width: 768px) {
+  .trust-strip ul { display: flex; gap: 0; }
+  .trust-strip li { flex-direction: row; align-items: baseline; gap: 6px; padding: 18px 28px 18px 0; font-size: 14px; }
+  .trust-strip li + li { padding-left: 28px; }
+}
 .hero-proof figcaption { font-size: 14px; color: var(--fg2); }
 @media (min-width: 1024px) {
   .hero-after { padding-top: 40px; }
@@ -498,11 +510,31 @@ h3 { font-stretch: 88%; }
 
 /* wide screens: the review sits bottom-right over the photo, level with the Call button */
 @media (min-width: 1280px) {
-  .hero { position: relative; }
+  .hero { display: grid; }
+  .hero-stage { grid-area: 1 / 1; }
+  .trust-strip { grid-area: 2 / 1; }
   .hero-copy, .hero h1 { max-width: 760px; }
-  .hero-after { position: absolute; left: 0; right: 0; bottom: 0; padding-top: 0; padding-bottom: clamp(28px, 4vw, 56px); pointer-events: none; }
+  .hero-after { grid-area: 1 / 1; align-self: end; z-index: 1; padding-top: 0; padding-bottom: clamp(28px, 4vw, 56px); pointer-events: none; }
   .hero-proof { width: 380px; margin-left: auto; border-top: 0; border-left: 1px solid rgba(255, 255, 255, .18); padding: 4px 0 0 32px; pointer-events: auto; }
 }
 /* the call bar waits until the hero (which has its own buttons) is scrolled away */
 .mobile-bar { transition: transform var(--dur-ui) var(--ease-out), visibility 0s linear 0s; }
 .mobile-bar.is-hidden { transform: translateY(100%); visibility: hidden; transition: transform var(--dur-ui) var(--ease-out), visibility 0s linear var(--dur-ui); }
+
+/* ---------- Phone hero art direction ----------
+   The shade follows the copy instead of the photo height: the top of the photo stays clear, and the
+   darkening starts just above the address line and eases in, so taller phones don't go muddy. */
+/* phones break the headline as Auto Repair / in Mississauga; it can still wrap if the font is slow */
+.hero h1 .h1-br { display: none; }
+@media (max-width: 767px) { .hero h1 .h1-br { display: inline; } }
+@media (max-width: 767px) {
+  .hero-stage { min-height: min(84vh, 720px); min-height: min(84svh, 720px); }
+  .hero-photo img { object-position: 42% 22%; }
+  .hero-shade { background: linear-gradient(180deg, rgba(27, 28, 30, .28) 0%, rgba(27, 28, 30, 0) 18%); }
+  .hero-body { padding-top: 140px; padding-bottom: 24px; }
+  .hero-body::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: 0; bottom: 0; pointer-events: none;
+    background: linear-gradient(180deg, rgba(27, 28, 30, 0) 0, rgba(27, 28, 30, .18) 40px, rgba(27, 28, 30, .5) 84px, rgba(27, 28, 30, .78) 124px, rgba(27, 28, 30, .9) 160px, rgba(27, 28, 30, .94) 100%); }
+  .hero-eyebrow { margin-bottom: 10px; font-size: 12.5px; letter-spacing: .03em; opacity: .9; }
+  .hero h1 { font-size: clamp(2.75rem, 12.4vw, 3.4rem); margin-bottom: 14px; }
+  .hero .lede { margin-bottom: 24px; color: rgba(245, 243, 238, .9); }
+}

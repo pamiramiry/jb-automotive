@@ -303,14 +303,14 @@ function walk(dir) {
     if (!family) console.log("note: Mona Sans did not load for the first-screen check (offline?)");
     const fold = await fv.evaluate(() => ({
       call: document.querySelector(".hero .btn-solid").getBoundingClientRect().bottom,
-      trust: document.querySelector(".trust-row").getBoundingClientRect().bottom,
+      trust: document.querySelector(".hero-status").getBoundingClientRect().bottom,
       status: document.getElementById("open-status").textContent.trim(),
       badge: document.querySelector(".hero-proof .g-badge") && document.querySelector(".hero-proof .g-badge").textContent.replace(/\s+/g, " ").trim(),
     }));
     // the mobile call bar covers the bottom 56px on phones
     const limit = w < 1024 ? h - 56 : h;
     check(fold.call <= limit, `hero Call button is in the first screen at ${w}x${h}`, `bottom=${Math.round(fold.call)}`);
-    if (w >= 1024) check(fold.trust <= h, `hero trust row is in the first screen at ${w}x${h}`, `bottom=${Math.round(fold.trust)}`);
+    if (w >= 1024) check(fold.trust <= h, `hero opening-hours status is in the first screen at ${w}x${h}`, `bottom=${Math.round(fold.trust)}`);
     if (w === 1366) {
       check(/^(Open now · until 6pm|Opens 8am (today|tomorrow|Monday) · Call to book)$/.test(fold.status), "trust row shows open or closed status in shop time", fold.status);
       check(/Google ?4\.7 · 41 reviews$/.test(fold.badge || ""), "hero Google badge shows the real rating", fold.badge);

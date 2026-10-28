@@ -27,7 +27,7 @@ Redesigned 2026-10-27 as "The Quiet Workshop" (the user's pick: Quiet Luxury Wor
 
 - The signature offer ("Bring your dealer quote. We'll give you a straight second opinion.") appears in the numbers band, the second opinion, the comparison table, FAQ #1 and the quote section.
 - The Call + Get a Quote pair appears at key moments only: hero, second opinion, services, how it works, reviews, plus the big call button by the form.
-- Brand line "We tell you what's really wrong. Then we fix it so it stays fixed." appears under the hero actions, at the end of John's letter, and in the footer.
+- Brand line "We tell you what's really wrong. Then we fix it so it stays fixed." appears at the end of John's letter and in the footer (removed from the hero at the user's request 2026-10-27).
 - Sticky mobile bottom bar (Call / Quote) always present.
 - Name in copy: "JB Automotive". Legal name "JB Automotive Ltd" only in the footer © and JSON-LD legalName.
 - Never invent facts. No visible [CONFIRM] placeholders: unconfirmed details are safe defaults or left out, and every one is tracked in OPEN-QUESTIONS.md (not served). Never state a founding year, licence, certification, warranty or price until the shop confirms it. Second-opinion savings and loyalty are customer experiences, never promises. Don't promise walk-ins; closed weekends.

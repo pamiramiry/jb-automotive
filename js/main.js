@@ -159,14 +159,13 @@
       var weekday = wd >= 1 && wd <= 5;
       var item = openStatus.parentNode;
       if (weekday && mins >= 480 && mins < 1080) {
-        openStatus.innerHTML = "<strong>Open now</strong> until 6pm";
+        openStatus.innerHTML = "<strong>Open now</strong> · until 6pm";
         item.classList.add("is-open");
-      } else if (weekday && mins < 480) {
-        openStatus.innerHTML = "<strong>Closed</strong> · opens 8am";
-      } else if (wd >= 1 && wd <= 4) {
-        openStatus.innerHTML = "<strong>Closed</strong> · opens 8am tomorrow";
       } else {
-        openStatus.innerHTML = "<strong>Closed</strong> · opens Monday 8am";
+        // closed: lead with the next opening, then the way to book
+        var nextOpen = weekday && mins < 480 ? "today" : (wd >= 1 && wd <= 4) || wd === 0 ? "tomorrow" : "Monday";
+        openStatus.innerHTML = "<strong>Opens 8am " + nextOpen + "</strong> · <a href=\"tel:+19052762732\">Call to book</a>";
+        item.classList.add("is-closed");
       }
     } catch (e) { /* keep the static hours */ }
   }

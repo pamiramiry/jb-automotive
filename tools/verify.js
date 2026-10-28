@@ -142,7 +142,7 @@ function walk(dir) {
   check(!/CONFIRM/.test(allText), "no [CONFIRM] placeholders visible on the page");
   check(!/CONFIRM/.test(meta.ld.join(" ").replace(/CONFIRM-domain/g, "")), "no placeholder text in the structured data (the domain token aside)");
   const brandLine = "We tell you what's really wrong. Then we fix it so it stays fixed.";
-  const bl = await page.evaluate((t) => [".hero", "#why-us .letter", ".site-footer"].map((s) => [...document.querySelectorAll(s + " .brand-line")].some((n) => n.textContent.trim() === t)), brandLine);
+  const bl = await page.evaluate((t) => ["#why-us .letter", ".site-footer"].map((s) => [...document.querySelectorAll(s + " .brand-line")].some((n) => n.textContent.trim() === t)), brandLine);
   check(bl.every(Boolean), "brand line under hero CTAs, end of letter, footer", JSON.stringify(bl));
   const ctaGaps = await page.evaluate(() => ["#second-opinion", "#services", "#reviews", "#how"]
     .filter((s) => { const p = document.querySelector(s + " .actions"); return !p || !p.querySelector('a[href^="tel:"]') || !p.querySelector('a[href="#quote"]'); }));
@@ -250,7 +250,9 @@ function walk(dir) {
     return { want: num.getAttribute("data-odometer"), shown, sr: num.querySelector(".sr-only").textContent };
   }));
   await page.setViewport({ width: 1440, height: 900 });
-  const before = await page.evaluate(() => { const n = document.getElementById("numbers"); return n.getBoundingClientRect().top > innerHeight; });
+  // the wheels must still be at rest until the stats are scrolled into view
+  await page.evaluate(() => scrollTo(0, 0));
+  const before = await page.evaluate(() => [...document.querySelectorAll(".odo-strip")].every((s) => !s.style.transform));
   await page.evaluate(() => document.getElementById("numbers").scrollIntoView({ behavior: "instant", block: "center" }));
   await new Promise((r) => setTimeout(r, 2600));
   const odo = await readOdo();
@@ -309,8 +311,8 @@ function walk(dir) {
     check(fold.call <= limit, `hero Call button is in the first screen at ${w}x${h}`, `bottom=${Math.round(fold.call)}`);
     if (w >= 1024) check(fold.trust <= h, `hero trust row is in the first screen at ${w}x${h}`, `bottom=${Math.round(fold.trust)}`);
     if (w === 1366) {
-      check(/^(Open now until 6pm|Closed · opens (8am|8am tomorrow|Monday 8am))$/.test(fold.status), "trust row shows open or closed status in shop time", fold.status);
-      check(/4\.7 on Google · 41 reviews/.test(fold.badge || ""), "hero Google badge shows the real rating", fold.badge);
+      check(/^(Open now · until 6pm|Opens 8am (today|tomorrow|Monday) · Call to book)$/.test(fold.status), "trust row shows open or closed status in shop time", fold.status);
+      check(/Google ?4\.7 · 41 reviews$/.test(fold.badge || ""), "hero Google badge shows the real rating", fold.badge);
     }
     await fv.close();
   }

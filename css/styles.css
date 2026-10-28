@@ -185,7 +185,7 @@ input, textarea, select { caret-color: currentColor; }
 @keyframes push-settle { from { transform: scale(1.12); } to { transform: none; } }
 @keyframes word-rise { from { transform: translateY(105%); } to { transform: none; } }
 @keyframes copy-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-.hero-body { padding-top: clamp(24px, 2.4vw, 36px); padding-bottom: var(--sec); }
+.hero-body { padding-top: clamp(24px, 2.4vw, 36px); padding-bottom: clamp(64px, 6vw, 80px); }
 .hero h1 { font-size: clamp(2.6rem, 1.2rem + 5.6vw, 6rem); line-height: 1.02; letter-spacing: -.015em; margin-bottom: clamp(16px, 1.6vw, 24px); max-width: none; }
 .hero-grid { display: grid; gap: 48px; }
 .hero-copy > p:not(.lede):not(.brand-line):not(.micro) { color: var(--body); }
@@ -210,6 +210,9 @@ input, textarea, select { caret-color: currentColor; }
 .trust-row strong { color: var(--fg); font-weight: 600; }
 .status-dot { width: 8px; height: 8px; margin-right: 4px; border-radius: 50%; background: var(--fg2); }
 .trust-open.is-open .status-dot { background: var(--accent); box-shadow: 0 0 0 3px rgba(111, 163, 131, .2); }
+.trust-open.is-closed .status-dot { background: #E0A43A; }
+.trust-row a { color: var(--fg2); text-decoration: none; text-underline-offset: 3px; }
+.trust-row a:hover, .trust-row a:focus-visible { color: var(--fg); text-decoration: underline; }
 @media (max-width: 599px) { .trust-row { flex-direction: column; align-items: flex-start; gap: 6px; } }
 .hero-proof figcaption { font-size: 14px; color: var(--fg2); }
 @media (min-width: 1024px) {

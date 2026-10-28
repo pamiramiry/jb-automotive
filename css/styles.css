@@ -208,13 +208,14 @@ input, textarea, select { caret-color: currentColor; }
   .numbers li { border-bottom: 0; padding: 40px 32px 40px 0; }
   .numbers li + li { padding-left: 32px; border-left: 1px solid var(--line); }
 }
-.num { display: inline-flex; font-family: var(--text); font-weight: 400; letter-spacing: -.04em; color: var(--fg); font-size: clamp(3.5rem, 2rem + 6vw, 6.5rem); line-height: 1; font-variant-numeric: tabular-nums lining-nums; }
+.num { display: inline-flex; font-family: var(--text); font-weight: 400; letter-spacing: -.04em; color: var(--fg); font-size: clamp(3.5rem, 2rem + 6vw, 6.5rem); line-height: 1; font-variant-numeric: lining-nums; }
 .num-label { font-size: 15px; color: var(--fg2); max-width: 22ch; }
 .numbers-offer { margin: 40px 0 0; }
 .odo { display: inline-flex; align-items: center; gap: 4px; }
 .odo-col { position: relative; display: inline-block; height: 1.15em; overflow: hidden; padding: 0 .04em; background: var(--surface); }
 .odo-col::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, var(--bg), transparent 26%, transparent 74%, var(--bg)); opacity: .7; }
-.odo-strip { display: block; transform: translateY(0); transition: transform 1.4s var(--ease-out); }
+/* fast, even spin that brakes onto the digit; JS sets each wheel's duration from its distance */
+.odo-strip { display: block; transform: translateY(0); transition: transform 1.4s cubic-bezier(.3, .55, .25, 1); will-change: transform; }
 .odo-strip span { display: block; height: 1.15em; line-height: 1.15em; text-align: center; }
 .odo-sym { display: inline-block; line-height: 1.15em; }
 

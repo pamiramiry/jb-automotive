@@ -33,3 +33,5 @@ The preview ships without any visible [CONFIRM] placeholders (user request, 2026
 - **Latitude / longitude:** geo meta tags and JSON-LD `geo` removed until the exact coordinates are confirmed (see the TODO comment in index.html).
 - **Form endpoint:** the quote form shows a success message but doesn't send anywhere yet (`TODO: connect form endpoint`).
 - **Shop photos:** the redesign shows no placeholder boxes. Three swap slots wait in HTML comments (John at the counter, John and Chris, the Unit 9 entrance); see images/IMAGE-LIST.md. The old video slot was dropped in the redesign.
+
+- Numbers band: a fourth stat would be strongest as years in business ("Since 19XX"). Ask the shop. The third stat says almost 20 years because Aranka L.'s review says "almost 20 years": do not change it to 20+ unless a customer or the shop confirms more than 20.

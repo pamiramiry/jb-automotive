@@ -245,7 +245,7 @@ function walk(dir) {
       const y = new DOMMatrix(getComputedStyle(strip).transform).m42;
       // the wheel must sit on a digit, not between two (a 5% drift shows half of the next number)
       const d = -y / strip.firstElementChild.getBoundingClientRect().height;
-      return Math.abs(d - Math.round(d)) > 0.05 ? "?" : String(Math.round(d));
+      return Math.abs(d - Math.round(d)) > 0.05 ? "?" : String(Math.round(d) % 10);
     }).join("");
     return { want: num.getAttribute("data-odometer"), shown, sr: num.querySelector(".sr-only").textContent };
   }));
@@ -254,7 +254,7 @@ function walk(dir) {
   await page.evaluate(() => document.getElementById("numbers").scrollIntoView({ behavior: "instant", block: "center" }));
   await new Promise((r) => setTimeout(r, 2600));
   const odo = await readOdo();
-  check(before && odo.length === 3 && odo.every((o) => o.shown === o.want), "odometer rolls to 4.7 / 41 / ~20 on scroll-in", JSON.stringify(odo.map((o) => o.shown)));
+  check(before && odo.length === 3 && odo.every((o) => o.shown === o.want), "odometer spins and lands on 4.7 / 41 / ≈20 on scroll-in", JSON.stringify(odo.map((o) => o.shown)));
   check(odo.every((o) => /\d/.test(o.sr)), "screen-reader text holds the real values");
   const rm = await browser.newPage();
   await rm.setRequestInterception(true);

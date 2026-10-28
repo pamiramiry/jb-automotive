@@ -33,8 +33,10 @@
     if (e.key === "Escape" && nav.classList.contains("is-open")) { setMenu(false); toggle.focus(); }
   });
 
-  /* Odometer numbers: each digit rolls up like a car odometer when the stats scroll into view.
+  /* Odometer numbers: every wheel spins through full turns at the same speed, then lands on its digit,
+     the rightmost wheel first. Each wheel's run time is its distance times ODO_MS, so the speeds match.
      The plain value stays in .sr-only for screen readers; without JS the static number shows. */
+  var ODO_MS = 48; // per digit passed
   var odos = [];
   document.querySelectorAll("[data-odometer]").forEach(function (num) {
     var value = num.getAttribute("data-odometer");
@@ -42,18 +44,23 @@
     if (!face) return;
     face.textContent = "";
     var strips = [];
+    var digitsLeft = value.replace(/\D/g, "").length;
     value.split("").forEach(function (ch) {
       if (/\d/.test(ch)) {
+        digitsLeft--;
+        // full turns before landing: 2 for the rightmost wheel, one more for each wheel to its left
+        var turns = 2 + digitsLeft;
         var col = document.createElement("span");
         col.className = "odo-col";
         var strip = document.createElement("span");
         strip.className = "odo-strip";
-        for (var d = 0; d <= 9; d++) {
+        for (var d = 0; d < (turns + 1) * 10; d++) {
           var cell = document.createElement("span");
-          cell.textContent = String(d);
+          cell.textContent = String(d % 10);
           strip.appendChild(cell);
         }
         strip.setAttribute("data-digit", ch);
+        strip.setAttribute("data-steps", String(turns * 10 + Number(ch)));
         col.appendChild(strip);
         face.appendChild(col);
         strips.push(strip);
@@ -68,10 +75,10 @@
   });
   function rollOdometers() {
     odos.forEach(function (strips) {
-      strips.forEach(function (strip, i) {
-        // Rightmost wheel moves first, like a real odometer
-        strip.style.transitionDelay = ((strips.length - 1 - i) * 120) + "ms";
-        strip.style.transform = "translateY(" + (-1.15 * Number(strip.getAttribute("data-digit"))) + "em)";
+      strips.forEach(function (strip) {
+        var steps = Number(strip.getAttribute("data-steps"));
+        strip.style.transitionDuration = (steps * ODO_MS) + "ms";
+        strip.style.transform = "translateY(" + (-1.15 * steps) + "em)";
       });
     });
   }

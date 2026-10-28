@@ -102,7 +102,7 @@ A family repair shop presented with the calm of a high-end service house, but bu
 
 The page alternates graphite and concrete bands, each holding one idea with room around it. Photography is the only texture and most of the warmth: every photo carries the same muted colour grade (about 60% saturation, a slightly warm cast, a touch of shadow depth). The interface has exactly one colour, machine green (the grey-green of lathes and old toolboxes), and it only ever appears on the Call action.
 
-Motion has two authored moments: the hero opening (the letterbox opens from the centre, the photo settles from a slow push-in, the headline words rise in turn), and the odometer digits rolling into place. On desktop a muted, graded video loop then fades in behind the hero, with a visible pause button. Everything else answers a visitor's own action.
+Motion is light: the hero is fully visible on first paint (it is the LCP) with only a 1.2s, 1.03-to-1 settle of the photo, and the odometer digits roll when the stats scroll into view. On desktop a muted, graded video loop then fades in behind the hero, with a visible pause button. Everything else answers a visitor's own action.
 
 **Key Characteristics:**
 - Graphite and concrete bands, steel greys, one machine-green accent for Call only.
@@ -212,5 +212,5 @@ The featured review is a full-width quote. The rest sit in a swipeable row under
 - **Don't** put text over a photograph.
 - **Don't** box content into cards or add drop shadows; use hairline rules.
 - **Don't** add eyebrow labels above headings or uppercase labels (the wordmark is the only uppercase).
-- **Don't** add scroll-triggered fade-ins to sections; the hero opening and the odometer are the only authored moments.
+- **Don't** add scroll-triggered fade-ins to sections; the photo settle and the odometer are the only authored moments, and nothing in the hero may start hidden (no opacity, clip-path or off-mask transforms).
 - **Don't** autoplay any other media, and never ship the hero video without its pause button.

@@ -263,7 +263,7 @@
       "Don't put text over a photograph.",
       "Don't box content into cards or add drop shadows; use hairline rules.",
       "Don't add eyebrow labels above headings or uppercase labels (the wordmark is the only uppercase).",
-      "Don't add scroll-triggered fade-ins to sections; the hero opening and the odometer are the only authored moments.",
+      "Don't add scroll-triggered fade-ins to sections; the photo settle and the odometer are the only authored moments; nothing in the hero starts hidden.",
       "Don't autoplay any other media, and never ship the hero video without its pause button."
     ]
   }

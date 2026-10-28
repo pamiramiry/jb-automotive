@@ -139,7 +139,7 @@ input, textarea, select { caret-color: currentColor; }
 .menu-toggle[aria-expanded="true"] .menu-close { opacity: 1; transform: none; }
 @media (max-width: 1023px) {
   .main-nav { position: absolute; left: 0; right: 0; top: 100%; display: none; background: var(--black); border-bottom: 1px solid var(--line); padding: 8px var(--gutter) 28px; }
-  .main-nav.is-open { display: block; animation: nav-in var(--dur-ui) var(--ease-out); }
+  .main-nav.is-open { display: block; }
   .main-nav ul { flex-direction: column; gap: 0; }
   .main-nav a:not(.btn) { width: 100%; min-height: 56px; padding: 0; font-family: var(--display); font-size: 1.6rem; color: var(--fg); border-bottom: 1px solid var(--line); }
   .main-nav .nav-call { display: flex; width: 100%; margin-top: 24px; }
@@ -153,9 +153,8 @@ input, textarea, select { caret-color: currentColor; }
 }
 
 /* ---------- Hero ----------
-   Desktop: a 2.39:1 letterboxed photo with light grain and a soft vignette. On load the letterbox
-   opens from the centre, the photo settles from a slow push-in, then the headline words rise in turn.
-   A muted video loop fades in over the photo on desktop once the opening has finished (main.js). */
+   Full-bleed photo with light grain under a graphite shade; visible on first paint. A muted loop fades in
+   over the photo once the page has settled (desktop loop, portrait clip on phones; main.js). */
 /* full-bleed photo behind the hero; the copy is anchored to the bottom over a dark shade */
 .hero-stage { position: relative; display: flex; align-items: flex-end; min-height: min(88vh, 760px); min-height: min(88svh, 760px); isolation: isolate; }
 .hero-photo { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: var(--char); }
@@ -192,17 +191,12 @@ input, textarea, select { caret-color: currentColor; }
 .video-toggle .i { width: 14px; height: 14px; }
 .hero h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; }
 .hero h1 .w > span { display: inline-block; }
+/* Everything in the hero is visible on the very first paint (it is the LCP). The only motion is a slight
+   settle of the photo: transform only, never opacity or clip-path. */
 @media (prefers-reduced-motion: no-preference) {
-  .hero-photo { animation: letterbox-open 1.3s var(--ease-in-out) both; }
-  .hero-photo img { animation: push-settle 2.8s var(--ease-out) both; }
-  .hero h1 .w > span { animation: word-rise .95s var(--ease-out) both; animation-delay: calc(.75s + var(--i) * .09s); }
-  .hero-eyebrow { animation: copy-in .8s var(--ease-out) .6s both; }
-  .hero-copy, .hero-after { animation: copy-in .8s var(--ease-out) 1.25s both; }
+  .hero-photo img { animation: push-settle 1.2s var(--ease-out) both; }
 }
-@keyframes letterbox-open { from { clip-path: inset(50% 0 50% 0); } to { clip-path: inset(0 0 0 0); } }
-@keyframes push-settle { from { transform: scale(1.12); } to { transform: none; } }
-@keyframes word-rise { from { transform: translateY(105%); } to { transform: none; } }
-@keyframes copy-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes push-settle { from { transform: scale(1.03); } to { transform: none; } }
 .hero-body { position: relative; padding-top: 96px; padding-bottom: clamp(28px, 4vw, 56px); }
 .hero-eyebrow { margin: 0 0 12px; font-size: 14px; font-weight: 600; letter-spacing: .02em; color: var(--accent); }
 .hero h1 { font-size: clamp(2.6rem, 11vw, 4.5rem); line-height: .95; letter-spacing: -.015em; margin-bottom: 14px; max-width: none; }
@@ -356,9 +350,10 @@ input, textarea, select { caret-color: currentColor; }
 .rail-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; background: transparent; color: var(--fg); border: 1px solid var(--fg); border-radius: var(--radius); cursor: pointer; transition: background-color var(--dur-ui) var(--ease-out), color var(--dur-ui) var(--ease-out), transform var(--dur-press) var(--ease-out); }
 .rail-btn:disabled { opacity: .3; cursor: default; }
 .rail-btn[data-rail-prev] .i { transform: scaleX(-1); }
+/* no scroll-behavior: smooth here: it animates the initial snap, which Chrome counts as a scroll and then never reports LCP. The arrow buttons ask for smooth scrolling in main.js. */
 .quote-list {
   display: flex; gap: 32px; overflow-x: auto; overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
   padding: 2px 2px 18px; margin: 0 -2px; scrollbar-width: thin; scrollbar-color: var(--line) transparent;
 }
 .quote-list::-webkit-scrollbar { height: 4px; }
@@ -442,7 +437,6 @@ input, textarea, select { caret-color: currentColor; }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq-a { padding: 0 40px 22px 0; }
 .faq-a p { margin: 0; }
-.faq details[open] .faq-a { animation: soft-in var(--dur-ui) var(--ease-out); }
 .call-line { margin: 28px 0 0; color: var(--fg); }
 
 /* ---------- Quote ---------- */
@@ -467,10 +461,8 @@ input, textarea, select { caret-color: currentColor; }
 .form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
 .form-foot .btn { background: var(--btn-bg); color: var(--btn-fg); }
 .form-msg { margin: 0; font-weight: 600; color: var(--fg); }
-.form-msg:not(:empty) { animation: soft-in var(--dur-ui) var(--ease-out); }
 /* Errors need to read as errors without an accent colour: a warm red that holds 8:1 on black */
 .field-error { margin: 0; font-size: 14px; font-weight: 600; color: #FF9F8E; }
-.field-error:not([hidden]) { animation: soft-in var(--dur-ui) var(--ease-out); }
 .field.has-error input, .field.has-error textarea, .field.has-error select { border-color: #FF9F8E; border-width: 2px; }
 
 /* ---------- Footer ---------- */
@@ -521,6 +513,11 @@ h3 { font-stretch: 88%; }
 }
 
 /* ---------- Motion ---------- */
+/* small UI responses, only for visitors who haven't asked for less motion */
+@media (prefers-reduced-motion: no-preference) {
+  @media (max-width: 1023px) { .main-nav.is-open { animation: nav-in var(--dur-ui) var(--ease-out); } }
+  .faq details[open] .faq-a, .form-msg:not(:empty), .field-error:not([hidden]) { animation: soft-in var(--dur-ui) var(--ease-out); }
+}
 @keyframes nav-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 @keyframes soft-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) {

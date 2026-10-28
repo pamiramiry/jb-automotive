@@ -335,6 +335,19 @@ function walk(dir) {
     check(atTop === "hidden" && past === "visible", "call bar hidden over the hero, shown once it scrolls away", `${atTop} / ${past}`);
     await mb.close();
   }
+  // Largest Contentful Paint must be reported (a smooth-scrolling snap row once suppressed it entirely)
+  for (const [w, h, mob] of [[412, 823, true], [1350, 940, false]]) {
+    const lp = await browser.newPage();
+    await lp.setRequestInterception(true);
+    lp.on("request", (r) => (r.url().startsWith(base) || r.url().startsWith("data:") ? r.continue() : r.abort()));
+    await lp.setViewport({ width: w, height: h, isMobile: mob, hasTouch: mob });
+    await lp.evaluateOnNewDocument(() => { window.__lcp = []; new PerformanceObserver((l) => l.getEntries().forEach((e) => window.__lcp.push(e.element ? e.element.tagName : "?"))).observe({ type: "largest-contentful-paint", buffered: true }); });
+    await lp.goto(base, { waitUntil: "load" });
+    await new Promise((r) => setTimeout(r, 1500));
+    const lcp = await lp.evaluate(() => window.__lcp);
+    check(lcp.length > 0, `LCP is reported at ${w}px`, lcp.join(" > ") || "none");
+    await lp.close();
+  }
   // hero video: desktop plays its loop after the opening; phones play the portrait clip; reduced motion never loads one
   {
     const dv = await browser.newPage();

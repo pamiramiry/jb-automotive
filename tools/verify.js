@@ -68,7 +68,8 @@ function walk(dir) {
   check(meta.title === `${PHRASE} | JB Automotive`, "title tag", JSON.stringify(meta.title));
   check(meta.h1count === 1, "exactly one H1", String(meta.h1count));
   check(meta.h1 === PHRASE, "H1 text", JSON.stringify(meta.h1));
-  check(meta.first.split(". ")[0].includes(PHRASE), "first sentence after H1 contains phrase", JSON.stringify(meta.first.slice(0, 90)));
+  // user brief 2026-10-27: the hero subhead must not repeat the keyword (H1, title, meta, alt and schema carry it)
+  check(meta.first && !meta.first.includes(PHRASE), "hero subhead does not repeat the keyword", JSON.stringify(meta.first.slice(0, 90)));
   check(meta.desc.startsWith(PHRASE + "."), "meta description starts with phrase");
   check(meta.ogt === meta.title && meta.twt === meta.title, "og:title and twitter:title equal title");
   check(meta.ogd === meta.desc && meta.twd === meta.desc, "og:description and twitter:description equal meta description");
@@ -156,7 +157,7 @@ function walk(dir) {
   })));
   const badImgs = imgs.filter((i) => !i.alt || i.alt.length < 15 || !i.w || !i.h || !/^images\/[a-z0-9-]+\.webp$/.test(i.src) || !fs.existsSync(path.join(ROOT, i.src)));
   check(badImgs.length === 0, `${imgs.length} images: kebab-case webp, alt text, width/height, loaded`, badImgs.map((i) => i.src).join(", "));
-  check(imgs[0].prio === "high" && !imgs[0].lazy && imgs.slice(1).every((i) => i.lazy === "lazy"), "hero fetchpriority=high, everything else lazy");
+  check(imgs[0].prio === "high" && (!imgs[0].lazy || imgs[0].lazy === "eager") && imgs.slice(1).every((i) => i.lazy === "lazy"), "hero fetchpriority=high, everything else lazy");
   const sources = fs.readFileSync(path.join(ROOT, "images/IMAGE-SOURCES.md"), "utf8");
   const unlogged = fs.readdirSync(path.join(ROOT, "images")).filter((f) => f.endsWith(".webp") && !sources.includes(f));
   check(unlogged.length === 0, "every stock photo logged in IMAGE-SOURCES.md", unlogged.join(", "));
@@ -227,13 +228,13 @@ function walk(dir) {
     // monochrome world: every text colour must be a neutral grey (equal channels), except the form error red
     const out = [];
     document.querySelectorAll("main *, .site-header *, .site-footer *").forEach((el) => {
-      if (!el.textContent.trim() || el.closest(".field-error")) return;
+      if (!el.textContent.trim() || el.closest(".field-error") || el.closest(".hero-eyebrow")) return;
       const m = getComputedStyle(el).color.match(/[\d.]+/g).map(Number);
       if (Math.max(m[0], m[1], m[2]) - Math.min(m[0], m[1], m[2]) > 12) out.push((el.className.baseVal ?? el.className) || el.tagName);
     });
     return [...new Set(out)];
   });
-  check(colourful.length === 0, "text stays neutral (green is a Call fill only)", colourful.slice(0, 6).join(", "));
+  check(colourful.length === 0, "text stays neutral (green only on Call and the hero eyebrow)", colourful.slice(0, 6).join(", "));
 
 
   // ---- 7b. Odometer numbers
@@ -315,6 +316,23 @@ function walk(dir) {
       check(/Google ?4\.7 · 41 reviews$/.test(fold.badge || ""), "hero Google badge shows the real rating", fold.badge);
     }
     await fv.close();
+  }
+  {
+    // the call bar waits until the hero is scrolled away, then comes back
+    const mb = await browser.newPage();
+    await mb.setRequestInterception(true);
+    mb.on("request", (r) => (r.url().startsWith(base) || r.url().startsWith("data:") ? r.continue() : r.abort()));
+    await mb.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+    await mb.setViewport({ width: 390, height: 844 });
+    await mb.goto(base, { waitUntil: "load" });
+    await new Promise((r) => setTimeout(r, 400));
+    const vis = () => mb.evaluate(() => getComputedStyle(document.querySelector(".mobile-bar")).visibility);
+    const atTop = await vis();
+    await mb.evaluate(() => scrollTo(0, document.querySelector(".hero-stage").offsetHeight + 200));
+    await new Promise((r) => setTimeout(r, 600));
+    const past = await vis();
+    check(atTop === "hidden" && past === "visible", "call bar hidden over the hero, shown once it scrolls away", `${atTop} / ${past}`);
+    await mb.close();
   }
   // hero video: desktop plays it after the opening; the button pauses it; phones and reduced motion never load it
   {

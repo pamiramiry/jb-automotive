@@ -147,6 +147,16 @@
     }
   }
 
+  /* Call bar stays hidden while the hero and its own buttons are on screen */
+  var callBar = document.querySelector(".mobile-bar");
+  var heroStage = document.querySelector(".hero-stage");
+  if (callBar && heroStage && "IntersectionObserver" in window) {
+    callBar.classList.add("is-hidden");
+    new IntersectionObserver(function (entries) {
+      callBar.classList.toggle("is-hidden", entries[0].isIntersecting);
+    }).observe(heroStage);
+  }
+
   /* Hero trust row: open or closed right now, in shop time. Hours: Mon-Fri 8am to 6pm, closed weekends. */
   var openStatus = document.getElementById("open-status");
   if (openStatus && window.Intl) {

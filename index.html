@@ -37,7 +37,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..800&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..800&amp;display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,400..800&amp;display=swap"></noscript>
-<link rel="preload" as="image" media="(max-width: 767px)" href="images/auto-repair-mississauga-jb-automotive-m.webp" fetchpriority="high">
+<link rel="preload" as="image" media="(max-width: 767px)" href="images/auto-repair-mississauga-jb-automotive-p.webp" fetchpriority="high">
 <link rel="preload" as="image" media="(min-width: 768px)" href="images/auto-repair-mississauga-jb-automotive.webp" imagesrcset="images/auto-repair-mississauga-jb-automotive-1200.webp 1200w, images/auto-repair-mississauga-jb-automotive.webp 2400w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="css/styles.css">
 <script src="js/main.js" defer></script>
@@ -207,44 +207,48 @@
 <main id="main">
 
 <section class="hero dark" aria-labelledby="hero-title">
-  <div class="hero-photo">
-    <picture>
-      <source media="(min-width: 768px)" srcset="images/auto-repair-mississauga-jb-automotive-1200.webp 1200w, images/auto-repair-mississauga-jb-automotive.webp 2400w" sizes="100vw" width="2400" height="900">
-      <img src="images/auto-repair-mississauga-jb-automotive-m.webp" width="1000" height="750" fetchpriority="high" decoding="async"
-           alt="Auto Repair in Mississauga at JB Automotive">
-    </picture>
-    <!-- Desktop only: main.js loads this muted loop after the opening, never on phones, reduced motion or data saver -->
-    <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" data-src="video/mechanic-at-work-jb-automotive.mp4"></video>
-    <span class="grain" aria-hidden="true"></span>
-    <button class="video-toggle" type="button" aria-pressed="false" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="ic-pause" fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="ic-play" fill="currentColor" d="M8 5l11 7-11 7z"/></svg><span class="sr-only">Pause video</span></button>
-  </div>
-  <div class="wrap hero-body">
-    <h1 id="hero-title"><span class="w"><span style="--i:0">Auto</span></span> <span class="w"><span style="--i:1">Repair</span></span> <span class="w"><span style="--i:2">in</span></span> <span class="w"><span style="--i:3">Mississauga</span></span></h1>
-    <div class="hero-grid">
+  <div class="hero-stage">
+    <div class="hero-photo">
+      <picture>
+        <source media="(min-width: 768px)" srcset="images/auto-repair-mississauga-jb-automotive-1200.webp 1200w, images/auto-repair-mississauga-jb-automotive.webp 2400w" sizes="100vw" width="2400" height="900">
+        <img src="images/auto-repair-mississauga-jb-automotive-p.webp" width="900" height="1200" loading="eager" fetchpriority="high" decoding="async"
+             alt="Auto Repair in Mississauga: a mechanic's hands working in a car's engine bay at JB Automotive">
+      </picture>
+      <!-- Desktop only: main.js loads this muted loop after the opening, never on phones, reduced motion or data saver -->
+      <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" data-src="video/mechanic-at-work-jb-automotive.mp4"></video>
+      <span class="grain" aria-hidden="true"></span>
+      <span class="hero-shade" aria-hidden="true"></span>
+      <button class="video-toggle" type="button" aria-pressed="false" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="ic-pause" fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="ic-play" fill="currentColor" d="M8 5l11 7-11 7z"/></svg><span class="sr-only">Pause video</span></button>
+    </div>
+    <div class="wrap hero-body">
+      <p class="hero-eyebrow">922 Dundas St E · Mississauga</p>
+      <h1 id="hero-title"><span class="w"><span style="--i:0">Auto</span></span> <span class="w"><span style="--i:1">Repair</span></span> <span class="w"><span style="--i:2">in</span></span> <span class="w"><span style="--i:3">Mississauga</span></span></h1>
       <div class="hero-copy">
-        <p class="lede">A family-run shop on Dundas St E, doing Auto Repair in Mississauga the honest way. Ask for John or Chris: they'll tell you what's really wrong, what it costs, and what can wait.</p>
+        <p class="lede">A family-run shop. Ask for John or Chris. They'll tell you what's wrong, what it costs, and what can wait.</p>
         <!-- "Get a Quote" is placeholder wording for the secondary action everywhere on the page. Shop to approve or rename. -->
         <div class="actions actions-hero">
           <a class="btn btn-solid" href="tel:+19052762732"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call (905) 276-2732</a>
-          <a class="text-cta" href="#quote">Get a Quote</a>
+          <a class="btn btn-line btn-accent-line" href="#quote">Get a Quote</a>
         </div>
-        <ul class="trust-row">
-          <li class="trust-open"><span class="status-dot" aria-hidden="true"></span><span id="open-status"><strong>Open Mon-Fri</strong> 8am to 6pm</span></li>
-          <li><strong>Older cars</strong> welcome</li>
-          <li><strong>Same mechanics</strong> every visit</li>
-        </ul>
+      <ul class="trust-row">
+        <li class="trust-open"><span class="status-dot" aria-hidden="true"></span><span id="open-status"><strong>Open Mon-Fri</strong> 8am to 6pm</span></li>
+        <li><strong>Older cars</strong> welcome</li>
+        <li><strong>Same mechanics</strong> every visit</li>
+      </ul>
       </div>
-      <figure class="hero-proof">
-        <!-- TODO: swap for the direct Google Maps reviews link once the shop shares it -->
-        <a class="g-badge" href="https://www.google.com/search?q=JB+Automotive+922+Dundas+St+E+Mississauga+reviews" target="_blank" rel="noopener">
-          <span class="g-label">Google</span>
-          <span class="g-stars" aria-hidden="true"><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg></span>
-          <span><strong>4.7</strong> <span class="g-count">· 41 reviews</span></span>
-        </a>
-        <blockquote><p>Chris and John are rockstars. I travel across the city just to make sure they are the ones who wrench on my vehicles.</p></blockquote>
-        <figcaption>Chris K., Google review</figcaption>
-      </figure>
     </div>
+  </div>
+  <div class="wrap hero-after">
+    <figure class="hero-proof">
+      <!-- TODO: swap for the direct Google Maps reviews link once the shop shares it -->
+      <a class="g-badge" href="https://www.google.com/search?q=JB+Automotive+922+Dundas+St+E+Mississauga+reviews" target="_blank" rel="noopener">
+        <span class="g-label">Google</span>
+        <span class="g-stars" aria-hidden="true"><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg><svg class="i"><use href="#i-star"/></svg></span>
+        <span><strong>4.7</strong> <span class="g-count">· 41 reviews</span></span>
+      </a>
+      <blockquote><p>Chris and John are rockstars. I travel across the city just to make sure they are the ones who wrench on my vehicles.</p></blockquote>
+      <figcaption>Chris K., Google review</figcaption>
+    </figure>
   </div>
 </section>
 

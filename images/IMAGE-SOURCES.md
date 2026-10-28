@@ -8,7 +8,8 @@ Every photo gets the same muted colour grade (sharp: modulate saturation 0.6, a 
 |---|---|---|---|---|---|
 | auto-repair-mississauga-jb-automotive.webp | https://www.pexels.com/photo/an-auto-mechanic-checking-the-engine-of-a-car-4315570/ | Anna Shvets | Pexels License | 2026-10-27 | Hero, desktop. 8:3 crop, 2400x900, muted colour |
 | auto-repair-mississauga-jb-automotive-1200.webp | Same as above (4315570) | Anna Shvets | Pexels License | 2026-10-27 | 1200x450 copy of the desktop hero |
-| auto-repair-mississauga-jb-automotive-m.webp | Same as above (4315570) | Anna Shvets | Pexels License | 2026-10-27 | Hero, phones. 4:3 crop on the hands, 1000x750 |
+| ~~auto-repair-mississauga-jb-automotive-m.webp~~ (retired 2026-10-27, replaced by -p.webp) | Same as above (4315570) | Anna Shvets | Pexels License | 2026-10-27 | Hero, phones. 4:3 crop on the hands, 1000x750 |
+| auto-repair-mississauga-jb-automotive-p.webp | Same as above (4315570), re-downloaded at 2400x1600 | Anna Shvets | Pexels License | 2026-10-27 | Full-bleed hero, phones. 3:4 portrait crop (x 180, 1200x1600) on the hands, 900x1200, same muted grade |
 | auto-repair-mississauga-jb-automotive-og.webp | Same as above (4315570) | Anna Shvets | Pexels License | 2026-10-27 | Social share image, 1200x630 |
 | engine-bay-repair-mississauga.webp | https://www.pexels.com/photo/person-in-black-jacket-working-on-the-engine-of-the-car-4315575/ | Anna Shvets | Pexels License | 2026-10-27 | Full-width band, desktop. 3:1 crop, 1600x533. Same session as the hero |
 | engine-bay-repair-mississauga-m.webp | Same as above (4315575) | Anna Shvets | Pexels License | 2026-10-27 | Band, phones. 3:2 crop, 900x600 |

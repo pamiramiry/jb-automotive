@@ -7,7 +7,7 @@ Every photo uses the same muted colour grade (see IMAGE-SOURCES.md for how). Sto
 | Filename | Size | Section | Shot | Alt text |
 |---|---|---|---|---|
 | auto-repair-mississauga-jb-automotive.webp (+ -1200 copy) | 2400x900 | Hero, desktop and tablet | Hands working in a warm engine bay | Auto Repair in Mississauga at JB Automotive |
-| auto-repair-mississauga-jb-automotive-m.webp | 1000x750 | Hero, phones | Same shot, tighter on the hands | Auto Repair in Mississauga at JB Automotive |
+| auto-repair-mississauga-jb-automotive-p.webp | 900x1200 | Full-bleed hero, phones | Same shot, portrait crop on the hands | Auto Repair in Mississauga: a mechanic's hands working in a car's engine bay at JB Automotive |
 | engine-repair-mississauga-jb-automotive.webp | 1200x900 | Second opinion, Elyia's story | Hands with a socket wrench in an engine bay | Mechanic working with a socket wrench in a car's engine bay |
 | engine-bay-repair-mississauga.webp (+ -m) | 1600x533 / 900x600 | Full-width band after the second opinion | Both hands working in an engine bay | A mechanic's hands working in a car's engine bay |
 | brake-repair-mississauga-jb-automotive.webp | 960x1200 | Services | Brake rotor and caliper, wheel off | Brake rotor and caliper being serviced at JB Automotive in Mississauga |

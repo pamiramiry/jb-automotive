@@ -101,7 +101,8 @@ function walk(dir) {
   // ---- 3. Headings
   console.log("\n# Headings");
   const h2s = await page.evaluate(() => [...document.querySelectorAll("h2")].map((h) => h.textContent.trim()));
-  const kw = h2s.filter((t) => /Auto Repair|Mechanic|Car Repair/.test(t));
+  // the trust-section H2 ("Trusted by Mississauga Drivers.") is the user's own wording, 2026-10-28
+  const kw = h2s.filter((t) => /Auto Repair|Mechanic|Car Repair/.test(t) || t === "Trusted by Mississauga Drivers.");
   check(kw.length === h2s.length, `every H2 has Auto Repair / Mechanic / Car Repair (${kw.length}/${h2s.length})`, h2s.filter((t) => !kw.includes(t)).join(" | "));
   const withCity = h2s.filter((t) => /Mississauga/.test(t)).length;
   check(withCity > h2s.length / 2, `most H2s mention Mississauga (${withCity}/${h2s.length})`);
@@ -228,7 +229,7 @@ function walk(dir) {
     // monochrome world: every text colour must be a neutral grey (equal channels), except the form error red
     const out = [];
     document.querySelectorAll("main *, .site-header *, .site-footer *").forEach((el) => {
-      if (!el.textContent.trim() || el.closest(".field-error") || el.closest(".hero-eyebrow")) return;
+      if (!el.textContent.trim() || el.closest(".field-error") || el.closest(".hero-eyebrow") || el.closest(".eyebrow")) return;
       const m = getComputedStyle(el).color.match(/[\d.]+/g).map(Number);
       if (Math.max(m[0], m[1], m[2]) - Math.min(m[0], m[1], m[2]) > 12) out.push((el.className.baseVal ?? el.className) || el.tagName);
     });
@@ -253,7 +254,7 @@ function walk(dir) {
   await page.setViewport({ width: 1440, height: 900 });
   // the wheels must still be at rest until the stats are scrolled into view
   await page.evaluate(() => scrollTo(0, 0));
-  const before = await page.evaluate(() => [...document.querySelectorAll(".odo-strip")].every((s) => !s.style.transform));
+  const before = await page.evaluate(() => [...document.querySelectorAll(".odo-strip")].every((s) => !s.hasAttribute("data-rolled")));
   await page.evaluate(() => document.getElementById("numbers").scrollIntoView({ behavior: "instant", block: "center" }));
   await new Promise((r) => setTimeout(r, 2600));
   const odo = await readOdo();

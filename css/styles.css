@@ -16,6 +16,7 @@
   --char: #26272A;       /* quiet surface on graphite */
   --accent: #6FA383;     /* machine green: Call buttons only, with ink text */
   --accent-hover: #5E9273;
+  --accent-ink: #3E6450;  /* same green, deep enough for small text on concrete (6:1) */
 
   --display: "Mona Sans", "Arial Narrow", system-ui, sans-serif;
   --text: "Mona Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -249,21 +250,37 @@ input, textarea, select { caret-color: currentColor; }
 
 /* ---------- Numbers + odometer ----------
    Digit cells are 1.15em tall: main.js moves each strip by 1.15em per digit, so the two must match. */
-.numbers { display: grid; margin-top: 48px; border-top: 1px solid var(--line); }
-.numbers li { display: flex; flex-direction: column; gap: 14px; padding: 32px 0; border-bottom: 1px solid var(--line); }
+/* Editorial trust stats: two figures side by side, one wider feature row under a hairline. No boxes. */
+#numbers.sec { padding: 56px 0; }
+@media (min-width: 768px) { #numbers.sec { padding: clamp(72px, 7vw, 104px) 0; } }
+.trust-stats { display: grid; gap: 28px; }
+@media (min-width: 900px) { .trust-stats { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 72px; align-items: start; } .ts-head { padding-top: 22px; } }
+.eyebrow { margin: 0 0 10px; font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
+.ts-head h2 { margin: 0; text-wrap: balance; }
+.numbers { display: grid; grid-template-columns: 1fr 1fr; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stat { display: flex; flex-direction: column; gap: 6px; padding: 22px 0 20px; min-width: 0; }
+.stat:nth-child(2) { padding-left: 20px; border-left: 1px solid var(--line); }
+.stat-wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 18px; border-top: 1px solid var(--line); }
+.stat-fig { display: inline-flex; align-items: flex-start; gap: .08em; }
+.stat-star { width: .9rem; height: .9rem; margin-top: .45rem; color: var(--accent); }
+.stat-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.stat-title { font-size: 16px; font-weight: 700; font-stretch: 88%; line-height: 1.25; color: var(--fg); }
 @media (min-width: 768px) {
-  .numbers { grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
-  .numbers li { border-bottom: 0; padding: 40px 32px 40px 0; }
-  .numbers li + li { padding-left: 32px; border-left: 1px solid var(--line); }
+  .stat { padding: 28px 0 26px; }
+  .stat:nth-child(2) { padding-left: 32px; }
+  .stat-wide { gap: 28px; }
+  .stat-star { width: 1.1rem; height: 1.1rem; margin-top: .6rem; }
+  .stat-title { font-size: 18px; }
 }
-.num { display: inline-flex; font-family: var(--text); font-weight: 400; letter-spacing: -.04em; color: var(--fg); font-size: clamp(3.5rem, 2rem + 6vw, 6.5rem); line-height: 1; font-variant-numeric: lining-nums; }
-.num-label { font-size: 15px; color: var(--fg2); max-width: 22ch; }
-.numbers-offer { margin: 40px 0 0; }
-.odo { display: inline-flex; align-items: center; gap: 4px; }
-.odo-col { position: relative; display: inline-block; height: 1.15em; overflow: hidden; padding: 0 .04em; background: var(--surface); }
-.odo-col::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, var(--bg), transparent 26%, transparent 74%, var(--bg)); opacity: .7; }
-/* fast, even spin that brakes onto the digit; JS sets each wheel's duration from its distance */
-.odo-strip { display: block; transform: translateY(0); transition: transform 1.4s cubic-bezier(.3, .55, .25, 1); will-change: transform; }
+.num { display: inline-flex; font-family: var(--text); color: var(--fg); font-size: clamp(3rem, 2rem + 4vw, 4.5rem); line-height: 1; font-variant-numeric: lining-nums; }
+.stat-wide .num { flex: none; font-size: clamp(3.5rem, 2.3rem + 4.6vw, 5.25rem); }
+.num-label { font-size: 14px; line-height: 1.4; color: var(--fg2); }
+.numbers-offer { margin: 24px 0 0; font-size: clamp(1.15rem, 1rem + .5vw, 1.4rem); }
+/* the odometer: plain digits in clipped windows, no cell backgrounds */
+.odo { display: inline-flex; align-items: center; }
+/* 1.15em cells: main.js moves each strip 1.15em per digit, change both together */
+.odo-col { position: relative; display: inline-block; height: 1.15em; overflow: hidden; }
+.odo-strip { display: block; transform: translateY(0); transition: transform 1s cubic-bezier(.22, .61, .24, 1); will-change: transform; }
 .odo-strip span { display: block; height: 1.15em; line-height: 1.15em; text-align: center; }
 .odo-sym { display: inline-block; line-height: 1.15em; }
 

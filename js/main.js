@@ -33,10 +33,12 @@
     if (e.key === "Escape" && nav.classList.contains("is-open")) { setMenu(false); toggle.focus(); }
   });
 
-  /* Odometer numbers: every wheel spins through full turns at the same speed, then lands on its digit,
-     the rightmost wheel first. Each wheel's run time is its distance times ODO_MS, so the speeds match.
-     The plain value stays in .sr-only for screen readers; without JS the static number shows. */
-  var ODO_MS = 48; // per digit passed
+  /* Odometer numbers: each wheel already shows its digit, then spins two full turns at one shared speed and
+     settles back on it (about 1s), wheels a beat apart from right to left. Each window is sized to its own
+     digit, so nothing changes width. The plain value stays in .sr-only; without JS the static number shows. */
+  var ODO_TURNS = 2;
+  var ODO_MS = 1000;   // spin time, the same for every wheel
+  var ODO_STAGGER = 45; // ms between wheels
   var odos = [];
   document.querySelectorAll("[data-odometer]").forEach(function (num) {
     var value = num.getAttribute("data-odometer");
@@ -48,8 +50,7 @@
     value.split("").forEach(function (ch) {
       if (/\d/.test(ch)) {
         digitsLeft--;
-        // full turns before landing: 2 for the rightmost wheel, one more for each wheel to its left
-        var turns = 2 + digitsLeft;
+        var turns = ODO_TURNS;
         var col = document.createElement("span");
         col.className = "odo-col";
         var strip = document.createElement("span");
@@ -61,6 +62,9 @@
         }
         strip.setAttribute("data-digit", ch);
         strip.setAttribute("data-steps", String(turns * 10 + Number(ch)));
+        strip.setAttribute("data-order", String(digitsLeft));
+        strip.style.transitionDuration = "0s";
+        strip.style.transform = "translateY(" + (-1.15 * Number(ch)) + "em)";
         col.appendChild(strip);
         face.appendChild(col);
         strips.push(strip);
@@ -73,11 +77,32 @@
     });
     odos.push(strips);
   });
-  function rollOdometers() {
+  // each window is as wide as its own digit, so the number keeps its natural spacing and never shifts
+  function sizeOdometers() {
     odos.forEach(function (strips) {
       strips.forEach(function (strip) {
+        var col = strip.parentNode;
+        var probe = document.createElement("span");
+        probe.style.cssText = "position:absolute;visibility:hidden;white-space:nowrap";
+        probe.textContent = strip.getAttribute("data-digit");
+        col.parentNode.appendChild(probe);
+        var em = probe.getBoundingClientRect().width / parseFloat(getComputedStyle(col).fontSize);
+        col.parentNode.removeChild(probe);
+        if (em > 0) col.style.width = em.toFixed(3) + "em";
+      });
+    });
+  }
+  sizeOdometers();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeOdometers);
+  function rollOdometers() {
+    odos.forEach(function (strips, n) {
+      strips.forEach(function (strip) {
         var steps = Number(strip.getAttribute("data-steps"));
-        strip.style.transitionDuration = (steps * ODO_MS) + "ms";
+        strip.setAttribute("data-rolled", "");
+        // force the start position before the transition is switched on
+        void strip.offsetHeight;
+        strip.style.transitionDuration = ODO_MS + "ms";
+        strip.style.transitionDelay = (n * 70 + Number(strip.getAttribute("data-order")) * ODO_STAGGER) + "ms";
         strip.style.transform = "translateY(" + (-1.15 * steps) + "em)";
       });
     });
